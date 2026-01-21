@@ -1,0 +1,128 @@
+.container {
+    padding: 20px;
+}
+
+.table-responsive {
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.table {
+    margin-bottom: 0;
+
+    thead {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+        th {
+            color: white;
+            font-weight: 600;
+            padding: 16px;
+            text-align: left;
+            border: none;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+    }
+
+    tbody {
+        tr {
+
+            td {
+                padding: 14px 16px;
+                color: #333;
+                font-size: 14px;
+                vertical-align: middle;
+            }
+        }
+    }
+}
+
+.badge {
+    background-color: #10b981;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.badgeEdit {
+    background-color: #3b82f6;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    margin-right: 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.badgeDelete {
+    background-color: #ef4444;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    font-size: 12px;
+    font-weight: 600;
+    border: none;
+    cursor: pointer;
+}
+
+.table {
+    width: 100%;
+    table-layout: fixed;
+
+    thead,
+    tbody {
+        tr {
+            display: table;
+            width: 100%;
+            table-layout: fixed;
+        }
+    }
+}
+
+.loader {
+    font-weight: bold;
+    font-family: monospace;
+    font-size: 30px;
+    display: inline-grid;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.loader:before,
+.loader:after {
+    content: "Loading...";
+    grid-area: 1/1;
+    -webkit-mask: linear-gradient(90deg, #000 50%, #0000 0) 0 50%/2ch 100%;
+    animation: l11 1s infinite cubic-bezier(0.5, 220, 0.5, -220);
+}
+
+.loader:after {
+    -webkit-mask-position: 1ch 50%;
+    --s: -1;
+}
+
+@keyframes l11 {
+    100% {
+        transform: translateY(calc(var(--s, 1) * 0.1%));
+    }
+}
+
+
+.tableError {
+    color: rgb(241, 80, 80);
+    text-align: center;
+}
+
+.updateUserDetails {
+    position: absolute;
+    width: 100%;
+    backdrop-filter: blur(2px);
+}

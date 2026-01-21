@@ -1,0 +1,81 @@
+<div class="registeration-form">
+    <div class="register-container">
+        <h2>Registration Form</h2>
+        <form #myForm = "ngForm" (ngSubmit)="sumbitData(myForm)">
+            <div class="form-group">
+                <label>First Name</label>
+                <input 
+                type="text" 
+                name="firstName" 
+                required 
+                [(ngModel)]="fName"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Last Name</label>
+                <input 
+                type="text" 
+                name="lastName" 
+                required 
+                [(ngModel)]="lName"
+                >
+            </div>
+
+            <div class="form-group">
+                <label>Age</label>
+                <input 
+                type="number" 
+                name="age" 
+                required 
+                [(ngModel)]="age"
+                >
+            </div>
+
+            <div class="form-group">
+                <label >Location</label>
+                <input 
+                type="text"  
+                name="location" 
+                required 
+                [(ngModel)]="location"
+                >
+            </div>
+
+            <div class="form-group">
+                <label >Status</label>
+                <select  name="status" required [(ngModel)]="status">
+                    <option value="">Select Status</option>
+                    <option value="active">Active</option>
+                    <option value="inactive">Inactive</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label >Email</label>
+                <input 
+                type="text"  
+                name="email" 
+                required 
+                [(ngModel)]="email"
+                >
+            </div>
+
+            <div class="form-group">
+                <label >Password</label>
+                <input 
+                type="text"  
+                name="password" 
+                required 
+                [(ngModel)]="password"
+                >
+            </div>
+
+            <button type="submit" class="register-btn">Register</button>
+
+            <div class="login">
+                If already have an account? <a [routerLink]="['/login']">Sign in</a>
+            </div>
+        </form>
+    </div>
+</div>

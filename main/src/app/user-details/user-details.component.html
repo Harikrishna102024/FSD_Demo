@@ -1,0 +1,41 @@
+<div class="updateUserDetails" *ngIf="isUpdateDetails">
+    <app-update-user [userData]="updateDetails" (status)="closePopOut($event)"></app-update-user>
+</div>
+<div class="container mt-5">
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Age</th>
+                    <th>Location</th>
+                    <th>Status</th>
+                    <th>Email</th>
+                    <th>Password</th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let data of userData">
+                    <td>{{data.id}}</td>
+                    <td>{{data.firstName}}</td>
+                    <td>{{data.lastName}}</td>
+                    <td>{{data.age}}</td>
+                    <td>{{data.location}}</td>
+                    <td><span class="badge">{{data.status}}</span></td>
+                    <td>{{data.email}}</td>
+                    <!-- <td>{{data.password}}</td> -->
+                    <td>{{maskData(data.password)}}</td>
+                    <td>
+                        <button class="badgeEdit" (click)="updateUserData(data)">Edit</button>
+                        <button class="badgeDelete" (click)="deleteUserData(data.id)">Delete</button>
+                    </td>
+                </tr>
+                <tr *ngIf="userData && userData.length === 0" class="tableError">No data available</tr>
+            </tbody>
+        </table>
+        <div class="loader" *ngIf="isLoading"></div>
+    </div>
+</div>

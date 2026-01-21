@@ -1,0 +1,5 @@
+<div class="header" *ngIf="context.logStatus">
+    <button class="header-btn" [routerLink]="['/home']">Home</button>
+    <button class="header-btn" [routerLink]="['/getUsers']">Details</button>
+    <button class="header-btn" (click)="removeUserAccess()">Logout</button>
+</div>

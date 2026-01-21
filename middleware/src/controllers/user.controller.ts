@@ -25,7 +25,7 @@ export class userController {
                 password: payload.password
             };
 
-            await userService.createUser(userData);
+            await userService.createUser(userData); 
 
             return res.status(201).json({
                 message: 'User registered successfully',

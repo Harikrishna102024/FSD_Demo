@@ -13,6 +13,7 @@ export class HeaderComponent {
 
   removeUserAccess() {
     localStorage.removeItem('logIn');
+    localStorage.removeItem('token');
     this.context.manageUserAccess();
     this.router.navigate(['/login']);
   }

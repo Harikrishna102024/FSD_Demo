@@ -1,3 +1,4 @@
+//normal sql its just for Typescript
 export interface User {
     id?: number;
     first_name: string;

@@ -23,7 +23,7 @@ export class LoginComponent {
     }
 
     this.service.checkLoginCredentials(email, password).subscribe((res) => {
-
+      localStorage.setItem('token', res.auth_token);
       if (res && res.success) {
         localStorage.setItem('logIn', String(true));
         this.context.manageUserAccess();

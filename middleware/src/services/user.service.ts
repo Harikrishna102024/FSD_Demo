@@ -75,7 +75,7 @@ export class UserService {
     const [result]: any = await pool.query(query, [email, password]);
 
     if(result && result.length > 0) {
-      return true;
+      return result[0];
     } else {
       return false;
     }

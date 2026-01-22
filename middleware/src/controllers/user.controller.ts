@@ -1,8 +1,7 @@
 import { Request, Response } from 'express';
 import { UserService } from '../services/user.service';
 import { User } from '../models/users.model';
-import jwt from 'jsonwebtoken';
-
+import { generateToken } from '../services/jwt.service';
 
 const userService = new UserService();
 
@@ -125,13 +124,18 @@ export class userController {
             const email = req.body.email;
             const password = req.body.password
 
-            const result = await userService.validateUserData(email, password);
+            const user = await userService.validateUserData(email, password);
 
-            if (result) {
+            if (user) {
+
+                const token = generateToken(user);
+
                 return res.status(200).json({
                     success: true,
                     message: 'User login successfully',
+                    auth_token: token
                 });
+
             } else {
                 return res.status(401).json({
                     success: false,

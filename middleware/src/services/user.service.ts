@@ -122,8 +122,8 @@ export class UserService {
 
     const result = await UserModel.update(
       {
-        first_name: data.first_name,
-        last_name: data.last_name,
+        firstName: data.first_name,
+        lastName: data.last_name,
         age: data.age,
         location: data.location,
         status: data.status,

@@ -31,8 +31,8 @@ export class UserService {
 
     const result = await UserModel.create({
 
-      first_name: user.first_name,
-      last_name: user.last_name,
+      firstName: user.first_name,
+      lastName: user.last_name,
       age: user.age,
       location: user.location,
       status: user.status,

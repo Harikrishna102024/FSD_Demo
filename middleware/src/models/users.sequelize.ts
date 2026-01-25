@@ -14,7 +14,7 @@ const UserModel: any = sequelize.define("users", {
         field: 'first_name'
     },
 
-    last_name: {
+    lastName: {
         type: DataTypes.STRING,
         field: 'last_name'
     },

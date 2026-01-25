@@ -22,7 +22,15 @@ export class UserDetailsComponent implements OnInit {
   }
 
   maskData(data: any) {
-    var maskData = data.slice(0, 3) + '*'.repeat(data.length - 3);
+
+    var maskData: any;
+
+    if (data.length <= 3) {
+      maskData = '*'.repeat(data.length);
+    } else if( data.length > 3) {
+      maskData = data.slice(0, 3) + '*'.repeat(data.length - 3);
+    }
+  
     return maskData;
   }
 
@@ -38,9 +46,9 @@ export class UserDetailsComponent implements OnInit {
 
 
   deleteUserData(id: any) {
-   this.isLoading = false;
+    this.isLoading = false;
     this.service.deleteUser(id).subscribe((res) => {
-      if(res.success) {
+      if (res.success) {
         this.getAllUserData();
         this.toastr.success('User deleted successfully');
       } else {

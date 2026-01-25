@@ -24,6 +24,7 @@ export class UpdateUserComponent {
       status: data.controls['status'].value,
     }
     this.service.updateUserData(userData).subscribe((res) => {
+      console.log(res)
       if(res && res.success) {
         this.toastr.success('Data updated successfully!');
       } else {

@@ -43,6 +43,7 @@ const UserModel: any = sequelize.define("users", {
         type: DataTypes.STRING,
         field: 'password'
     }
+    
 },{timestamps: false,})
 
 export default UserModel;

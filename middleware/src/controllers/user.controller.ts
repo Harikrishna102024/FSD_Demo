@@ -2,8 +2,10 @@ import { Request, Response } from 'express';
 import { UserService } from '../services/user.service';
 import { User } from '../models/users.model';
 import { generateToken } from '../services/jwt.service';
+import { GmailService } from '../services/gmail.service';
 
 const userService = new UserService();
+const mailService = new GmailService();
 
 export class userController {
 
@@ -21,10 +23,15 @@ export class userController {
                 location: payload.location,
                 status: payload.status,
                 email: payload.email,
-                password: payload.password
+                password: payload.password,
             };
 
-            await userService.createUser(userData); 
+            const result = await userService.createUser(userData);
+
+            if (result.regStatus) {
+                const subject = 'reg';
+                mailService.sendMail(userData.email, subject);
+            }
 
             return res.status(201).json({
                 message: 'User registered successfully',
@@ -129,6 +136,8 @@ export class userController {
             if (user) {
 
                 const token = generateToken(user);
+                const subject = 'log';
+                mailService.sendMail(req.body.email, subject);
 
                 return res.status(200).json({
                     success: true,

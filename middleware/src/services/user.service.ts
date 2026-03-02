@@ -29,6 +29,7 @@ export class UserService {
   //Using Sequelize
   async createUser(user: any) {
 
+
     const result = await UserModel.create({
 
       firstName: user.first_name,
@@ -39,9 +40,15 @@ export class UserService {
       email: user.email,
       password: user.password,
 
-    })
+    });
 
-    return result;
+    const finalResult = await {
+      result: result,
+      regStatus: true
+    }
+
+
+    return finalResult;
   }
 
 

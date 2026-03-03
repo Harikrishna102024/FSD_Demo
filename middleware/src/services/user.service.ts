@@ -2,6 +2,7 @@ import pool from '../config/db';
 import { User } from '../models/users.model';
 import sequelize, { where } from 'sequelize';
 import UserModel from '../models/users.sequelize';
+import bcrypt from 'bcrypt';
 
 export class UserService {
 
@@ -29,6 +30,8 @@ export class UserService {
   //Using Sequelize
   async createUser(user: any) {
 
+    const bcryptPassword = await bcrypt.hash(user.password, 10);
+
 
     const result = await UserModel.create({
 
@@ -38,7 +41,7 @@ export class UserService {
       location: user.location,
       status: user.status,
       email: user.email,
-      password: user.password,
+      password: bcryptPassword,
 
     });
 
@@ -174,5 +177,31 @@ export class UserService {
       return false;
     }
   }
+
+
+   //Using Sequelizer using bcrypt
+  // async validateUserData(email: any, password: any) {
+
+  //   const user = await UserModel.findOne({
+  //     where: {
+  //       email: email,
+  //     },
+  //   });
+
+  //   if(!user) {
+  //     return false;
+
+  //   } else if(user) {
+      
+  //     const isPasswordValid = await bcrypt.compare(password, user.password);
+
+  //     if(isPasswordValid) {
+  //       return user;
+  //     } else {
+  //       return false;
+  //     }
+
+  //   }
+  // }
 
 }

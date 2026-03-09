@@ -3,6 +3,8 @@ import { User } from '../models/users.model';
 import sequelize, { where } from 'sequelize';
 import UserModel from '../models/users.sequelize';
 import bcrypt from 'bcrypt';
+import { Op } from "sequelize";
+
 
 export class UserService {
 
@@ -203,5 +205,22 @@ export class UserService {
 
   //   }
   // }
+
+
+  //check if fields are already exist in the database
+  async checkExistingFields(fields: any) {
+    const status = await UserModel.findOne({
+      where: {
+        [Op.or]: [
+          { email: fields.email },
+        ]
+      }
+    })
+    if (status) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 
 }

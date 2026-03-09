@@ -12,36 +12,48 @@ export class userController {
     // Method to handle user registration
     registerUser = async (req: Request, res: Response) => {
 
-        try {
+        const status = await userService.checkExistingFields(req.body);
 
-            const payload = req.body;
+        if (status) {
+            return res.status(400).json({
+                success: false,
+                message: 'User with the same email already exists',
+                duplicate: true
+            });
+        } else {
 
-            const userData: User = {
-                first_name: payload.firstName,
-                last_name: payload.lastName,
-                age: Number(payload.age),
-                location: payload.location,
-                status: payload.status,
-                email: payload.email,
-                password: payload.password,
-            };
 
-            const result = await userService.createUser(userData);
+            try {
 
-            if (result.regStatus) {
-                const subject = 'reg';
-                mailService.sendMail(userData.email, subject);
+                const payload = req.body;
+
+                const userData: User = {
+                    first_name: payload.firstName,
+                    last_name: payload.lastName,
+                    age: Number(payload.age),
+                    location: payload.location,
+                    status: payload.status,
+                    email: payload.email,
+                    password: payload.password,
+                };
+
+                const result = await userService.createUser(userData);
+
+                if (result.regStatus) {
+                    const subject = 'reg';
+                    mailService.sendMail(userData.email, subject);
+                }
+
+                return res.status(201).json({
+                    message: 'User registered successfully',
+                });
+
+            } catch (error) {
+                console.error(error);
+                return res.status(500).json({
+                    message: 'Failed to register user',
+                });
             }
-
-            return res.status(201).json({
-                message: 'User registered successfully',
-            });
-
-        } catch (error) {
-            console.error(error);
-            return res.status(500).json({
-                message: 'Failed to register user',
-            });
         }
     }
 

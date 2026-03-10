@@ -3,41 +3,41 @@
     <form #userDetailsForm="ngForm">
         <div class="form-group">
             <label>ID:</label>
-            <input type="text"  name="id" readonly class="disabled-field" [(ngModel)]="userData.data.id">
+            <input type="text"  name="id" readonly class="disabled-field" [(ngModel)]="editableUser.id">
         </div>
 
         <div class="form-row">
             <div class="form-group">
                 <label>First Name:</label>
-                <input type="text"  name="firstName" [(ngModel)]="userData.data.firstName">
+                <input type="text"  name="firstName" [(ngModel)]="editableUser.firstName">
             </div>
             <div class="form-group">
                 <label>Last Name:</label>
-                <input type="text"  name="lastName" [(ngModel)]="userData.data.lastName">
+                <input type="text"  name="lastName" [(ngModel)]="editableUser.lastName">
             </div>
         </div>
 
         <div class="form-row">
             <div class="form-group">
                 <label>Age:</label>
-                <input type="number"  name="age" min="0" [(ngModel)]="userData.data.age">
+                <input type="number"  name="age" min="0" [(ngModel)]="editableUser.age">
             </div>
             <div class="form-group">
                 <label>Location:</label>
-                <input type="text"  name="location" [(ngModel)]="userData.data.location">
+                <input type="text"  name="location" [(ngModel)]="editableUser.location">
             </div>
         </div>
 
         <div class="form-group">
             <label>Status:</label>
-            <select  name="status" [(ngModel)]="userData.data.status">
+            <select  name="status" [(ngModel)]="editableUser.status">
                 <option value="active">Active</option>
                 <option value="inactive">Inactive</option>
             </select>
         </div>
 
         <div class="button-group">
-            <button type="submit" class="btn-update" (click)="updateUserData(userDetailsForm)">Save Changes</button>
+            <button type="submit" class="btn-update" (click)="updateUserData()">Save Changes</button>
             <button type="button" class="btn-cancel" (click)="closePopOut()">Cancel</button>
         </div>
     </form>

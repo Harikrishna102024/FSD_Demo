@@ -65,8 +65,9 @@ export class UserDetailsComponent implements OnInit {
     }
     this.updateDetails = userData;
   }
-
+  
   closePopOut(event: any) {
+    this.getAllUserData()
     this.isUpdateDetails = event;
   }
 

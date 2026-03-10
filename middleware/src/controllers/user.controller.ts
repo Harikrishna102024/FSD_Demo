@@ -16,13 +16,13 @@ export class userController {
         const status = await userService.checkExistingFields(req.body);
 
         if (status) {
+            logger.warn(`User try to insert exixting data`)
             return res.status(400).json({
                 success: false,
                 message: 'User with the same email already exists',
                 duplicate: true
             });
         } else {
-
 
             try {
 
@@ -39,17 +39,20 @@ export class userController {
                 };
 
                 const result = await userService.createUser(userData);
-
+                
                 if (result.regStatus) {
                     const subject = 'reg';
                     mailService.sendMail(userData.email, subject);
                 }
 
+                logger.info(`New user registered ${userData.first_name}`)
+                
                 return res.status(201).json({
                     message: 'User registered successfully',
                 });
 
             } catch (error) {
+                logger.error(`Regiteration faild`)
                 console.error(error);
                 return res.status(500).json({
                     message: 'Failed to register user',
@@ -121,13 +124,14 @@ export class userController {
             };
 
             await userService.updateUser(ID, usrUpdateData);
-
+            logger.warn(`User upadated details`)
             return res.status(200).json({
                 success: true,
                 message: 'User updated successfully',
             });
 
         } catch (err) {
+            logger.error(`Faild to update user`)
             console.error(err);
             return res.status(500).json({
                 success: false,
@@ -159,6 +163,7 @@ export class userController {
                 });
 
             } else {
+                logger.error(`logIn faild ${email} - ${password}`)
                 return res.status(401).json({
                     success: false,
                     message: 'User not exist or wrong password'

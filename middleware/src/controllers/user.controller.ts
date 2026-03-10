@@ -3,6 +3,7 @@ import { UserService } from '../services/user.service';
 import { User } from '../models/users.model';
 import { generateToken } from '../services/jwt.service';
 import { GmailService } from '../services/gmail.service';
+import logger from '../config/winston'
 
 const userService = new UserService();
 const mailService = new GmailService();
@@ -146,7 +147,7 @@ export class userController {
             const user = await userService.validateUserData(email, password);
 
             if (user) {
-
+                logger.info(`User ${email} logIn`)
                 const token = generateToken(user);
                 const subject = 'log';
                 mailService.sendMail(req.body.email, subject);

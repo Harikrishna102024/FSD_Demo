@@ -13,7 +13,7 @@
                     <th>Location</th>
                     <th>Status</th>
                     <th>Email</th>
-                    <th>Password</th>
+                    <!-- <th>Password</th> -->
                     <th>Actions</th>
                 </tr>
             </thead>
@@ -27,7 +27,7 @@
                     <td><span class="badge">{{data.status}}</span></td>
                     <td>{{data.email}}</td>
                     <!-- <td>{{data.password}}</td> -->
-                    <td>{{maskData(data.password)}}</td>
+                    <!-- <td>{{maskData(data.password)}}</td> -->
                     <td>
                         <button class="badgeEdit" (click)="updateUserData(data)">Edit</button>
                         <button class="badgeDelete" (click)="deleteUserData(data.id)">Delete</button>

@@ -37,11 +37,12 @@ export class RegisterComponent {
       next: () => {
         this.toastr.success('Registered successfully!');
       },
-      error: () => {
-        this.toastr.error('Registration failed!');
+      error: (err: any) => {
+        this.toastr.error(err.error.message);
       }
 
     });
+    
 
     this.fName = null;
     this.lName = null;

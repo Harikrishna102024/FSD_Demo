@@ -166,45 +166,24 @@ export class UserService {
 
   //Using Sequelizer
   async validateUserData(email: any, password: any) {
+
     const user = await UserModel.findOne({
       where: {
         email: email,
-        password: password,
       },
     });
 
-    if (user) {
-      return user;
-    } else {
+    if (!user) {
       return false;
+    } else {
+      const pasMatch = await bcrypt.compare(password, user.password);
+      if(pasMatch) {
+        return user
+      }
+
     }
   }
 
-
-   //Using Sequelizer using bcrypt
-  // async validateUserData(email: any, password: any) {
-
-  //   const user = await UserModel.findOne({
-  //     where: {
-  //       email: email,
-  //     },
-  //   });
-
-  //   if(!user) {
-  //     return false;
-
-  //   } else if(user) {
-      
-  //     const isPasswordValid = await bcrypt.compare(password, user.password);
-
-  //     if(isPasswordValid) {
-  //       return user;
-  //     } else {
-  //       return false;
-  //     }
-
-  //   }
-  // }
 
 
   //check if fields are already exist in the database

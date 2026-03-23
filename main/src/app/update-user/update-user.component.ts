@@ -17,7 +17,7 @@ export class UpdateUserComponent {
   constructor(private service: UsedataService, public toastr: ToastrService) { }
 
   ngOnInit() {
-    this.editableUser = { ...this.userData.data };
+    this.editableUser = { ...this.userData?.data };
   }
 
   updateUserData() {

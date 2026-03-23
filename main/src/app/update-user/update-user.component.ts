@@ -11,6 +11,8 @@ export class UpdateUserComponent {
 
   @Input() userData: any;
   @Output() status = new EventEmitter<any>();
+  @Output() recall = new EventEmitter<any>();
+
   editableUser: any = {};
 
 
@@ -29,6 +31,7 @@ export class UpdateUserComponent {
       }
     })
     this.closePopOut();
+    this.recall.emit(true)
   }
 
   closePopOut() {

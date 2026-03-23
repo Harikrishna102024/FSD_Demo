@@ -65,6 +65,12 @@ export class UserDetailsComponent implements OnInit {
     }
     this.updateDetails = userData;
   }
+
+  recallUserData(event: any) {
+    if(event) {
+      this.getAllUserData();
+    }
+  }
   
   closePopOut(event: any) {
     this.getAllUserData()

@@ -17,5 +17,6 @@ export class HeaderComponent {
     localStorage.removeItem('token');
     this.context.manageUserAccess();
     this.router.navigate(['/login']);
+    window.location.href = '/login'
   }
 }

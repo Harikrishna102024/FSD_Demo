@@ -3,6 +3,7 @@ import { UsedataService } from '../Services/usedata.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AppContext } from '../app.context';
+import { jwtDecode } from 'jwt-decode';
 
 @Component({
   selector: 'app-login',
@@ -24,10 +25,16 @@ export class LoginComponent {
 
     this.service.checkLoginCredentials(email, password).subscribe((res) => {
       localStorage.setItem('token', res.auth_token);
+      const token = localStorage.getItem('token')
+      if(token) {
+        const decoded = jwtDecode(token);
+        console.log(decoded)
+      }
       if (res && res.success) {
         localStorage.setItem('logIn', String(true));
         this.context.manageUserAccess();
-        this.router.navigate(['/home']);
+        const token = localStorage.getItem('token');
+        this.router.navigate(['/home'], { replaceUrl: true });
         this.toastr.success("User login successfully!");
       }
     }, (err) => {

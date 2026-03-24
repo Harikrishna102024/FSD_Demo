@@ -12,6 +12,7 @@ export const authInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
   const token = localStorage.getItem('token');
 
   if (token) {
+
     const authReq = req.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`
@@ -25,7 +26,7 @@ export const authInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
           router.navigate(['/login']);
           toastr.error('Session expired. Please log in again.');
         }
-        
+
         return throwError(() => err);
       })
     )

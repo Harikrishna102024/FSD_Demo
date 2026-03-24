@@ -7,9 +7,11 @@ import { Injectable } from "@angular/core";
 export class AppContext {
 
   logStatus: boolean = false;
+  userRole: any
 
   constructor() {
     this.manageUserAccess();
+    this.userRole = localStorage.getItem('role')
   }
 
   manageUserAccess() {

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppContext } from './app.context';
 
 @Component({
@@ -6,8 +6,12 @@ import { AppContext } from './app.context';
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   title = 'main';
 
   constructor(public context: AppContext) { }
+
+  ngOnInit() {
+    localStorage.removeItem('logIn')
+  }
 }

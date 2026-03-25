@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UsedataService } from '../Services/usedata.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { AppContext } from '../app.context';
 
 @Component({
   selector: 'app-user-details',
@@ -10,7 +11,7 @@ import { Router } from '@angular/router';
 })
 export class UserDetailsComponent implements OnInit {
 
-  constructor(private service: UsedataService, private toastr: ToastrService, private router: Router) { }
+  constructor(private service: UsedataService, private toastr: ToastrService, private router: Router, public context: AppContext) { }
 
   isUpdateDetails = false;
   updateDetails: any;

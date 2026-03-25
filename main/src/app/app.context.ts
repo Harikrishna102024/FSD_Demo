@@ -1,4 +1,6 @@
-import { Injectable } from "@angular/core";
+import { Injectable, OnInit } from "@angular/core";
+import { jwtDecode } from 'jwt-decode';
+
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +17,16 @@ export class AppContext {
   }
 
   manageUserAccess() {
+
     const status = localStorage.getItem('logIn');
     this.logStatus = Boolean(status);
+
+    const token = localStorage.getItem('token');
+    if (token) {
+      const decoded: any = jwtDecode(token);
+      this.userRole = decoded.role
+    }
+
   }
+
 }

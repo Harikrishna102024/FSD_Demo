@@ -14,7 +14,7 @@
                     <th>Status</th>
                     <th>Email</th>
                     <!-- <th>Password</th> -->
-                    <th>Actions</th>
+                    <th *ngIf="context.userRole === 'admin'">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -28,7 +28,7 @@
                     <td>{{data.email}}</td>
                     <!-- <td>{{data.password}}</td> -->
                     <!-- <td>{{maskData(data.password)}}</td> -->
-                    <td>
+                    <td *ngIf="context.userRole === 'admin'">
                         <button class="badgeEdit" (click)="updateUserData(data)">Edit</button>
                         <button class="badgeDelete" (click)="deleteUserData(data.id)">Delete</button>
                     </td>

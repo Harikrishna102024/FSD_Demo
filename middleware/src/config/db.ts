@@ -17,7 +17,6 @@ dotenv.config();
 
 
 const isProd = process.env.NODE_ENV === "production";
-
 const sequelize = new Sequelize(
   process.env.DB_NAME as string,
   process.env.DB_USER as string,
@@ -35,5 +34,6 @@ const sequelize = new Sequelize(
     } : {},
   }
 );
+console.log("isProd = ", isProd)
 
 export default sequelize;

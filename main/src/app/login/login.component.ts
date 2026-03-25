@@ -23,13 +23,16 @@ export class LoginComponent {
     }
 
     this.service.checkLoginCredentials(email, password).subscribe((res) => {
+
       localStorage.setItem('token', res.auth_token);
+
       if (res && res.success) {
         localStorage.setItem('logIn', String(true));
         this.context.manageUserAccess();
         this.router.navigate(['/home'], { replaceUrl: true });
         this.toastr.success("User login successfully!");
       }
+      
     }, (err) => {
       this.toastr.error(err.error.message);
     })  

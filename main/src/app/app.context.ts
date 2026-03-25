@@ -19,14 +19,13 @@ export class AppContext {
   manageUserAccess() {
 
     const status = localStorage.getItem('logIn');
-    this.logStatus = Boolean(status);
+    this.logStatus = status === 'true'
 
     const token = localStorage.getItem('token');
     if (token) {
       const decoded: any = jwtDecode(token);
       this.userRole = decoded.role
     }
-
   }
 
 }

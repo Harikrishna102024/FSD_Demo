@@ -16,6 +16,8 @@ dotenv.config();
 // export default pool;
 
 
+const isProd = process.env.NODE_ENV === "production";
+
 const sequelize = new Sequelize(
   process.env.DB_NAME as string,
   process.env.DB_USER as string,
@@ -23,9 +25,15 @@ const sequelize = new Sequelize(
   {
     host: process.env.DB_HOST,
     port: Number(process.env.DB_PORT),
-    dialect: "mysql",
+    dialect: isProd ? "postgres" : "mysql",
     logging: false,
+    dialectOptions: isProd ? {
+      ssl: {
+        require: true,
+        rejectUnauthorized: false,
+      },
+    } : {},
   }
-)
+);
 
 export default sequelize;

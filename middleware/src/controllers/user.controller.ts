@@ -42,7 +42,7 @@ export class userController {
                 
                 if (result.regStatus) {
                     const subject = 'reg';
-                    // mailService.sendMail(userData.email, subject);
+                    mailService.sendMail(userData.email, subject);
                 }
 
                 logger.info(`New user registered ${userData.first_name}`)
@@ -154,7 +154,7 @@ export class userController {
                 logger.info(`User ${email} logIn`)
                 const token = generateToken(user);
                 const subject = 'log';
-                // mailService.sendMail(req.body.email, subject);
+                mailService.sendMail(req.body.email, subject);
 
                 return res.status(200).json({
                     success: true,

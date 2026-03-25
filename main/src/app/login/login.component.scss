@@ -47,7 +47,6 @@
 
     button {
         width: 100%;
-        padding: 10px;
         background: #007bff;
         border: none;
         border-radius: 5px;
@@ -63,6 +62,14 @@
     .register {
         margin: 10px;
     }
+}
+
+.padLog {
+  padding: 10px;
+}
+
+.padLoad {
+  padding: 3px;
 }
 
 

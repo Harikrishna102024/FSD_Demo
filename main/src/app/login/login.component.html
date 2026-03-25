@@ -10,7 +10,11 @@
                 <label>Password</label>
                 <input type="password" placeholder="Enter your password" required name="password" ngModel>
             </div>
-            <button type="submit" (click)="checkUserDetails(userDetails)">Login</button>
+            
+            <button type="submit" (click)="checkUserDetails(userDetails)">
+                <span class="loader" *ngIf="loading"></span>
+                <span *ngIf="hideText">Login</span>
+            </button>
             <div class="register">
                 Don't have an account? <a [routerLink]="['/register']">Sign up</a>
             </div>

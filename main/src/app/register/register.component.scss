@@ -3,8 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #bcc3cb;
+
 
 
     .register-container {
@@ -82,4 +83,44 @@
         margin: 10px;
 
     }
+}
+
+
+/* Mobile (up to 480px) */
+@media (max-width: 480px) {
+  .registeration-form {
+    padding: 10px;
+    height: auto;
+    align-items: stretch;
+  }
+
+  .registeration-form .register-container {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+  }
+}
+
+
+/* 481px to 768px (small tablets) */
+@media (min-width: 481px) and (max-width: 768px) {
+  .registeration-form .register-container {
+    width: 90%;
+  }
+}
+
+
+/* 769px to 1024px (tablets / small laptops) */
+@media (min-width: 769px) and (max-width: 1024px) {
+  .registeration-form .register-container {
+    width: 70%;
+  }
+}
+
+
+/* 1025px to 1200px (laptops) */
+@media (min-width: 1025px) and (max-width: 1200px) {
+  .registeration-form .register-container {
+    width: 50%;
+  }
 }

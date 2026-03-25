@@ -64,3 +64,42 @@
         margin: 10px;
     }
 }
+
+
+@media (max-width: 480px) {
+  .logIn {
+    padding: 15px;
+  }
+
+  .logIn .login-container {
+    width: 100%;
+    padding: 20px;
+    border-radius: 6px;
+  }
+
+  .logIn .login-container h2 {
+    font-size: 20px;
+  }
+
+  .logIn .form-group input {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .logIn button {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .logIn .register {
+    font-size: 13px;
+    text-align: center;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .logIn .login-container {
+    width: 90%;
+  }
+}

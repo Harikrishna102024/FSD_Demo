@@ -1,6 +1,4 @@
 import app from './app';
-import os from 'os';
-import cluster from 'cluster';
 import logger from './config/winston'
 
 const PORT = process.env.PORT;

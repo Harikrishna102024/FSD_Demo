@@ -48,24 +48,19 @@ h2 {
     background: #434c5e;
 }
 
-.log-row.info span:nth-child(1), .info span:nth-child(3) {
-    color: darkgray;
-}
+// .log-row.info span:nth-child(1), .info span:nth-child(3) {
+//     color: darkgray;
+// }
 
-.log-row.info span:nth-child(2) {
+.info {
     color: #5dade2;
 }
 
-.log-row.warn span:nth-child(2) {
+.warn {
     color: #f1c40f;
 }
-
-.log-row.error span:nth-child(2) {
+.error {
     color: #e74c3c;
-}
-
-.log-row.debug span:nth-child(2) {
-    color: #95a5a6;
 }
 
 

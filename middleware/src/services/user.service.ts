@@ -103,9 +103,9 @@ export class UserService {
 
 
   //Using Sequelize
-  async deleteUser(ID: any) {
+  async deleteUser(id: any) {
     const deletedRows = await UserModel.destroy({
-      where: { ID },
+      where: { id },
     });
     return deletedRows;
   }

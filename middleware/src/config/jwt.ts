@@ -5,7 +5,7 @@ dotenv.config();
 
 const jwtConfig: {secret: Secret, expiresIn: SignOptions['expiresIn']} = {
     secret: process.env.JWT_SECRET!,
-    expiresIn: '30min'
+    expiresIn: '15m'
 }
 
 export default jwtConfig;

@@ -208,9 +208,9 @@ export class UserService {
 
     const userLogs: any[] = [];
 
-    const logDir = await path.join(__dirname, "../logs");
+    const logDir = path.join(process.cwd(), "logs");
     const files = await fs.readdirSync(logDir);
-
+    
     files.forEach((file: any) => {
       let filePath = path.join(logDir, file);
       let data = fs.readFileSync(filePath, 'utf8');

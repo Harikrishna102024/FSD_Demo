@@ -1,11 +1,14 @@
 const { createLogger, format, transports } = require("winston");
 const { combine, timestamp, printf, colorize, json } = format;
 import DailyRotateFile from "winston-daily-rotate-file";
+import path from 'path'
 
 
 const myFormat = printf(({ level, message, timestamp }: { level: string; message: string; timestamp: string }) => {
   return `${timestamp} [${level}] : ${message}`;
 });
+
+const logDir = path.join(process.cwd(), "logs");
 
 const formatter = combine(
   timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
@@ -40,7 +43,7 @@ const logger = createLogger({
     // })
 
     new DailyRotateFile({
-      filename: 'src/logs/app-%DATE%.log',
+      filename: path.join(logDir,'/app-%DATE%.log'),
       datePattern: "YYYY-MM-DD",
       maxFiles: '1d',
       auditFile: "audit.json"

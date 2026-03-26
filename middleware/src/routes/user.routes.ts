@@ -11,4 +11,7 @@ router.delete('/deleteUser/:id', controller.deleteUserData);
 
 router.patch('/updateUserData', controller.updateUserData);
 
+router.get('/userlogs', controller.getUserLogs);
+
+
 export default router;

@@ -29,3 +29,24 @@
         transform: translateY(0);
     }
 }
+
+
+@media (max-width: 768px) {
+  .header {
+    justify-content: flex-end;
+    overflow-x: auto; 
+    white-space: nowrap;
+    padding: 10px;
+    gap: 0.5rem;
+  }
+
+  .header::-webkit-scrollbar {
+    display: none; 
+  }
+
+  .header-btn {
+    flex: 0 0 auto; 
+    font-size: 0.85rem;
+    padding: 0.5rem 1rem;
+  }
+}

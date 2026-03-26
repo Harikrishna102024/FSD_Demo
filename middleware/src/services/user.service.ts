@@ -1,9 +1,11 @@
 import pool from '../config/db';
 import { User } from '../models/users.model';
-import sequelize, { where } from 'sequelize';
+import sequelize, { json, where } from 'sequelize';
 import UserModel from '../models/users.sequelize';
 import bcrypt from 'bcrypt';
 import { Op } from "sequelize";
+import path from 'path';
+import fs from 'fs';
 
 
 export class UserService {
@@ -177,7 +179,7 @@ export class UserService {
       return false;
     } else {
       const pasMatch = await bcrypt.compare(password, user.password);
-      if(pasMatch) {
+      if (pasMatch) {
         return user
       }
 
@@ -202,4 +204,19 @@ export class UserService {
     }
   }
 
+  async userLogsData() {
+
+    const userLogs: any[] = [];
+
+    const logDir = await path.join(__dirname, "../logs");
+    const files = await fs.readdirSync(logDir);
+
+    files.forEach((file: any) => {
+      let filePath = path.join(logDir, file);
+      let data = fs.readFileSync(filePath, 'utf8');
+      let logs = data.split("\n").map(data => data.trim()).filter(Boolean).map(form => JSON.parse(form))
+      userLogs.push(...logs)
+    });
+    return userLogs;
+  }
 }

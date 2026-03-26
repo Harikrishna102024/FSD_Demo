@@ -1,5 +1,5 @@
 const { createLogger, format, transports } = require("winston");
-const { combine, timestamp, printf, colorize } = format;
+const { combine, timestamp, printf, colorize, json } = format;
 import DailyRotateFile from "winston-daily-rotate-file";
 
 
@@ -9,7 +9,8 @@ const myFormat = printf(({ level, message, timestamp }: { level: string; message
 
 const formatter = combine(
   timestamp({ format: "YYYY-MM-DD HH:mm:ss" }),
-  myFormat
+  myFormat,
+  json()
 )
 
 const logger = createLogger({
@@ -42,7 +43,7 @@ const logger = createLogger({
       filename: 'src/logs/app-%DATE%.log',
       datePattern: "YYYY-MM-DD",
       maxFiles: '1d',
-      auditFile: "src/logs/audit.json"
+      auditFile: "audit.json"
     })
 
   ]

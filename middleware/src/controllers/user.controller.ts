@@ -39,14 +39,14 @@ export class userController {
                 };
 
                 const result = await userService.createUser(userData);
-                
+
                 if (result.regStatus) {
                     const subject = 'reg';
                     mailService.sendMail(userData.email, subject);
                 }
 
                 logger.info(`New user registered ${userData.first_name}`)
-                
+
                 return res.status(201).json({
                     message: 'User registered successfully',
                 });
@@ -178,6 +178,34 @@ export class userController {
                 message: "check data base connection"
             })
         }
+    }
+
+
+    getUserLogs = async (req: Request, res: Response) => {
+
+        try {
+            const logs = await userService.userLogsData();
+
+            if (logs && logs.length > 0) {
+                res.status(200).json({
+                    status: true,
+                    message: "Fetch user logs successfully",
+                    data: logs,
+                })
+            } else {
+                  res.status(204).json({
+                    status: false,
+                    message: "No logs found",
+                    data: [],
+                })
+            }
+        } catch (error) {
+            res.status(500).json({
+                status: false,
+                message: "Internal server error check service",
+            })
+        }
+
     }
 
 }

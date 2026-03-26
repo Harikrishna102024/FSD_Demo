@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { UserDetailsComponent } from './user-details/user-details.component';
 import { LoginComponent } from './login/login.component';
 import { AuthRouteGuardService } from './Services/auth-route-guard.service';
+import { LogsComponent } from './logs/logs.component';
 
 const routes: Routes = [
   { 
@@ -21,6 +22,9 @@ const routes: Routes = [
   },
   {
     path: 'getUsers', component: UserDetailsComponent, canActivate: [AuthRouteGuardService]
+  },
+  {
+    path:"logs", component: LogsComponent, canActivate: [AuthRouteGuardService]
   },
   {
     path: '**', redirectTo: '/login'

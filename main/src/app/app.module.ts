@@ -14,6 +14,7 @@ import { ToastrModule } from 'ngx-toastr';
 import { UpdateUserComponent } from './update-user/update-user.component';
 import { LoginComponent } from './login/login.component';
 import { authInterceptorInterceptor } from './auth-interceptor.interceptor';
+import { LogsComponent } from './logs/logs.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { authInterceptorInterceptor } from './auth-interceptor.interceptor';
     UserDetailsComponent,
     UpdateUserComponent,
     LoginComponent,
+    LogsComponent,
   ],
   imports: [
     BrowserModule,

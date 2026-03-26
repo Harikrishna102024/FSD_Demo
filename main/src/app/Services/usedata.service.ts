@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from '../../environments/environment';
-import { Observable, switchMap, timer } from 'rxjs';
+import { from, Observable, switchMap, timer } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
@@ -47,6 +47,11 @@ export class UsedataService {
       password: password
     }
     const userData = this.http.post(`${this.Url}/checkUserData`, payload);
+    return userData;
+  }
+
+  getUserLogsHistory(): Observable<any> {
+    const userData = this.http.get(`${this.Url}/userlogs`);
     return userData;
   }
 }

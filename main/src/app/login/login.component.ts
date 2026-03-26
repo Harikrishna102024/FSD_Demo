@@ -27,10 +27,9 @@ export class LoginComponent {
     }
 
     this.service.checkLoginCredentials(email, password).subscribe((res) => {
-      
-      localStorage.setItem('token', res.auth_token);
-
+    
       if (res && res.success) {
+        localStorage.setItem('token', res.auth_token);
         this.loading = false;
         this.context.manageUserAccess();
         this.router.navigate(['/home'], { replaceUrl: true });

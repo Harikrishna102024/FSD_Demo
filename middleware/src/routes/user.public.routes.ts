@@ -5,10 +5,9 @@ const controller = new userController();
 
 const router = Router();
 
-router.get('/getUsers', controller.getUsersData);
+router.post('/register', controller.registerUser);
 
-router.delete('/deleteUser/:id', controller.deleteUserData);
+router.post('/checkUserData', controller.validateUserData)
 
-router.patch('/updateUserData', controller.updateUserData);
 
 export default router;

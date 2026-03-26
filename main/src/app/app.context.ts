@@ -8,7 +8,7 @@ import { jwtDecode } from 'jwt-decode';
 
 export class AppContext {
 
-  logStatus: boolean = false;
+  logStatus: any;
   userRole: any
 
   constructor() {
@@ -17,15 +17,15 @@ export class AppContext {
   }
 
   manageUserAccess() {
-
-    const status = localStorage.getItem('logIn');
-    this.logStatus = status === 'true'
-
     const token = localStorage.getItem('token');
+    this.logStatus = !!token;
+
     if (token) {
       const decoded: any = jwtDecode(token);
       this.userRole = decoded.role
     }
+
+    console.log("LOG", this.logStatus)
   }
 
 }

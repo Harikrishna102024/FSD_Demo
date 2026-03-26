@@ -13,10 +13,9 @@ export class HeaderComponent {
 
   removeUserAccess() {
     localStorage.removeItem('role');
-    localStorage.removeItem('logIn');
     localStorage.removeItem('token');
+    localStorage.removeItem('logIn');
     this.context.manageUserAccess();
-    this.router.navigate(['/login']);
-    window.location.href = '/login'
+    this.router.navigate(['/login'], { replaceUrl: true });
   }
 }

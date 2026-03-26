@@ -46,7 +46,8 @@ const UserModel: any = sequelize.define("users", {
 
     role: {
         type: DataTypes.STRING,
-        field: 'role'
+        field: 'role',
+        defaultValue: "user"
     }
 
 }, { timestamps: false, })

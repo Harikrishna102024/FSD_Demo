@@ -1,7 +1,8 @@
 import dotenv from 'dotenv';
 // import transporter from '../config/gmail';
 import finalHtml from './gmail.html';
-import sgMail from '../config/gmail'
+import sgMail from '../config/gmail';
+import logger from '../config/winston'
 
 dotenv.config();
 
@@ -33,6 +34,7 @@ export class GmailService {
         try {
 
             console.log("🔥 sendMail called");
+            logger.info("🔥 sendMail called")
 
             var info = await sgMail.send({
                 to: to,
@@ -41,10 +43,13 @@ export class GmailService {
                 html: subject === 'log' ? finalHtml.log(to) : finalHtml.reg(to)
             });
 
-            console.log("✅ mail sent:", info);
+            console.log("✅ mail sent");
+            logger.info("✅ mail sent")
 
         } catch (err) {
             console.error("mail error:", err);
+            logger.error("Faild to sent mail")
+
             return null;
         }
 

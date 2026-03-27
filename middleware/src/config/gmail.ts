@@ -13,7 +13,7 @@ const transporter = nodemailer.createTransport({
         pass: process.env.MAIL_PASS,
     },
 });
-
+console.log("PORT", Number(process.env.SMTP_PORT))
 export default transporter;
 
 

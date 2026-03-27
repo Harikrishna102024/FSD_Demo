@@ -2,9 +2,6 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import routes from './routes';
-import dns from 'dns';
-
-
 
 dotenv.config();
 
@@ -16,8 +13,6 @@ app.use(express.json());
 const Prefix = '/';
 
 app.use(Prefix, routes);
-
-dns.setDefaultResultOrder('ipv4first');
 
 app.get('/', (req: any, res: any) => {
   res.send('Backend is running 🚀');

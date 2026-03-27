@@ -1,5 +1,9 @@
+import dns from 'dns';
+dns.setDefaultResultOrder('ipv4first');
 import app from './app';
 import logger from './config/winston'
+
+
 
 const PORT = process.env.PORT;
 

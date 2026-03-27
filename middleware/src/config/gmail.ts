@@ -13,10 +13,7 @@ const transporter = nodemailer.createTransport({
         user: process.env.MAIL_USER,
         pass: process.env.MAIL_PASS,
     },
-   lookup: (hostname: string, options: any, callback: any) => {
-    return dns.lookup(hostname, { family: 4 }, callback);
-  },
-} as any);
+});
 console.log("PORT", Number(process.env.SMTP_PORT))
 export default transporter;
 

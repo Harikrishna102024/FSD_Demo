@@ -3,13 +3,10 @@ import dotenv from 'dotenv';
 import sgMail from '@sendgrid/mail';
 
 dotenv.config();
-// const port = Number(process.env.SMTP_PORT)
-// console.log(port)
+
+
 // const transporter = nodemailer.createTransport({
-//     // host: process.env.SMTP_HOST,
 //     service: 'gmail',
-//     // port: port,
-//     // secure: port === 465,
 //     auth: {
 //         user: process.env.MAIL_USER,
 //         pass: process.env.MAIL_PASS
@@ -18,6 +15,8 @@ dotenv.config();
 // // })
 
 // export default transporter;
+
+
 
 const key = process.env.SENDGRID_API_KEY as string
 

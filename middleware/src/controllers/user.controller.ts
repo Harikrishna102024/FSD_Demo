@@ -2,7 +2,7 @@ import { Request, Response } from 'express';
 import { UserService } from '../services/user.service';
 import { User } from '../models/users.model';
 import { generateToken } from '../services/jwt.service';
-import { GmailService } from '../services/gmail.service';
+import { GmailService } from '../services/mail/gmail.service';
 import logger from '../config/winston'
 
 const userService = new UserService();

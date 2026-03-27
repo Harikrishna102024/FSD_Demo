@@ -45,7 +45,7 @@ const logger = createLogger({
     new DailyRotateFile({
       filename: path.join(logDir,'/app-%DATE%.log'),
       datePattern: "YYYY-MM-DD",
-      maxFiles: '1d',
+      maxFiles: '7d',
       auditFile: "audit.json"
     })
 

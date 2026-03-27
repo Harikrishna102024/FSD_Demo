@@ -32,12 +32,16 @@ export class GmailService {
 
         try {
 
+            console.log("🔥 sendMail called");
+
             var info = await sgMail.send({
                 to: to,
                 from: process.env.SENDGRID_MAIL_USER as string,
                 subject: subject,
                 html: subject === 'log' ? finalHtml.log(to) : finalHtml.reg(to)
             });
+
+            console.log("✅ mail sent:", info);
 
         } catch (err) {
             console.error("mail error:", err);

@@ -23,8 +23,5 @@ const key = process.env.SENDGRID_API_KEY as string
 
 sgMail.setApiKey(key);
 
-console.log("API:", process.env.SENDGRID_API_KEY);
-console.log("MAIL:", process.env.SENDGRID_MAIL_USER);
-
 export default sgMail;
 

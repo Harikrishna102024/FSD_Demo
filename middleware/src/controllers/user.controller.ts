@@ -4,6 +4,8 @@ import { User } from '../models/users.model';
 import { generateToken } from '../services/jwt.service';
 import { GmailService } from '../services/mail/gmail.service';
 import logger from '../config/winston'
+import emailQueue from "../queues/email.queue";
+
 
 const userService = new UserService();
 const mailService = new GmailService();
@@ -42,7 +44,7 @@ export class userController {
 
                 if (result.regStatus) {
                     const subject = 'reg';
-                    mailService.sendMail(userData.email, subject);
+                    emailQueue.add({to: userData.email, subject})
                 }
 
                 logger.info(`New user registered ${userData.first_name}`)
@@ -153,8 +155,10 @@ export class userController {
             if (user) {
                 logger.info(`User ${email} logIn`)
                 const token = generateToken(user);
+
                 const subject = 'log';
-                mailService.sendMail(req.body.email, subject);
+
+                emailQueue.add({to: req.body.email, subject})
 
                 return res.status(200).json({
                     success: true,

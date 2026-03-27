@@ -1,6 +1,6 @@
 import app from './app';
 import logger from './config/winston'
-
+import './workers/email.worker'
 
 
 const PORT = process.env.PORT;

@@ -1,7 +1,7 @@
 {
     "keep": {
         "days": true,
-        "amount": 1
+        "amount": 7
     },
     "auditLog": "audit.json",
     "files": [
@@ -24,6 +24,11 @@
             "date": 1774586754197,
             "name": "D:\\FullStackDemo\\middleware\\logs\\app-2026-03-27.log",
             "hash": "7ff15a0e16810ea2729698bbcb4d3404eff4de0b3510d36212b3d8a7607b205a"
+        },
+        {
+            "date": 1774636207493,
+            "name": "D:\\FullStackDemo\\middleware\\logs\\app-2026-03-28.log",
+            "hash": "e650b8955e64e85b730d5d4d3a1de4f00e0d9c9a7a27f486a4847602c4d03ae6"
         }
     ],
     "hashType": "sha256"

@@ -8,7 +8,7 @@ import emailQueue from "../queues/email.queue";
 
 
 const userService = new UserService();
-const mailService = new GmailService();
+// const mailService = new GmailService();
 
 export class userController {
 

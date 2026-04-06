@@ -46,7 +46,7 @@ export class UsedataService {
       email: userName,
       password: password
     }
-    const userData = this.http.post(`${this.Url}/checkUserData`, payload);
+    const userData = this.http.post(`${this.Url}/login`, payload);
     return userData;
   }
 

@@ -7,7 +7,7 @@ const router = Router();
 
 router.post('/register', controller.registerUser);
 
-router.post('/checkUserData', controller.validateUserData)
+router.post('/login', controller.validateUserData)
 
 
 export default router;

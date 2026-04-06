@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   constructor(public context: AppContext) { }
 
   ngOnInit() {
+    localStorage.removeItem('token');
     this.context.manageUserAccess();
   }
 }

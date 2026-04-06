@@ -44,7 +44,7 @@ export class userController {
 
                 if (result.regStatus) {
                     const subject = 'reg';
-                    emailQueue.add({to: userData.email, subject})
+                    emailQueue.add({ to: userData.email, subject })
                 }
 
                 logger.info(`New user registered ${userData.first_name}`)
@@ -158,7 +158,7 @@ export class userController {
 
                 const subject = 'log';
 
-                emailQueue.add({to: req.body.email, subject})
+                emailQueue.add({ to: req.body.email, subject })
 
                 return res.status(200).json({
                     success: true,
@@ -170,6 +170,7 @@ export class userController {
                 logger.error(`logIn faild ${email} - ${password}`)
                 return res.status(401).json({
                     success: false,
+                    count: true,
                     message: 'User not exist or wrong password'
                 });
             }
@@ -197,7 +198,7 @@ export class userController {
                     data: logs,
                 })
             } else {
-                  res.status(204).json({
+                res.status(204).json({
                     status: false,
                     message: "No logs found",
                     data: [],

@@ -16,7 +16,7 @@ app.use(cors({
 
 app.use(express.json());
 
-const Prefix = '/';
+const Prefix = "/api";
 
 app.use(Prefix, routes);
 

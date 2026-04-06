@@ -12,12 +12,12 @@ export class UsedataService {
   Url: any = environment.baseUrl;
 
   registerData(data: any): Observable<any> {
-    const postData = this.http.post(`${this.Url}/register`, data);
+    const postData = this.http.post(`${this.Url}/auth/register`, data);
     return postData
   }
 
   getUserData(): Observable<any> {
-    const userdata = this.http.get(`${this.Url}/getUsers`);
+    const userdata = this.http.get(`${this.Url}/users/getUsers`);
     return userdata;
   }
 
@@ -31,12 +31,12 @@ export class UsedataService {
 
 
   deleteUser(id: any): Observable<any> {
-    const deleteData = this.http.delete(`${this.Url}/deleteUser/${id}`);
+    const deleteData = this.http.delete(`${this.Url}/users/deleteUser/${id}`);
     return deleteData;
   }
 
   updateUserData(data: any): Observable<any> {
-    const updateDate = this.http.patch(`${this.Url}/updateUserData`, data);
+    const updateDate = this.http.patch(`${this.Url}/users/updateUserData`, data);
     console.log("Delete request sent for ID:", data);
     return updateDate;
   }
@@ -46,12 +46,12 @@ export class UsedataService {
       email: userName,
       password: password
     }
-    const userData = this.http.post(`${this.Url}/login`, payload);
+    const userData = this.http.post(`${this.Url}/auth/login`, payload);
     return userData;
   }
 
   getUserLogsHistory(): Observable<any> {
-    const userData = this.http.get(`${this.Url}/userlogs`);
+    const userData = this.http.get(`${this.Url}/users/userlogs`);
     return userData;
   }
 }

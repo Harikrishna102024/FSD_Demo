@@ -168,13 +168,12 @@ export class userController {
 
             } else {
                 logger.error(`logIn faild ${email} - ${password}`)
-                return res.status(401).json({
+                return res.status(400).json({
                     success: false,
                     count: true,
                     message: 'User not exist or wrong password'
                 });
             }
-
 
         } catch (err) {
             console.error(err);

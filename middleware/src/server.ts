@@ -13,7 +13,6 @@ const startServer = async () => {
     await connectRedis();
 
     app.listen(PORT, () => {
-      logger.info(`Server started At ${PORT}`);
       console.log(`Server is running on port ${PORT}`);
     });
 

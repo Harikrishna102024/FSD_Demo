@@ -18,8 +18,8 @@ export const getCache = async (cacheKey: string, callBack: Function, ttl: number
 
 export const clearCache = async (key: string) => {
   try {
-    await redisClient.del(key);
-    console.log(`Cache cleared: ${key}`);
+    const check = await redisClient.del(key);
+    console.log(`Cache cleared: ${key} - ${check}`);
   } catch (error) {
     console.log('Cache clear error', error);
   }

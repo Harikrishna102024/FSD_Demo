@@ -9,7 +9,6 @@ const limit = rateLimit({
 
     handler: (req: any, res: any) => {
         const retryAfter = Math.ceil((req.rateLimit.resetTime.getTime() - Date.now()) / 1000);
-        const minutes = Math.ceil(retryAfter / 60);
         res.status(429).json({
             message: `Too many requests. Please try again after.`,
             retryAfter 

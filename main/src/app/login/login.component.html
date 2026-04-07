@@ -13,7 +13,7 @@
             <div class="limitMsg">
                 <span class="error">{{message}} {{time}}</span>
             </div>
-            <button type="submit" (click)="checkUserDetails(userDetails)" [ngClass]="loading ? 'padLoad' : 'padLog'">
+            <button type="submit" (click)="checkUserDetails(userDetails)" [ngClass]="loading ? 'padLoad' : 'padLog'" [disabled]="time">
                 <span class="loader" *ngIf="loading"></span>
                 <span *ngIf="hideText">Login</span>
             </button>

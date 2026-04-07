@@ -6,7 +6,7 @@ import bcrypt from 'bcrypt';
 import { Op } from "sequelize";
 import path from 'path';
 import fs from 'fs';
-
+import { getCache, clearCache } from '../utils/cache'
 
 export class UserService {
 
@@ -49,6 +49,8 @@ export class UserService {
 
     });
 
+    clearCache('users:all');
+
     const finalResult = await {
       result: result,
       regStatus: true
@@ -86,10 +88,8 @@ export class UserService {
 
   //Using Sequelize
   async getAllUsers() {
-
-    const result = await UserModel.findAll();
-    return result;
-
+    const data = await getCache('users:all', () => UserModel.findAll(), 5 * 60)
+    return data;
   }
 
 
@@ -106,9 +106,12 @@ export class UserService {
 
   //Using Sequelize
   async deleteUser(id: any) {
+
     const deletedRows = await UserModel.destroy({
       where: { id },
     });
+
+    clearCache('users:all');
     return deletedRows;
   }
 
@@ -146,7 +149,7 @@ export class UserService {
         where: { id }
       }
     );
-
+    clearCache('users:all');
     return result;
   }
 
@@ -210,7 +213,7 @@ export class UserService {
 
     const logDir = path.join(process.cwd(), "logs");
     const files = await fs.readdirSync(logDir);
-    
+
     files.forEach((file: any) => {
       let filePath = path.join(logDir, file);
       let data = fs.readFileSync(filePath, 'utf8');

@@ -34,6 +34,15 @@ const sequelize = new Sequelize(
     } : {},
   }
 );
-console.log("isProd = ", isProd)
+
+export const connectDatabase = async () => {
+  try {
+    await sequelize.authenticate();
+    console.log('Database Conneceted')
+  } catch (error) {
+    console.log('Databse Connection Failed', error);
+    throw error;
+  }
+}
 
 export default sequelize;

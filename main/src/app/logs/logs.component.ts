@@ -21,7 +21,6 @@ export class LogsComponent implements OnInit {
   fetchUserLogs() {
     this.service.getUserLogsHistory().subscribe((data: any) => {
     this.logDetails = data.data;
-    console.log(this.logDetails)
     })
 
   }

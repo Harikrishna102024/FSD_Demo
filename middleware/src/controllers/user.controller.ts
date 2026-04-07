@@ -44,7 +44,12 @@ export class userController {
 
                 if (result.regStatus) {
                     const subject = 'reg';
-                    emailQueue.add({ to: userData.email, subject })
+                    await emailQueue.add('send-email', 
+                        {
+                            to: req.body.email,
+                            subject: subject
+                        }
+                    )
                 }
 
                 logger.info(`New user registered ${userData.first_name}`)
@@ -158,7 +163,12 @@ export class userController {
 
                 const subject = 'log';
 
-                emailQueue.add({ to: req.body.email, subject })
+                await emailQueue.add('send-email', 
+                        {
+                            to: req.body.email,
+                            subject: subject
+                        }
+                    )
 
                 return res.status(200).json({
                     success: true,

@@ -1,10 +1,8 @@
-import Queue from "bull";
+import { Queue } from 'bullmq';
+import redisConnection from '../config/redis.queue.config';
 
-const queue = new Queue("emailQueue",
-  process.env.REDIS_URL!,
-  {
-    redis: {tls: {}}
-  },
-);
+const emailQueue = new Queue('email-queue', {
+  connection: redisConnection,
+});
 
-export default queue;
+export default emailQueue;

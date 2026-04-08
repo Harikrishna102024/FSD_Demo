@@ -36,26 +36,23 @@ export class RegisterComponent {
     this.service.registerData(data).subscribe({
       next: () => {
         this.toastr.success('Registered successfully!');
+        if (formData.valid) {
+          this.fName = null;
+          this.lName = null;
+          this.age = null;
+          this.location = null;
+          this.status = null;
+          this.email = null;
+          this.password = null;
+          this.router.navigate(['/login']);
+        }
       },
       error: (err: any) => {
         this.toastr.error(err.error.message);
       }
 
     });
-    
 
-    this.fName = null;
-    this.lName = null;
-    this.age = null;
-    this.location = null;
-    this.status = null;
-    this.email = null;
-    this.password = null;
-
-    if(formData.valid) {
-      this.router.navigate(['/login']);
-    }
-    
   }
 
 }

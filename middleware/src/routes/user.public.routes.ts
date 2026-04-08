@@ -10,7 +10,7 @@ const controller = new userController();
 
 const router = Router();
 
-router.post('/register', controller.registerUser);
+router.post('/register', validateData(validations.registerationShema()), controller.registerUser);
 
 router.post('/login', validateData(validations.loginSchema()), limit, controller.validateUserData)
 

@@ -20,18 +20,22 @@ export class UpdateUserComponent {
 
   ngOnInit() {
     this.editableUser = { ...this.userData?.data };
+    console.log(this.editableUser)
   }
 
   updateUserData() {
-    this.service.updateUserData(this.editableUser).subscribe((res) => {
-      if (res && res.success) {
-        this.toastr.success('Data updated successfully!');
-      } else {
-        this.toastr.error('Data not Updated');
+    this.service.updateUserData(this.editableUser).subscribe({
+      next: () => {
+        this.toastr.success("Data upadted successfully")
+        this.closePopOut();
+        this.recall.emit(true)
+      },
+      error: (err: any) => {
+        this.toastr.error(err.error.message);
       }
+
     })
-    this.closePopOut();
-    this.recall.emit(true)
+
   }
 
   closePopOut() {

@@ -38,7 +38,7 @@ export class UserDetailsComponent implements OnInit {
   getAllUserData() {
     this.service.getUserData().subscribe((res) => {
       if (res && res.data && res.data.length > 0) {
-        this.userData = res.data;
+        this.userData = res.data.map(({ role, createdAt, updatedAt, ...rest }: any) => rest);;
       } else {
         this.userData = [];
       }
@@ -62,7 +62,7 @@ export class UserDetailsComponent implements OnInit {
     this.isUpdateDetails = true;
     const userData = {
       data: data,
-      status: this.isUpdateDetails
+      // status: this.isUpdateDetails
     }
     this.updateDetails = userData;
   }

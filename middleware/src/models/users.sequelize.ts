@@ -50,6 +50,6 @@ const UserModel: any = sequelize.define("users", {
         defaultValue: "user"
     }
 
-}, { timestamps: false, })
+}, { timestamps: true, })
 
 export default UserModel;

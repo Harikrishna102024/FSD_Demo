@@ -88,7 +88,9 @@ export class UserService {
 
   //Using Sequelize
   async getAllUsers() {
-    const data = await getCache('users:all', () => UserModel.findAll(), 5 * 60)
+    const data = await getCache('users:all', () => UserModel.findAll({
+      attributes: ['id', 'firstName', 'lastName', 'age', 'location', 'status', 'email', 'role']
+    }), 5 * 60)
     return data;
   }
 

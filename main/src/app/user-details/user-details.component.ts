@@ -38,7 +38,7 @@ export class UserDetailsComponent implements OnInit {
   getAllUserData() {
     this.service.getUserData().subscribe((res) => {
       if (res && res.data && res.data.length > 0) {
-        this.userData = res.data.map(({ role, createdAt, updatedAt, ...rest }: any) => rest);;
+        this.userData = res.data.map(({ role, ...rest }: any) => rest);;
       } else {
         this.userData = [];
       }

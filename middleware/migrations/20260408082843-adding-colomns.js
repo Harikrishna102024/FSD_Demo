@@ -4,17 +4,23 @@
 module.exports = {
   async up(queryInterface, Sequelize) {
 
-    await queryInterface.addColumn('users', 'createdAt', {
-      type: Sequelize.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
-    });
+    const table = await queryInterface.describeTable('users');
 
-    await queryInterface.addColumn('users', 'updatedAt', {
-      type: Sequelize.DATE,
-      allowNull: false,
-      defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
-    });
+    if(!table.createdAt) {
+      await queryInterface.addColumn('users', 'createdAt', {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
+      });
+    }
+
+    if(!table.updatedAt) {
+      await queryInterface.addColumn('users', 'updatedAt', {
+        type: Sequelize.DATE,
+        allowNull: false,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP')
+      });
+    }
   },
 
   async down(queryInterface, Sequelize) {

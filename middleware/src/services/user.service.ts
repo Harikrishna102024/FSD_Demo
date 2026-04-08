@@ -194,10 +194,8 @@ export class UserService {
   //check if fields are already exist in the database
   async checkExistingFields(fields: any) {
     const status = await UserModel.findOne({
-      where: {
-        [Op.or]: [
-          { email: fields.email },
-        ]
+      where: { 
+        email: fields.email 
       }
     })
     if (status) {

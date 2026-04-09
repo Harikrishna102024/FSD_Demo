@@ -5,24 +5,38 @@
   background-repeat: no-repeat;
   height: 100vh;
   margin: 0;
+
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
 
+  position: relative;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+  }
+
   .login-container {
     width: 320px;
-    padding: 25px;
-    background: #ffffff;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    color: #fff;
+    position: relative;
+    z-index: 1;
     font-family: Arial, sans-serif;
   }
 
   .login-container h2 {
     text-align: center;
     margin-bottom: 20px;
-    color: #333;
+    color: #ffffff;
   }
 
   .form-group {
@@ -33,44 +47,66 @@
     display: block;
     margin-bottom: 6px;
     font-size: 14px;
-    color: #555;
+    color: #ddd;
   }
 
   .form-group input {
     width: 100%;
     padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 14px;
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 6px;
+    color: #fff;
+    outline: none;
+    transition: 0.3s;
+  }
+
+
+  .form-group input::placeholder {
+    color: #ccc;
   }
 
   .form-group input:focus {
-    border-color: #007bff;
-    outline: none;
+    background: rgba(255, 255, 255, 0.1) !important;
+    box-shadow: 0 0 8px rgba(0, 198, 255, 0.5);
   }
 
   button {
     width: 100%;
-    background: #007bff;
+    padding: 10px;
     border: none;
-    border-radius: 5px;
-    color: #ffffff;
-    font-size: 16px;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #00c6ff, #0072ff);
+    color: #fff;
+    font-weight: 600;
     cursor: pointer;
+    transition: 0.3s;
   }
 
   button:hover {
-    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 114, 255, 0.5);
   }
 
   button:disabled {
-    background-color: gray;
+    background: gray;
     cursor: not-allowed;
     opacity: 0.6;
   }
 
   .register {
-    margin: 10px;
+    margin-top: 15px;
+    text-align: center;
+    color: #ddd;
+  }
+
+  .register a {
+    color: #00c6ff;
+    text-decoration: none;
+  }
+
+  .register a:hover {
+    text-decoration: underline;
   }
 }
 
@@ -83,51 +119,16 @@
   margin-bottom: 15px;
 }
 
+.error {
+  color: #ff6b6b;
+}
+
 .padLog {
   padding: 10px !important;
 }
 
 .padLoad {
   padding: 2px !important;
-}
-
-
-@media (max-width: 480px) {
-  .logIn {
-    padding: 15px;
-  }
-
-  .logIn .login-container {
-    width: 100%;
-    padding: 20px;
-    border-radius: 6px;
-  }
-
-  .logIn .login-container h2 {
-    font-size: 20px;
-  }
-
-  .logIn .form-group input {
-    padding: 8px;
-    font-size: 13px;
-  }
-
-  .logIn button {
-    padding: 8px;
-    font-size: 14px;
-  }
-
-  .logIn .register {
-    font-size: 13px;
-    text-align: center;
-  }
-}
-
-
-@media (max-width: 768px) {
-  .logIn .login-container {
-    width: 90%;
-  }
 }
 
 .loader {
@@ -148,5 +149,40 @@
 
   100% {
     transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 480px) {
+  .logIn {
+    padding: 15px;
+  }
+
+  .logIn .login-container {
+    width: 100%;
+    padding: 20px;
+  }
+
+  .logIn .login-container h2 {
+    font-size: 20px;
+  }
+
+  .logIn .form-group input {
+    padding: 8px;
+    font-size: 13px;
+  }
+
+  .logIn button {
+    padding: 8px;
+    font-size: 14px;
+  }
+
+  .logIn .register {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 768px) {
+  .logIn .login-container {
+    width: 90%;
   }
 }

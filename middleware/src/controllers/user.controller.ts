@@ -161,14 +161,21 @@ export class userController {
                 logger.info(`User ${email} logIn`)
                 const token = generateToken(user);
 
+                // res.cookie("accessToken", token, {
+                //     httpOnly: true,
+                //     secure: process.env.NODE_ENV === "production",
+                //     sameSite: "lax",
+                //     maxAge: 15 * 60 * 1000
+                // });
+
                 const subject = 'log';
 
-                await emailQueue.add('send-email', 
-                        {
-                            to: req.body.email,
-                            subject: subject
-                        }
-                    )
+                await emailQueue.add('send-email',
+                    {
+                        to: req.body.email,
+                        subject: subject
+                    }
+                )
 
                 return res.status(200).json({
                     success: true,

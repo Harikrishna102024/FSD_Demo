@@ -18,6 +18,7 @@ export const authInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
         Authorization: `Bearer ${token}`
       }
     })
+
     return next(authReq).pipe(
       catchError(err => {
 
@@ -34,3 +35,22 @@ export const authInterceptorInterceptor: HttpInterceptorFn = (req, next) => {
 
   return next(req);
 };
+
+
+//if u wnat use coocies just replace this like 12 and 16-20
+// const clonedReq = req.clone({
+//   withCredentials: true
+// });
+
+// return next(clonedReq).pipe(
+//   catchError(err => {
+
+//     if (err.status === 401) {
+//       localStorage.removeItem("token");
+//       router.navigate(['/login']);
+//       toastr.error('Session expired. Please log in again.');
+//     }
+
+//     return throwError(() => err);
+//   })
+// )

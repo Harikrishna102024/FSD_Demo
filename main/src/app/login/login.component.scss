@@ -1,6 +1,10 @@
 .logIn {
-  background-color: #bcc3cb;
+  background-image: url('../../assets/loginbackground.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   height: 100vh;
+  margin: 0;
   display: flex;
   flex-direction: column;
   justify-content: center;

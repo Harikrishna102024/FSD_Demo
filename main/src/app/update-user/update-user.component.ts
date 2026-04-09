@@ -20,7 +20,6 @@ export class UpdateUserComponent {
 
   ngOnInit() {
     this.editableUser = { ...this.userData?.data };
-    console.log(this.editableUser)
   }
 
   updateUserData() {

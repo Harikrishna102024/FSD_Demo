@@ -10,9 +10,9 @@ export class AuthRouteGuardService implements CanActivate {
 
   canActivate(): boolean {
 
-    const token = localStorage.getItem('token');
+    const logData = JSON.parse(localStorage.getItem('logData')!);
 
-    if (token) {
+    if (logData) {
       return true;
     } else {
       this.router.navigate(['/login']);

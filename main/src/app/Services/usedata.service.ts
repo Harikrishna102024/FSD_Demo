@@ -37,7 +37,6 @@ export class UsedataService {
 
   updateUserData(data: any): Observable<any> {
     const updateDate = this.http.patch(`${this.Url}/users/updateUserData`, data);
-    console.log("Delete request sent for ID:", data);
     return updateDate;
   }
 

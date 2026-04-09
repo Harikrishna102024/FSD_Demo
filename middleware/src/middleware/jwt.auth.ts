@@ -4,18 +4,13 @@ import jwtConfig from "../config/jwt";
 
 export const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
 
-    const authHeader = req.headers.authorization;
-    // const authHeader = req.cookies?.accessToken;
+    const token = req.cookies?.accessToken;
 
-    if(!authHeader) {
+    if(!token) {
         return res.status(401).json({message: "Token not exist"});
     }
 
-    // const token = authHeader
-    const token = authHeader.split(" ")[1];
-
     try {
-
         const decoded = jwt.verify(token, jwtConfig.secret);
         (req as any).user = decoded;
         next();

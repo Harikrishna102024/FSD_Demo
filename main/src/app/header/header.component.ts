@@ -12,8 +12,7 @@ export class HeaderComponent {
   constructor(public context: AppContext, public router: Router) { }
 
   removeUserAccess() {
-    localStorage.removeItem('role');
-    localStorage.removeItem('token');
+    localStorage.removeItem('logData');
     this.context.manageUserAccess();
     this.router.navigate(['/login'], { replaceUrl: true });
   }

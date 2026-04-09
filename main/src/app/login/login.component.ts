@@ -38,7 +38,8 @@ export class LoginComponent implements OnInit {
     this.service.checkLoginCredentials(email, password).subscribe((res) => {
 
       if (res && res.success) {
-        localStorage.setItem('token', res.auth_token);
+        localStorage.setItem('logData', JSON.stringify(res));
+
         this.loading = false;
         this.context.manageUserAccess();
         this.router.navigate(['/home'], { replaceUrl: true });

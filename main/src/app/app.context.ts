@@ -1,5 +1,4 @@
 import { Injectable, OnInit } from "@angular/core";
-import { jwtDecode } from 'jwt-decode';
 
 
 @Injectable({
@@ -13,26 +12,17 @@ export class AppContext {
 
   manageUserAccess() {
 
-    const token = localStorage.getItem('token');
+    const logData = localStorage.getItem('logData');
 
-    if (token) {
+    if (logData) {
+
       try {
-        const decoded: any = jwtDecode(token);
-
-        const isExpired = decoded.exp * 1000 < Date.now();
-
-        if (isExpired) {
-          localStorage.removeItem('token');
-          this.logStatus = false;
-          this.userRole = null;
-
-        } else {
-          this.logStatus = true;
-          this.userRole = decoded.role;        
-        }
+        const data = JSON.parse(logData)
+        this.logStatus = true;
+        this.userRole = data.logData.role;
 
       } catch (e) {
-        localStorage.removeItem('token');
+        localStorage.removeItem('logData');
         this.logStatus = false;
         this.userRole = null;
       }
@@ -41,7 +31,6 @@ export class AppContext {
       this.logStatus = false;
       this.userRole = null;
     }
-
     console.log("LOG", this.logStatus);
   }
 

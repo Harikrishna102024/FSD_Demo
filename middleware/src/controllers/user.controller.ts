@@ -161,12 +161,12 @@ export class userController {
                 logger.info(`User ${email} logIn`)
                 const token = generateToken(user);
 
-                // res.cookie("accessToken", token, {
-                //     httpOnly: true,
-                //     secure: process.env.NODE_ENV === "production",
-                //     sameSite: "lax",
-                //     maxAge: 15 * 60 * 1000
-                // });
+                res.cookie("accessToken", token, {
+                    httpOnly: true,
+                    secure: process.env.NODE_ENV === "production",
+                    sameSite: "lax",
+                    maxAge: 15 * 60 * 1000
+                });
 
                 const subject = 'log';
 
@@ -177,10 +177,12 @@ export class userController {
                     }
                 )
 
+                const {id, role,} = user;
+
                 return res.status(200).json({
                     success: true,
                     message: 'User login successfully',
-                    auth_token: token
+                    logData: {id, role, logStatus: true}
                 });
 
             } else {

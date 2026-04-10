@@ -22,14 +22,6 @@ export class UsedataService {
   }
 
 
-  //adding setimeout fro observable delay simulation
-  //  getUserData(): Observable<any> {
-  //   return timer(2000).pipe(
-  //     switchMap(() => this.http.get(`${this.Url}/getUsers`))
-  //   );
-  // }
-
-
   deleteUser(id: any): Observable<any> {
     const deleteData = this.http.delete(`${this.Url}/users/deleteUser/${id}`);
     return deleteData;
@@ -52,5 +44,11 @@ export class UsedataService {
   getUserLogsHistory(): Observable<any> {
     const userData = this.http.get(`${this.Url}/users/userlogs`);
     return userData;
+  }
+
+
+  logOutUser(): Observable<any> {
+    const result = this.http.post(`${this.Url}/auth/removeCookie`, {}, {withCredentials: true});
+    return result
   }
 }

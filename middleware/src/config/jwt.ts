@@ -3,9 +3,13 @@ import { Secret, SignOptions} from 'jsonwebtoken';
 
 dotenv.config();
 
-const jwtConfig: {secret: Secret, expiresIn: SignOptions['expiresIn']} = {
+export const  jwtConfig: {secret: Secret, expiresIn: SignOptions['expiresIn']} = {
     secret: process.env.JWT_SECRET!,
-    expiresIn: '15m'
+    expiresIn: process.env.ACCESSTOKEN_EXPIRATION as SignOptions['expiresIn']
 }
 
-export default jwtConfig;
+
+export const jwtRefresh : {secret: Secret, expiresIn: SignOptions['expiresIn']} = {
+    secret: process.env.REFRESH_JWT_SECRET!,
+    expiresIn: process.env.REFRESHTOKEN_EXPIRATION as SignOptions['expiresIn']
+}

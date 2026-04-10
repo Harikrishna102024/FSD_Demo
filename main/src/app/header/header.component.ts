@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { AppContext } from '../app.context';
 import { Router } from '@angular/router';
+import { UsedataService } from '../Services/usedata.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-header',
@@ -9,11 +11,16 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent {
 
-  constructor(public context: AppContext, public router: Router) { }
+  constructor(public context: AppContext, public router: Router, private service: UsedataService, private toastr: ToastrService) { }
 
   removeUserAccess() {
     localStorage.removeItem('logData');
     this.context.manageUserAccess();
-    this.router.navigate(['/login']);
+    this.service.logOutUser().subscribe({
+      next: () => {
+        this.toastr.info("Logout successfull")
+        this.router.navigate(['/login']);    
+      }
+    })
   }
 }

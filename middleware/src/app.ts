@@ -9,10 +9,7 @@ const app = express();
 app.use(cookieParser());
 
 app.use(cors({
-  // origin: ['http://localhost:4200', 'https://app-uservoult.onrender.com'],
-  origin: true,
-  // methods: ['GET','POST','PUT','DELETE','PATCH'],
-  // allowedHeaders: ['Content-Type','Authorization'],
+  origin: ['http://localhost:4200', 'https://app-uservoult.onrender.com'],
   credentials: true
 }));
 

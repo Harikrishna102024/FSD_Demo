@@ -163,8 +163,8 @@ export class userController {
 
                 res.cookie("accessToken", token, {
                     httpOnly: true,
-                    secure: process.env.NODE_ENV === "production",
-                    sameSite: "none",
+                    secure: process.env.NODE_ENV === "production" ? true : false,
+                    sameSite: process.env.NODE_ENV === "production" ? "none" : "lax",
                     maxAge: 15 * 60 * 1000
                 });
 

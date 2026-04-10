@@ -42,7 +42,7 @@ export class LoginComponent implements OnInit {
 
         this.loading = false;
         this.context.manageUserAccess();
-        this.router.navigate(['/home'], { replaceUrl: true });
+        this.router.navigate(['/home']);
         this.toastr.success("User login successfully!");
       }
 

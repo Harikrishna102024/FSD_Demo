@@ -14,6 +14,6 @@ export class HeaderComponent {
   removeUserAccess() {
     localStorage.removeItem('logData');
     this.context.manageUserAccess();
-    this.router.navigate(['/login'], { replaceUrl: true });
+    this.router.navigate(['/login']);
   }
 }

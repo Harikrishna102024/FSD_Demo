@@ -12,6 +12,7 @@ export class AppComponent implements OnInit {
   constructor(public context: AppContext) { }
 
   ngOnInit() {
+    this.context.logStatus = false;
     this.context.manageUserAccess();
   }
 }

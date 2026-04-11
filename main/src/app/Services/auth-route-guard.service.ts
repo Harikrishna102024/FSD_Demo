@@ -10,7 +10,7 @@ export class AuthRouteGuardService implements CanActivate {
 
   canActivate(): boolean {
 
-    const logData = JSON.parse(localStorage.getItem('logData')!);
+    const logData = localStorage.getItem('logData');
 
     if (logData) {
       return true;

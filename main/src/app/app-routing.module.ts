@@ -18,13 +18,13 @@ const routes: Routes = [
     path:"home", component: HomeComponent, canActivate: [AuthRouteGuardService]
   },
   {
-    path: "register", component: RegisterComponent
+    path: "register", component: RegisterComponent,
   },
   {
-    path: 'getUsers', component: UserDetailsComponent,
+    path: 'getUsers', component: UserDetailsComponent, canActivate: [AuthRouteGuardService]
   },
   {
-    path:"logs", component: LogsComponent,
+    path:"logs", component: LogsComponent, canActivate: [AuthRouteGuardService]
   },
   {
     path: '**', redirectTo: '/login'

@@ -3,6 +3,7 @@ import { AppContext } from '../app.context';
 import { Router } from '@angular/router';
 import { UsedataService } from '../Services/usedata.service';
 import { ToastrService } from 'ngx-toastr';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-header',
@@ -14,10 +15,18 @@ export class HeaderComponent {
   constructor(public context: AppContext, public router: Router, private service: UsedataService, private toastr: ToastrService) { }
 
   removeUserAccess() {
-    const status = confirm("Are you sure you want to logout...!")
-    if(status) {
-      this.logOutUser()
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to logout!',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, Logout',
+      cancelButtonText: 'Cancel'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.logOutUser();
+      }
+    });
   }
 
   logOutUser() {

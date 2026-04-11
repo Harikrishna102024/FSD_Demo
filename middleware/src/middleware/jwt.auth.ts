@@ -1,6 +1,6 @@
 import { Request, Response, NextFunction } from "express";
 import jwt from 'jsonwebtoken';
-import { jwtConfig } from "../config/jwt";
+import { jwtAccessConfig } from "../config/jwt";
 
 export const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
 
@@ -11,7 +11,7 @@ export const jwtAuth = (req: Request, res: Response, next: NextFunction) => {
     }
 
     try {
-        const decoded = jwt.verify(accessToken, jwtConfig.secret);
+        const decoded = jwt.verify(accessToken, jwtAccessConfig.secret);
         (req as any).user = decoded;
         next();
 

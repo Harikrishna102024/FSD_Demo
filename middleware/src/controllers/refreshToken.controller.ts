@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import jwt, { SignOptions } from 'jsonwebtoken';
-import { jwtRefresh } from '../config/jwt';
+import { jwtRefreshConfig } from '../config/jwt';
 import { generateToken } from '../services/jwt.service';
 import dotenv from 'dotenv'
 
@@ -15,7 +15,7 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
         return res.status(401).json({ message: "Session expired please login again.." });
     }
 
-    const decoded = jwt.verify(refreshToken, jwtRefresh.secret);
+    const decoded = jwt.verify(refreshToken, jwtRefreshConfig.secret);
 
     const user = decoded as any;
 

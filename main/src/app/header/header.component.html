@@ -1,6 +1,6 @@
 <div class="header">
-    <button class="header-btn" [routerLink]="['/home']">Home</button>
-    <button class="header-btn" [routerLink]="['/logs']" *ngIf="context.userRole === 'admin'">Log History</button>
-    <button class="header-btn" [routerLink]="['/getUsers']">Details</button>
+    <button class="header-btn" [routerLink]="['/home']" routerLinkActive="active">Home</button>
+    <button class="header-btn" [routerLink]="['/logs']" *ngIf="context.userRole === 'admin'" routerLinkActive="active">Log History</button>
+    <button class="header-btn" [routerLink]="['/getUsers']" routerLinkActive="active">Details</button>
     <button class="header-btn" (click)="removeUserAccess()">Logout</button>
 </div>

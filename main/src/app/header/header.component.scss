@@ -16,8 +16,8 @@
     border-radius: 6px;
     cursor: pointer;
     transition: all 0.3s ease;
-    background-color: #fff;
-    color: #667eea;
+    background-color: #F5F7FA;
+    color: #5B3CC4;
 
     &:hover {
         background-color: #f0f0f0;
@@ -28,6 +28,16 @@
     &:active {
         transform: translateY(0);
     }
+}
+
+.active {
+  color: #fff;
+  background-color: #2196F3;
+  &:hover {
+    color: #fff;
+  background-color: #2196F3;
+  cursor: not-allowed;
+  }
 }
 
 

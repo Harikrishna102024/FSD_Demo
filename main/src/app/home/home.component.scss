@@ -1,25 +1,69 @@
 .welcome-container {
-        text-align: center;
-        padding: 50px;
-        background-color: #f0f8ff;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    }
-    h1 {
-        color: #2c3e50;
-    }
-    p {
-        color: #34495e;
-    }
-    .get-started-btn {
-        padding: 10px 20px;
-        font-size: 16px;
-        color: white;
-        background-color: #3498db;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    .get-started-btn:hover {
-        background-color: #2980b9;
-    }
+    height: calc(100vh - 70px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(120deg, #4f46e5, #9333ea);
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+
+.content {
+    max-width: 700px;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+h1 span {
+    color: #ffd700;
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 30px;
+    opacity: 0.9;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.primary-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #333;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.primary-btn:hover {
+    transform: scale(1.05);
+}
+
+.secondary-btn {
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 25px;
+    border: 2px solid white;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.secondary-btn:hover {
+    background: white;
+    color: #333;
+}

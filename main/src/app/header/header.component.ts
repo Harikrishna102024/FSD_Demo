@@ -19,7 +19,7 @@ export class HeaderComponent {
     this.service.logOutUser().subscribe({
       next: () => {
         this.toastr.info("Logout successfull")
-        this.router.navigate(['/login']);    
+        this.router.navigate(['/login'], { replaceUrl: true });    
       }
     })
   }

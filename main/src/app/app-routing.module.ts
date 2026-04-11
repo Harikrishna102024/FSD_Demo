@@ -21,10 +21,10 @@ const routes: Routes = [
     path: "register", component: RegisterComponent
   },
   {
-    path: 'getUsers', component: UserDetailsComponent, canActivate: [AuthRouteGuardService]
+    path: 'getUsers', component: UserDetailsComponent,
   },
   {
-    path:"logs", component: LogsComponent, canActivate: [AuthRouteGuardService]
+    path:"logs", component: LogsComponent,
   },
   {
     path: '**', redirectTo: '/login'

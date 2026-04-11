@@ -15,19 +15,12 @@ export class AppContext {
     const logData = localStorage.getItem('logData');
 
     if (logData) {
-
-      try {
-        const data = JSON.parse(logData)
-        this.logStatus = true;
-        this.userRole = data.logData.role;
-
-      } catch (e) {
-        localStorage.removeItem('logData');
-        this.logStatus = false;
-        this.userRole = null;
-      }
+      const data = JSON.parse(logData)
+      this.logStatus = true;
+      this.userRole = data.logData.role;
 
     } else {
+      localStorage.removeItem('logData');
       this.logStatus = false;
       this.userRole = null;
     }

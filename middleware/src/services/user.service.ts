@@ -110,6 +110,17 @@ export class UserService {
   //Using Sequelize
   async deleteUser(id: any) {
 
+    const existingData = await this.getUserById(id)
+
+    if (existingData && existingData?.dataValues?.profiles) {
+
+      const oldPath = path.join(__dirname, '../../uploads', existingData.dataValues.profiles);
+
+      if (fs.existsSync(oldPath)) {
+        fs.unlinkSync(oldPath);
+      }
+    }
+    
     const deletedRows = await UserModel.destroy({
       where: { id },
     });

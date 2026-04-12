@@ -6,6 +6,8 @@ export const validateData = (schema: Joi.ObjectSchema) => {
 
     const result = async (req: Request, res: Response, next: NextFunction) => {
 
+        console.log("VALIDATION BODY:", req.body);
+
         const { error } = schema.validate(req.body);
 
         if (error) {

@@ -41,6 +41,8 @@ export class PublicUserController {
                     password: payload.password,
                     profiles: file ? file.filename : null,
                 };
+                console.log("BODY:", req.body);
+                console.log("FILE:", req.file);
 
                 const result = await userService.createUser(userData);
 

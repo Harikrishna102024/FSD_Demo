@@ -36,7 +36,10 @@ export class RegisterComponent {
     formPayload.append('status', this.status);
     formPayload.append('email', this.email);
     formPayload.append('password', this.password);
-    formPayload.append('profile', this.selectedFile);
+
+    if(this.selectedFile) {
+      formPayload.append('profile', this.selectedFile);
+    }
 
 
     this.service.registerData(formPayload).subscribe({

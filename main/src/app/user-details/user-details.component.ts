@@ -3,6 +3,7 @@ import { UsedataService } from '../Services/usedata.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AppContext } from '../app.context';
+import { environment } from '../../environments/environment';
 
 @Component({
   selector: 'app-user-details',
@@ -38,7 +39,13 @@ export class UserDetailsComponent implements OnInit {
   getAllUserData() {
     this.service.getUserData().subscribe((res) => {
       if (res && res.data && res.data.length > 0) {
-        this.userData = res.data.map(({ role, ...rest }: any) => rest);;
+        let data = res.data.map(({ role, ...rest }: any) => rest);
+        this.userData = data.map((data: any) => {
+          return {
+            ...data,
+            profiles: data.profiles ? `${environment.publicBaseUrl}/uploads/${encodeURIComponent(data.profiles)}` : null
+          }
+        })
       } else {
         this.userData = [];
       }

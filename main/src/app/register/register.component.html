@@ -1,74 +1,48 @@
 <div class="registeration-form">
     <div class="register-container">
         <h2>Registration Form</h2>
-        <form #myForm = "ngForm" (ngSubmit)="sumbitData(myForm)">
+        <form #myForm="ngForm" (ngSubmit)="sumbitData(myForm)">
             <div class="form-group">
                 <label>First Name</label>
-                <input placeholder="enter first name" 
-                type="text" 
-                name="firstName" 
-                required 
-                [(ngModel)]="fName"
-                >
+                <input placeholder="enter first name" type="text" name="firstName" required [(ngModel)]="fName">
             </div>
 
             <div class="form-group">
                 <label>Last Name</label>
-                <input placeholder="enter last name" 
-                type="text" 
-                name="lastName" 
-                required 
-                [(ngModel)]="lName"
-                >
+                <input placeholder="enter last name" type="text" name="lastName" required [(ngModel)]="lName">
             </div>
 
             <div class="form-group">
                 <label>Age</label>
-                <input placeholder="enter age" 
-                type="number" 
-                name="age" 
-                required 
-                [(ngModel)]="age"
-                >
+                <input placeholder="enter age" type="number" name="age" required [(ngModel)]="age">
             </div>
 
             <div class="form-group">
-                <label >Location</label>
-                <input placeholder="enter location" 
-                type="text"  
-                name="location" 
-                required 
-                [(ngModel)]="location"
-                >
+                <label>Location</label>
+                <input placeholder="enter location" type="text" name="location" required [(ngModel)]="location">
             </div>
 
             <div class="form-group">
-                <label >Status</label>
-                <select  name="status" required [(ngModel)]="status">
+                <label>Status</label>
+                <select name="status" required [(ngModel)]="status">
                     <option value="">Select Status</option>
                     <option value="active">Active</option>
                     <option value="inactive">Inactive</option>
                 </select>
             </div>
 
-            <div class="form-group">
-                <label >Email</label>
-                <input placeholder="enter mail id" 
-                type="text"  
-                name="email" 
-                required 
-                [(ngModel)]="email"
-                >
+            <div class="input-group form-group">
+                <input type="file" class="form-control" name="profile" (change)="onFileSelect($event)" style="height: auto; padding: 6px;">
             </div>
 
             <div class="form-group">
-                <label >Password</label>
-                <input placeholder="enter password" 
-                type="text"  
-                name="password" 
-                required 
-                [(ngModel)]="password"
-                >
+                <label>Email</label>
+                <input placeholder="enter mail id" type="text" name="email" required [(ngModel)]="email">
+            </div>
+
+            <div class="form-group">
+                <label>Password</label>
+                <input placeholder="enter password" type="text" name="password" required [(ngModel)]="password">
             </div>
 
             <button type="submit" class="register-btn">Register</button>

@@ -17,23 +17,29 @@ export class RegisterComponent {
   status: any;
   email: any;
   password: any;
+  selectedFile: any;
 
   constructor(private service: UsedataService, private router: Router, private toastr: ToastrService) { }
 
+  onFileSelect(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
 
   sumbitData(formData: any) {
 
-    const data = {
-      firstName: this.fName,
-      lastName: this.lName,
-      age: this.age,
-      location: this.location,
-      status: this.status,
-      email: this.email,
-      password: this.password
-    };
+    const formPayload = new FormData();
 
-    this.service.registerData(data).subscribe({
+    formPayload.append('firstName', this.fName);
+    formPayload.append('lastName', this.lName);
+    formPayload.append('age', this.age);
+    formPayload.append('location', this.location);
+    formPayload.append('status', this.status);
+    formPayload.append('email', this.email);
+    formPayload.append('password', this.password);
+    formPayload.append('profile', this.selectedFile);
+
+
+    this.service.registerData(formPayload).subscribe({
       next: () => {
         this.toastr.success('Registered successfully!');
         if (formData.valid) {

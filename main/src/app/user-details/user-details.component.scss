@@ -1,8 +1,11 @@
 .container {
-    padding: 20px;
+    width: 100%;              /* changed */
+    max-width: 100%;          /* changed */
+    padding: 0 20px;          /* changed */
 }
 
 .table-responsive {
+    width: 100%;              /* changed */
     border-radius: 8px;
     overflow-x: auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
@@ -21,27 +24,34 @@
 
 .table thead th {
     color: white;
-    font-weight: 600;
     padding: 16px;
     text-align: left;
     border: none;
     font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 0.5px;
+    background-color: #667eea;
+    text-align: center;
 }
 
 .table tbody td {
     padding: 14px 10px;
-    color: #333;
+    color: #686262;
     font-size: 14px;
     vertical-align: middle;
+    text-align: center;
 }
 
-/* 🔥 TEXT FULLY VISIBLE (NO ELLIPSIS) */
+.table tbody tr td img {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+/* changed */
 .table th,
 .table td {
-    white-space: normal;
-    word-break: break-word;
+    white-space: nowrap;      /* changed */
 }
 
 /* 🔥 ACTION BUTTONS FIX */
@@ -130,7 +140,7 @@
     }
 
     .table {
-        min-width: 700px;
+        min-width: 900px;    /* changed */
     }
 
     .table th,

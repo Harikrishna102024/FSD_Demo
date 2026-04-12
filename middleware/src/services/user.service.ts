@@ -140,6 +140,17 @@ export class UserService {
   //Using Sequelize
   async updateUser(id: any, data: any) {
 
+    const existingUser = await this.getUserById(id);
+
+    if (data.profiles && existingUser?.dataValues?.profiles) {
+
+      const oldPath = path.join(__dirname, '../../uploads', existingUser.dataValues.profiles);
+
+      if (fs.existsSync(oldPath)) {
+        fs.unlinkSync(oldPath);
+      }
+    }
+
     const result = await UserModel.update(
       {
         firstName: data.first_name,
@@ -147,6 +158,7 @@ export class UserService {
         age: data.age,
         location: data.location,
         status: data.status,
+        profiles: data.profiles
       },
       {
         where: { id }
@@ -197,8 +209,8 @@ export class UserService {
   //check if fields are already exist in the database
   async checkExistingFields(fields: any) {
     const status = await UserModel.findOne({
-      where: { 
-        email: fields.email 
+      where: {
+        email: fields.email
       }
     })
     if (status) {
@@ -222,5 +234,15 @@ export class UserService {
       userLogs.push(...logs)
     });
     return userLogs;
+  }
+
+
+  async getUserById(id: any) {
+    const data = await UserModel.findOne({
+      where: {
+        id: id
+      }
+    })
+    return data;
   }
 }

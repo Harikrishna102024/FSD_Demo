@@ -53,9 +53,13 @@ export class userController {
 
 
     updateUserData = async (req: Request, res: Response) => {
+        
         try {
             const ID = req.body.id;
             const DATA = req.body;
+            const FILE = req.file
+
+            const user = await userService.getUserById(ID)
 
             type usrUpdateData = Partial<User>;
 
@@ -65,10 +69,13 @@ export class userController {
                 age: Number(DATA.age),
                 location: DATA.location,
                 status: DATA.status,
+                profiles: FILE ? FILE.filename : user.dataValues?.profiles
             };
 
             await userService.updateUser(ID, usrUpdateData);
+
             logger.warn(`User upadated details`)
+
             return res.status(200).json({
                 success: true,
                 message: 'User updated successfully',

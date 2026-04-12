@@ -46,6 +46,7 @@ export class UserDetailsComponent implements OnInit {
             profiles: data.profiles ? `${environment.publicBaseUrl}/uploads/${encodeURIComponent(data.profiles)}` : null
           }
         })
+        console.log(this.userData)
       } else {
         this.userData = [];
       }

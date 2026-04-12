@@ -12,10 +12,24 @@
     box-shadow: -6px 0 15px rgba(0, 0, 0, 0.2);
     animation: fadeIn 1s ease forwards;
 
+    .image-show {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        img {
+            width: 80px;
+            height: 80px;
+            border-radius: 100%;
+        }
+    }
+
     @keyframes fadeIn {
         from {
             opacity: 0;
         }
+
         to {
             opacity: 1;
         }

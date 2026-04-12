@@ -14,7 +14,7 @@ export class UpdateUserComponent {
   @Output() recall = new EventEmitter<any>();
 
   editableUser: any = {};
-
+  selectedFile: any;
 
   constructor(private service: UsedataService, public toastr: ToastrService) { }
 
@@ -22,8 +22,27 @@ export class UpdateUserComponent {
     this.editableUser = { ...this.userData?.data };
   }
 
+  onFileSelect(event: any) {
+    this.selectedFile = event.target.files[0];
+  }
+
   updateUserData() {
-    this.service.updateUserData(this.editableUser).subscribe({
+
+    const formUpdateData = new FormData();
+
+    formUpdateData.append('id', this.editableUser.id);
+    formUpdateData.append('firstName', this.editableUser.firstName);
+    formUpdateData.append('lastName', this.editableUser.lastName);
+    formUpdateData.append('age', this.editableUser.age);
+    formUpdateData.append('location', this.editableUser.location);
+    formUpdateData.append('status', this.editableUser.status);
+    formUpdateData.append('email', this.editableUser.email);
+
+    if (this.selectedFile) {
+      formUpdateData.append('profile', this.selectedFile)
+    }
+
+    this.service.updateUserData(formUpdateData).subscribe({
       next: () => {
         this.toastr.success("Data upadted successfully")
         this.closePopOut();

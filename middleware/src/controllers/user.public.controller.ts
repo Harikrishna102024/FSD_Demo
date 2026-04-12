@@ -29,6 +29,7 @@ export class PublicUserController {
             try {
 
                 const payload = req.body;
+                const file = req.file
 
                 const userData: User = {
                     first_name: payload.firstName,
@@ -38,6 +39,7 @@ export class PublicUserController {
                     status: payload.status,
                     email: payload.email,
                     password: payload.password,
+                    profiles: file ? file.filename : null,
                 };
 
                 const result = await userService.createUser(userData);

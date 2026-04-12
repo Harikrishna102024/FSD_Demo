@@ -9,4 +9,5 @@ export interface User {
     created_at?: Date;
     email: any,
     password: any,
+    profiles?: string | null
 }

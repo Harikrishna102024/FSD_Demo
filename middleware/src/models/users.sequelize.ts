@@ -48,6 +48,11 @@ const UserModel: any = sequelize.define("users", {
         type: DataTypes.STRING,
         field: 'role',
         defaultValue: "user"
+    },
+
+    profiles: {
+        type: DataTypes.STRING,
+        field: 'profiles'
     }
 
 }, { timestamps: true, })

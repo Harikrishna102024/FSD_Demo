@@ -46,6 +46,7 @@ export class UserService {
       status: user.status,
       email: user.email,
       password: bcryptPassword,
+      profiles: user.profiles,
 
     });
 
@@ -89,7 +90,7 @@ export class UserService {
   //Using Sequelize
   async getAllUsers() {
     const data = await getCache('users:all', () => UserModel.findAll({
-      attributes: ['id', 'firstName', 'lastName', 'age', 'location', 'status', 'email', 'role']
+      attributes: ['id', 'firstName', 'lastName', 'age', 'location', 'status', 'email', 'role', 'profiles']
     }), 5 * 60)
     return data;
   }

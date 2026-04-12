@@ -10,7 +10,7 @@ import { getCache, clearCache } from '../utils/cache'
 
 export class UserService {
 
-  
+
   async createUser(user: any) {
 
     const bcryptPassword = await bcrypt.hash(user.password, 10);
@@ -59,7 +59,7 @@ export class UserService {
 
     if (existingData && existingData?.dataValues?.profiles) {
 
-      const oldPath = path.join(__dirname, '../../uploads', existingData.dataValues.profiles);
+      const oldPath = path.join(process.cwd(), 'uploads', existingData.dataValues.profiles);
 
       if (fs.existsSync(oldPath)) {
         fs.unlinkSync(oldPath);

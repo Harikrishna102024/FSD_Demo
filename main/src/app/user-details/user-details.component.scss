@@ -152,7 +152,10 @@
 }
 
 ::ng-deep .swal2-html-container {
-  display: contents !important;
+    display: contents;
+    display: flex ;
+    justify-content: center;
+    align-items: center;
 }
 
 @media (max-width: 950px) {

@@ -65,7 +65,7 @@ export class UserService {
         fs.unlinkSync(oldPath);
       }
     }
-    
+
     const deletedRows = await UserModel.destroy({
       where: { id },
     });
@@ -77,14 +77,14 @@ export class UserService {
 
 
 
-  
+
   async updateUser(id: any, data: any) {
 
     const existingUser = await this.getUserById(id);
 
-    if (data.profiles && existingUser?.dataValues?.profiles) {
-
-      const oldPath = path.join(__dirname, '../../uploads', existingUser.dataValues.profiles);
+    if (data.profiles && existingUser?.dataValues?.profiles && data.profiles !== existingUser.dataValues.profiles) {
+      
+      const oldPath = path.join(process.cwd(), 'uploads', existingUser.dataValues.profiles);
 
       if (fs.existsSync(oldPath)) {
         fs.unlinkSync(oldPath);

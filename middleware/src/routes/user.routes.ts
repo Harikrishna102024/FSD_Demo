@@ -14,7 +14,7 @@ router.get('/getUsers', controller.getUsersData);
 
 router.delete('/deleteUser/:id', controller.deleteUserData);
 
-router.patch('/updateUserData', validateData(validations.updateUserSchema()), upload.single('profile'), controller.updateUserData);
+router.patch('/updateUserData', upload.single('profile'), validateData(validations.updateUserSchema()), controller.updateUserData);
 
 router.get('/userlogs', controller.getUserLogs);
 

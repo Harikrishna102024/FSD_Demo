@@ -43,7 +43,6 @@ export class UserDetailsComponent implements OnInit {
         this.userData = data.map((data: any) => {
           return {
             ...data,
-            profiles: data.profiles ? `${environment.publicBaseUrl}/uploads/${encodeURIComponent(data.profiles)}` : null
           }
         })
         console.log(this.userData)

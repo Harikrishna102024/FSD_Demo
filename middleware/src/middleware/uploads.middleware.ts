@@ -27,26 +27,7 @@ const fileFilter = (req: any, file: any, cb: any) => {
 export const upload = multer({
   storage,
   limits: {
-    fileSize: 3 * 1024 * 1024
+    fileSize: 2 * 1024 * 1024
   },
   fileFilter
 });
-
-
-
-
-
-// const uploadPath = path.join(process.cwd(), "uploads");
-
-// if (!fs.existsSync(uploadPath)) {
-//     fs.mkdirSync(uploadPath);
-// }
-// const storage = multer.diskStorage({
-//     destination: (req, file, cb) => {
-//         cb(null, uploadPath);
-//     },
-//     filename: (req, file, cb) => {
-//         const fileName = `${Date.now()}-${file.originalname}`
-//         cb(null, fileName)
-//     }
-// })

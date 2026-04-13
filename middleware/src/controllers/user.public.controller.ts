@@ -13,64 +13,65 @@ const userService = new UserService();
 
 export class PublicUserController {
 
-    registerUser = async (req: Request, res: Response) => {
+registerUser = async (req: Request, res: Response) => {
 
-        const status = await userService.checkExistingFields(req.body);
+    const status = await userService.checkExistingFields(req.body);
 
-        if (status) {
-            logger.warn(`User try to insert exixting data`)
-            return res.status(400).json({
-                success: false,
-                message: 'User with the same email already exists',
-                duplicate: true
-            });
-        } else {
+    if (status) {
+        logger.warn(`User try to insert exixting data`)
+        return res.status(400).json({
+            success: false,
+            message: 'User with the same email already exists',
+            duplicate: true
+        });
+    } else {
 
-            try {
+        try {
 
-                const payload = req.body;
-                const file = req.file
+            const payload = req.body;
+            const file = req.file as any;
 
-                const userData: User = {
-                    first_name: payload.firstName,
-                    last_name: payload.lastName,
-                    age: Number(payload.age),
-                    location: payload.location,
-                    status: payload.status,
-                    email: payload.email,
-                    password: payload.password,
-                    profiles: file ? file.filename : null,
-                };
-                console.log("BODY:", req.body);
-                console.log("FILE:", req.file);
+            const userData: User = {
+                first_name: payload.firstName,
+                last_name: payload.lastName,
+                age: Number(payload.age),
+                location: payload.location,
+                status: payload.status,
+                email: payload.email,
+                password: payload.password,
+                profiles: file ? file.path : null,
+            };
 
-                const result = await userService.createUser(userData);
+            console.log("BODY:", req.body);
+            console.log("FILE:", req.file);
 
-                if (result.regStatus) {
-                    const subject = 'reg';
-                    await emailQueue.add('send-email',
-                        {
-                            to: req.body.email,
-                            subject: subject
-                        }
-                    )
-                }
+            const result = await userService.createUser(userData);
 
-                logger.info(`New user registered ${userData.first_name}`)
-
-                return res.status(201).json({
-                    message: 'User registered successfully',
-                });
-
-            } catch (error) {
-                logger.error(`Regiteration faild`)
-                console.error(error);
-                return res.status(500).json({
-                    message: 'Failed to register user',
-                });
+            if (result.regStatus) {
+                const subject = 'reg';
+                await emailQueue.add('send-email',
+                    {
+                        to: req.body.email,
+                        subject: subject
+                    }
+                )
             }
+
+            logger.info(`New user registered ${userData.first_name}`)
+
+            return res.status(201).json({
+                message: 'User registered successfully',
+            });
+
+        } catch (error) {
+            logger.error(`Regiteration faild`)
+            console.error(error);
+            return res.status(500).json({
+                message: 'Failed to register user',
+            });
         }
     }
+}
 
 
 

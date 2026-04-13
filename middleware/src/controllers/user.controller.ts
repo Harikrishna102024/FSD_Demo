@@ -4,6 +4,7 @@ import { User } from '../models/users.model';
 import logger from '../config/winston'
 
 
+
 const userService = new UserService();
 
 export class userController {
@@ -52,44 +53,42 @@ export class userController {
 
 
 
-    updateUserData = async (req: Request, res: Response) => {
-        
-        try {
-            const ID = req.body.id;
-            const DATA = req.body;
-            const FILE = req.file
+updateUserData = async (req: Request, res: Response) => {
+    
+    try {
+        const ID = req.body.id;
+        const DATA = req.body;
+        const FILE = req.file as any; 
 
-            const user = await userService.getUserById(ID)
+        const user = await userService.getUserById(ID);
 
-            type usrUpdateData = Partial<User>;
+        const usrUpdateData = {
+            first_name: DATA.firstName,
+            last_name: DATA.lastName,
+            age: Number(DATA.age),
+            location: DATA.location,
+            status: DATA.status,
+            profiles: FILE ? FILE.path : user.dataValues?.profiles 
+        };
 
-            const usrUpdateData = {
-                first_name: DATA.firstName,
-                last_name: DATA.lastName,
-                age: Number(DATA.age),
-                location: DATA.location,
-                status: DATA.status,
-                profiles: FILE ? FILE.filename : user.dataValues?.profiles
-            };
+        await userService.updateUser(ID, usrUpdateData);
 
-            await userService.updateUser(ID, usrUpdateData);
+        logger.warn(`User upadated details`);
 
-            logger.warn(`User upadated details`)
+        return res.status(200).json({
+            success: true,
+            message: 'User updated successfully',
+        });
 
-            return res.status(200).json({
-                success: true,
-                message: 'User updated successfully',
-            });
-
-        } catch (err) {
-            logger.error(`Faild to update user`)
-            console.error(err);
-            return res.status(500).json({
-                success: false,
-                message: 'Failed to update user',
-            });
-        }
+    } catch (err) {
+        logger.error(`Faild to update user`);
+        console.error(err);
+        return res.status(500).json({
+            success: false,
+            message: 'Failed to update user',
+        });
     }
+}
 
 
     getUserLogs = async (req: Request, res: Response) => {

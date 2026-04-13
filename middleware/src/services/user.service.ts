@@ -7,6 +7,7 @@ import { Op } from "sequelize";
 import path from 'path';
 import fs from 'fs';
 import { getCache, clearCache } from '../utils/cache'
+import cloudinary from '../config/cloud.config';
 
 export class UserService {
 
@@ -59,11 +60,11 @@ export class UserService {
 
     if (existingData && existingData?.dataValues?.profiles) {
 
-      const oldPath = path.join(process.cwd(), 'uploads', existingData.dataValues.profiles);
+      const imageUrl = existingData.dataValues.profiles;
 
-      if (fs.existsSync(oldPath)) {
-        fs.unlinkSync(oldPath);
-      }
+      const publicId = imageUrl.split('/').pop()?.split('.')[0];
+
+      await cloudinary.uploader.destroy(`user_profiles/${publicId}`);
     }
 
     const deletedRows = await UserModel.destroy({
@@ -78,35 +79,36 @@ export class UserService {
 
 
 
-  async updateUser(id: any, data: any) {
+async updateUser(id: any, data: any) {
 
-    const existingUser = await this.getUserById(id);
+  const existingUser = await this.getUserById(id);
 
-    if (data.profiles && existingUser?.dataValues?.profiles && data.profiles !== existingUser.dataValues.profiles) {
-      
-      const oldPath = path.join(process.cwd(), 'uploads', existingUser.dataValues.profiles);
+  if (data.profiles && existingUser?.dataValues?.profiles && data.profiles !== existingUser.dataValues.profiles) {
 
-      if (fs.existsSync(oldPath)) {
-        fs.unlinkSync(oldPath);
-      }
-    }
+    const imageUrl = existingUser.dataValues.profiles;
 
-    const result = await UserModel.update(
-      {
-        firstName: data.first_name,
-        lastName: data.last_name,
-        age: data.age,
-        location: data.location,
-        status: data.status,
-        profiles: data.profiles
-      },
-      {
-        where: { id }
-      }
-    );
-    clearCache('users:all');
-    return result;
+    const publicId = imageUrl.split('/').pop()?.split('.')[0];
+
+    await cloudinary.uploader.destroy(`user_profiles/${publicId}`);
   }
+
+  const result = await UserModel.update(
+    {
+      firstName: data.first_name,
+      lastName: data.last_name,
+      age: data.age,
+      location: data.location,
+      status: data.status,
+      profiles: data.profiles
+    },
+    {
+      where: { id }
+    }
+  );
+
+  clearCache('users:all');
+  return result;
+}
 
 
 

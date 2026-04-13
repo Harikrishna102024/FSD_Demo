@@ -5,13 +5,9 @@ import routes from './routes';
 import cookieParser from "cookie-parser";
 import path from 'path'
 
-
-
 dotenv.config();
 const app = express();
 app.use(cookieParser());
-
-app.use('/public/uploads', express.static(path.join(process.cwd(), 'uploads')));
 
 app.use(cors({
   origin: ['http://localhost:4200', 'https://app-uservoult.onrender.com'],

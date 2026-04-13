@@ -1,0 +1,9 @@
+.header {
+    height: 75px;
+}
+
+@media (max-width: 728px) {
+    .header {
+        height: 53px;
+    }
+}

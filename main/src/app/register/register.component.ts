@@ -57,10 +57,13 @@ export class RegisterComponent {
         }
       },
       error: (err: any) => {
+        console.log(err.error);
         if( err && err.error.messages) {
           err.error.messages.forEach((err: any) => {
             return this.toastr.error(err.message);
           })
+        } else if(err && err.error.message) {
+          this.toastr.error(err.error.message);
         }
       }
 

@@ -59,12 +59,6 @@ export class PublicUserController {
 
                 logger.info(`New user registered ${userData.first_name}`)
 
-                if (!file) {
-                    return res.status(400).json({
-                        field: 'profile',
-                        message: 'Profile image is required'
-                    });
-                }
                 return res.status(201).json({
                     message: 'User registered successfully',
                 });

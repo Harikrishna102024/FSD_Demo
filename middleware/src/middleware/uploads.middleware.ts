@@ -7,6 +7,13 @@ export const fileUpload = (req: Request, res: Response, next: NextFunction) => {
 
     upload.single('profile')(req, res, (err) => {
 
+        if (!req.file) {
+            return res.status(400).json({
+                field: 'profile',
+                message: 'Profile image is required'
+            });
+        }
+
         if (err) {
 
             if (err.code === 'LIMIT_FILE_SIZE') {
@@ -18,7 +25,7 @@ export const fileUpload = (req: Request, res: Response, next: NextFunction) => {
 
             return res.status(400).json({
                 field: 'profile',
-                message: err.message
+                message: 'Invalid file upload'
             });
         }
 

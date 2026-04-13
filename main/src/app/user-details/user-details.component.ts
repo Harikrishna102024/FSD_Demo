@@ -118,6 +118,9 @@ export class UserDetailsComponent implements OnInit {
         <h2 style="color:#666666de; margin-top:10px;">${name}</h2>
       </div>
     `,
+      customClass: {
+        htmlContainer: 'image-popup-container'
+      },
       background: '#000',
       backdrop: 'rgba(0,0,0,0.8)',
       showConfirmButton: false,

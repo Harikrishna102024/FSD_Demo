@@ -2,7 +2,7 @@ import { Router } from "express";
 import { userController } from "../controllers/user.controller";
 import { validateData } from "../middleware/users.validate";
 import { Validations } from "../validators/users.validators";
-import { upload } from "../middleware/uploads.middleware";
+import { upload } from "../utils/uploads.utils";
 
 
 const validations = new Validations()

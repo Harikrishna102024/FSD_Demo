@@ -1,33 +1,35 @@
-import multer from 'multer';
-import path from 'path';
-import fs from 'fs'
-import cloudinary from '../config/cloud.config';
-import { CloudinaryStorage } from 'multer-storage-cloudinary';
+import { upload } from "../utils/uploads.utils";
+import { Request, Response, NextFunction } from 'express';
 
 
-const storage = new CloudinaryStorage({
-    cloudinary: cloudinary,
-    params: {
-        folder: 'user_profiles',
-        allowed_formats: ['jpg', 'png', 'jpeg'],
-    } as any,
-});
 
-const fileFilter = (req: any, file: any, cb: any) => {
+export const fileUpload = (req: Request, res: Response, next: NextFunction) => {
 
-    const allowedTypes = ['image/jpeg', 'image/png', 'image/jpg'];
+    upload.single('profile')(req, res, (err) => {
 
-    if (allowedTypes.includes(file.mimetype)) {
-        cb(null, true);
-    } else {
-        cb(new Error('Only images are allowed'), false);
-    }
-};
+        if (err) {
 
-export const upload = multer({
-  storage,
-  limits: {
-    fileSize: 2 * 1024 * 1024
-  },
-  fileFilter
-});
+            if (err.code === 'LIMIT_FILE_SIZE') {
+                return res.status(400).json({
+                    field: 'profile',
+                    message: 'File size should be less than 2MB'
+                });
+            }
+
+            return res.status(400).json({
+                field: 'profile',
+                message: err.message
+            });
+        }
+
+        if (!req.file) {
+            return res.status(400).json({
+                field: 'profile',
+                message: 'Profile image is required'
+            });
+        }
+
+        next()
+    })
+
+}

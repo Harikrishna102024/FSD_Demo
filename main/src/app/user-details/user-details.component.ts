@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 import { AppContext } from '../app.context';
 import { environment } from '../../environments/environment';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-user-details',
@@ -29,10 +30,10 @@ export class UserDetailsComponent implements OnInit {
 
     if (data.length <= 3) {
       maskData = '*'.repeat(data.length);
-    } else if( data.length > 3) {
+    } else if (data.length > 3) {
       maskData = data.slice(0, 3) + '*'.repeat(data.length - 3);
     }
-  
+
     return maskData;
   }
 
@@ -52,8 +53,29 @@ export class UserDetailsComponent implements OnInit {
     })
   }
 
-
   deleteUserData(id: any) {
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You want to delete this user!',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delet it!',
+      cancelButtonText: 'Cancel',
+      allowOutsideClick: false,
+      allowEscapeKey: false,
+      confirmButtonColor: '#e3342f',
+      cancelButtonColor: '#6c757d',
+      width: '400px',
+      padding: '5px',
+
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.deleteUser(id);
+      }
+    });
+  }
+
+
+  deleteUser(id: any) {
     this.isLoading = false;
     this.service.deleteUser(id).subscribe((res) => {
       if (res.success) {
@@ -75,11 +97,11 @@ export class UserDetailsComponent implements OnInit {
   }
 
   recallUserData(event: any) {
-    if(event) {
+    if (event) {
       this.getAllUserData();
     }
   }
-  
+
   closePopOut(event: any) {
     this.getAllUserData()
     this.isUpdateDetails = event;

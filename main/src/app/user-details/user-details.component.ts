@@ -38,15 +38,15 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getAllUserData() {
+
     this.service.getUserData().subscribe((res) => {
+
       if (res && res.data && res.data.length > 0) {
         let data = res.data.map(({ role, ...rest }: any) => rest);
-        this.userData = data.map((data: any) => {
-          return {
-            ...data,
-          }
-        })
-        console.log(this.userData)
+        this.userData = data.map((data: any) => ({
+          ...data
+        })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
+
       } else {
         this.userData = [];
       }
@@ -106,7 +106,6 @@ export class UserDetailsComponent implements OnInit {
   }
 
   closePopOut(event: any) {
-    this.getAllUserData()
     this.isUpdateDetails = event;
   }
 

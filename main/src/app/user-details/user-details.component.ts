@@ -91,14 +91,17 @@ export class UserDetailsComponent implements OnInit {
     this.isUpdateDetails = true;
     const userData = {
       data: data,
-      // status: this.isUpdateDetails
     }
     this.updateDetails = userData;
   }
 
-  recallUserData(event: any) {
-    if (event) {
-      this.getAllUserData();
+  recallUserData(updatedUser: any) {
+    const index = this.userData.findIndex((u: any) => u.id === updatedUser.id);
+    if (index !== -1) {
+      this.userData[index] = {
+        ...this.userData[index],
+        ...updatedUser
+      };
     }
   }
 

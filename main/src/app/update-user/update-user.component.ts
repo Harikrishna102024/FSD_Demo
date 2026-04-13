@@ -46,7 +46,7 @@ export class UpdateUserComponent {
       next: () => {
         this.toastr.success("Data upadted successfully")
         this.closePopOut();
-        this.recall.emit(true)
+        this.recall.emit(this.editableUser)
       },
       error: (err: any) => {
         this.toastr.error(err.error.message);

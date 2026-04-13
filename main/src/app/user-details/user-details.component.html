@@ -25,7 +25,7 @@
                     <td>{{data.lastName}}</td>
                     <td>{{data.age}}</td>
                     <td>{{data.location}}</td>
-                    <td><span class="badge">{{data.status}}</span></td>
+                    <td><span [ngClass]="data.status === 'active' ? 'activeBadge' : 'inactiveBadge'">{{data.status}}</span></td>
                     <td>{{data.email}}</td>
                     <!-- <td>{{data.password}}</td> -->
                     <!-- <td>{{maskData(data.password)}}</td> -->

@@ -66,14 +66,31 @@
     background-color: #eaf2ff !important;
 }
 
-.badge {
+.activeBadge {
     background-color: #10b981;
-    color: white;
+    color: #ffffffcc;
     padding: 6px;
-    border-radius: 20px;
+    border-radius: 50%;
     font-size: 12px;
     font-weight: 600;
+    display: inline-flex;
+    width: 50%;
+    justify-content: center;
 }
+
+.inactiveBadge {
+    background-color: #3f4141;
+    color: #ffffffcc;
+    padding: 6px;
+    border-radius: 50%;
+    font-size: 12px;
+    font-weight: 600;
+    display: inline-flex;
+    width: 50%;
+    justify-content: center;
+}
+
+
 
 .badgeEdit,
 .badgeDelete {

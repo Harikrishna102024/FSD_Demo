@@ -7,13 +7,13 @@
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 20px;
+  padding: 0px;
 }
 
 .register-container {
   width: 700px;
-  max-width: 95%;
-  padding: 30px;
+  max-width: 100%;
+  padding: 10px;
   background: rgba(20, 30, 50, 0.75);
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
@@ -38,7 +38,8 @@
 
 .register-container form .form-group:nth-child(5),
 .register-container form .form-group:nth-child(6),
-.register-container form .form-group:nth-child(7) {
+.register-container form .form-group:nth-child(7),
+.register-container form .form-group:nth-child(8) {
   grid-column: span 2;
 }
 
@@ -119,15 +120,4 @@
 
 .login a:hover {
   text-decoration: underline;
-}
-
-@media (max-width: 768px) {
-  .register-container form {
-    grid-template-columns: 1fr;
-  }
-
-  .register-btn,
-  .login {
-    grid-column: span 1;
-  }
 }

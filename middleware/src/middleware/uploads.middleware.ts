@@ -22,13 +22,6 @@ export const fileUpload = (req: Request, res: Response, next: NextFunction) => {
             });
         }
 
-        if (!req.file) {
-            return res.status(400).json({
-                field: 'profile',
-                message: 'Profile image is required'
-            });
-        }
-
         next()
     })
 

@@ -57,7 +57,11 @@ export class RegisterComponent {
         }
       },
       error: (err: any) => {
-        this.toastr.error(err.error.message);
+        if( err && err.error.messages) {
+          err.error.messages.forEach((err: any) => {
+            return this.toastr.error(err.message);
+          })
+        }
       }
 
     });

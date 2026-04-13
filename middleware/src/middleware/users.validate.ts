@@ -8,12 +8,18 @@ export const validateData = (schema: Joi.ObjectSchema) => {
 
         console.log("VALIDATION BODY:", req.body);
 
-        const { error } = schema.validate(req.body);
-
+        const { error } = schema.validate(req.body, {
+            abortEarly: false
+        });
+        
         if (error) {
-
+            
+            const errors = error.details?.map((err: any) => ({
+                message: err.message
+            }))
+            
             return res.status(400).json({
-                message: error.message
+                messages: errors
             });
 
         } else {

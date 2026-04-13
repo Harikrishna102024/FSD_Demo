@@ -143,6 +143,13 @@
     backdrop-filter: blur(2px);
 }
 
+.inactive {
+    border: 3px solid rgb(164, 164, 164);
+}
+.active {
+    border:  solid rgb(78, 213, 78);
+}
+
 @media (max-width: 768px) {
 
     .container {
@@ -151,7 +158,6 @@
 
     .table {
         min-width: 900px;
-        /* changed */
     }
 
     .table th,

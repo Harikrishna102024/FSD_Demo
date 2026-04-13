@@ -29,7 +29,7 @@
                     <td>{{data.email}}</td>
                     <!-- <td>{{data.password}}</td> -->
                     <!-- <td>{{maskData(data.password)}}</td> -->
-                    <td><img [src]="data.profiles" alt="No Profile"></td>
+                    <td><img [src]="data.profiles" alt="No Profile" [ngClass]="data.status === 'active' ? 'active' : 'inactive'"></td>
                     <td *ngIf="context.userRole === 'admin'" class="edit-delete">
                         <button class="badgeEdit" (click)="updateUserData(data)">Edit</button>
                         <button class="badgeDelete" (click)="deleteUserData(data.id)">Delete</button>

@@ -110,4 +110,20 @@ export class UserDetailsComponent implements OnInit {
     this.isUpdateDetails = event;
   }
 
+  openImage(img: any, name: any) {
+
+    Swal.fire({
+      html: `
+      <div style="text-align:center;">
+        <img src="${img}" style="width:100%; height:auto;" />
+        <h2 style="color:#666666de; margin-top:10px;">${name}</h2>
+      </div>
+    `,
+      background: '#000',
+      backdrop: 'rgba(0,0,0,0.8)',
+      showConfirmButton: false,
+      width: '500px',
+    });
+  }
+
 }

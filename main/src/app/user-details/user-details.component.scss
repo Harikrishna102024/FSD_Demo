@@ -146,11 +146,16 @@
 .inactive {
     border: 3px solid rgb(164, 164, 164);
 }
+
 .active {
-    border:  solid rgb(78, 213, 78);
+    border: solid rgb(78, 213, 78);
 }
 
-@media (max-width: 768px) {
+::ng-deep .swal2-html-container {
+  display: contents !important;
+}
+
+@media (max-width: 950px) {
 
     .container {
         padding: 10px;
@@ -168,5 +173,10 @@
 
     .updateUserDetails {
         padding: 10px;
+    }
+
+    .badgeEdit,
+    .badgeDelete {
+        width: 75%;
     }
 }

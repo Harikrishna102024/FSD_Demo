@@ -43,7 +43,7 @@ export class UpdateUserComponent {
     }
 
     this.service.updateUserData(formUpdateData).subscribe({
-      next: () => {
+      next: (res) => {
         this.toastr.success("Data upadted successfully")
         this.closePopOut();
         this.recall.emit(this.editableUser)

@@ -20,7 +20,7 @@
   }
 
   .login-container {
-    width: 320px;
+    width: 30%;
     padding: 30px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(12px);
@@ -181,7 +181,7 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .logIn .login-container {
     width: 90%;
   }

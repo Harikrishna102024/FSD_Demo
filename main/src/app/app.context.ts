@@ -8,7 +8,8 @@ import { Injectable, OnInit } from "@angular/core";
 export class AppContext {
 
   logStatus = false;
-  userRole: any
+  userRole: any;
+  userId: any;
 
   manageUserAccess() {
 
@@ -18,6 +19,7 @@ export class AppContext {
       const data = JSON.parse(logData)
       this.logStatus = true;
       this.userRole = data.logData.role;
+      this.userId = Number(data.logData.id);
 
     } else {
       localStorage.removeItem('logData');

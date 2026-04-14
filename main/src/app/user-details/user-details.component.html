@@ -35,7 +35,7 @@
                             (click)="openImage(data.profiles, data.firstName)">
                     </td>
                     <td [class.edit-table-admin]="context.userRole === 'admin'">
-                        <button class="badgeEdit" (click)="updateUserData(data)">Edit</button>
+                        <button class="badgeEdit" (click)="updateUserData(data)" [disabled]="context.userRole !== 'admin'  && context.userId != data.id">Edit</button>
                         <button *ngIf="context.userRole === 'admin'" class="badgeDelete" (click)="deleteUserData(data.id)" [disabled]="data.role === 'admin'">Delete</button>
                     </td>
                 </tr>

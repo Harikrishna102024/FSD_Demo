@@ -29,6 +29,12 @@
     background: linear-gradient(135deg, #7066e000 0%, #6f42c14f 100%);
 }
 
+.table tbody tr:first-child {
+    position: sticky;
+    top: 53px;
+    z-index: 5;
+}
+
 .table thead th {
     color: white;
     padding: 16px;

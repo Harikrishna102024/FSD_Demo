@@ -15,6 +15,20 @@ export class PublicUserController {
 
     registerUser = async (req: Request, res: Response) => {
 
+        const errors: any[] = [];
+
+        if ((req as any).validationErrors) {
+            errors.push(...(req as any).validationErrors);
+        }
+
+        if ((req as any).fileError) {
+            errors.push((req as any).fileError);
+        }
+
+        if (errors.length > 0) {
+            return res.status(400).json({ errors });
+        }
+
         const status = await userService.checkExistingFields(req.body);
 
         if (status) {

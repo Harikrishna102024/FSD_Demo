@@ -1,35 +1,25 @@
 import { upload } from "../utils/uploads.utils";
 import { Request, Response, NextFunction } from 'express';
 
-
-
 export const fileUpload = (req: Request, res: Response, next: NextFunction) => {
 
     upload.single('profile')(req, res, (err) => {
 
+        if (err) {
+            (req as any).fileError = {
+                field: 'profile',
+                message: err.code === 'LIMIT_FILE_SIZE'? 'File size should be less than 2MB': 'Invalid file upload'
+            };
+        }
+
         if (!req.file) {
-            return res.status(400).json({
+            (req as any).fileError = {
                 field: 'profile',
                 message: 'Profile image is required'
-            });
+            };
         }
 
-        if (err) {
-
-            if (err.code === 'LIMIT_FILE_SIZE') {
-                return res.status(400).json({
-                    field: 'profile',
-                    message: 'File size should be less than 2MB'
-                });
-            }
-
-            return res.status(400).json({
-                field: 'profile',
-                message: 'Invalid file upload'
-            });
-        }
-
-        next()
-    })
+        next(); 
+    });
 
 }

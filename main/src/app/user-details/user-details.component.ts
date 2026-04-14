@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, makeStateKey, OnInit } from '@angular/core';
 import { UsedataService } from '../Services/usedata.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
@@ -33,16 +33,25 @@ export class UserDetailsComponent implements OnInit {
     };
   }
 
-  maskData(data: any) {
+  maskData(val: any) {
 
-    var maskData: any;
+    var maskData: any
+    var data = val.trim()
 
-    if (data.length <= 3) {
-      maskData = '*'.repeat(data.length);
-    } else if (data.length > 3) {
-      maskData = data.slice(0, 3) + '*'.repeat(data.length - 3);
+    if (data.length != 0) {
+
+      const hasNumber = /\d/.test(data);
+
+      if (hasNumber) {
+        maskData = data.replace(/\d+/g, "****");
+
+      } else {
+        let at = data.charAt(data.length - 10)
+        let [name, domain] = data.split('@')
+        let maskCount = Math.min(5, name.length - 1)
+        maskData = data.slice(0, name.length - maskCount).concat("****").concat(at, domain)
+      }
     }
-
     return maskData;
   }
 

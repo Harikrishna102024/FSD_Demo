@@ -131,27 +131,6 @@
   padding: 2px !important;
 }
 
-.loader {
-  width: 30px;
-  height: 30px;
-  border-radius: 50%;
-  display: inline-block;
-  border-top: 3px solid #ffffff;
-  border-right: 3px solid transparent;
-  box-sizing: border-box;
-  animation: rotation 1s linear infinite;
-}
-
-@keyframes rotation {
-  0% {
-    transform: rotate(0deg);
-  }
-
-  100% {
-    transform: rotate(360deg);
-  }
-}
-
 @media (max-width: 480px) {
   .logIn {
     padding: 15px;

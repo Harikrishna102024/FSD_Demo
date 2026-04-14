@@ -45,7 +45,10 @@
                 <input placeholder="enter password" type="text" name="password" required [(ngModel)]="password">
             </div>
 
-            <button type="submit" class="register-btn">Register</button>
+            <button type="submit" class="register-btn">
+                <span class="loader" *ngIf="isLoading"></span>
+                <span *ngIf="hideText">Register</span>
+            </button>
 
             <div class="login">
                 If already have an account? <a [routerLink]="['/login']">Sign in</a>

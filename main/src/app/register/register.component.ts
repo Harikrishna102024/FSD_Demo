@@ -19,6 +19,9 @@ export class RegisterComponent {
   password: any;
   selectedFile: any;
 
+  isLoading: boolean = false;
+  hideText: boolean = true;
+
   constructor(private service: UsedataService, private router: Router, private toastr: ToastrService) { }
 
   onFileSelect(event: any) {
@@ -26,6 +29,9 @@ export class RegisterComponent {
   }
 
   sumbitData(formData: any) {
+
+    this.isLoading = true;
+    this.hideText = false;
 
     const formPayload = new FormData();
 
@@ -37,7 +43,7 @@ export class RegisterComponent {
     formPayload.append('email', this.email);
     formPayload.append('password', this.password);
 
-    if(this.selectedFile) {
+    if (this.selectedFile) {
       formPayload.append('profile', this.selectedFile);
     }
 
@@ -45,6 +51,8 @@ export class RegisterComponent {
     this.service.registerData(formPayload).subscribe({
       next: () => {
         this.toastr.success('Registered successfully!');
+        this.isLoading = !this.isLoading
+        this.hideText = !this.hideText
         if (formData.valid) {
           this.fName = null;
           this.lName = null;
@@ -58,7 +66,9 @@ export class RegisterComponent {
       },
       error: (err: any) => {
         console.log(err.error.errors);
-        if( err && err.error.errors) {
+        if (err && err.error.errors) {
+          this.hideText = !this.hideText;
+          this.isLoading = false;
           err.error.errors.forEach((err: any) => {
             return this.toastr.error(err.message);
           })

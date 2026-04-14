@@ -24,6 +24,15 @@ export class UserDetailsComponent implements OnInit {
     this.getAllUserData();
   }
 
+
+  browserEveent() {
+    history.pushState(null, '', location.href);
+    window.onpopstate = () => {
+      history.pushState(null, '', location.href);
+      Swal.close();
+    };
+  }
+
   maskData(data: any) {
 
     var maskData: any;
@@ -54,6 +63,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   deleteUserData(id: any) {
+    this.browserEveent()
     Swal.fire({
       title: 'Are you sure?',
       text: 'You want to delete this user!',
@@ -68,11 +78,13 @@ export class UserDetailsComponent implements OnInit {
       padding: '5px',
 
     }).then((result) => {
+      window.onpopstate = null;
       if (result.isConfirmed) {
         this.deleteUser(id);
       }
     });
   }
+
 
 
   deleteUser(id: any) {
@@ -110,7 +122,7 @@ export class UserDetailsComponent implements OnInit {
   }
 
   openImage(img: any, name: any) {
-
+    this.browserEveent()
     Swal.fire({
       html: `
       <div style="text-align:center;">

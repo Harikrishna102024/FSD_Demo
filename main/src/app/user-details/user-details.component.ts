@@ -60,8 +60,8 @@ export class UserDetailsComponent implements OnInit {
     this.service.getUserData().subscribe((res) => {
 
       if (res && res.data && res.data.length > 0) {
-        let data = res.data.map(({ role, ...rest }: any) => rest);
-        this.userData = data.map((data: any) => ({
+        // let data = res.data.map(({ role, ...rest }: any) => rest);
+        this.userData = res.data.map((data: any) => ({
           ...data
         })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
 

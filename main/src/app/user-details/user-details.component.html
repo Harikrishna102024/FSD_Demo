@@ -19,8 +19,8 @@
                 </tr>
             </thead>
             <tbody>
-                <tr *ngFor="let data of userData">
-                    <td>{{data.id}}</td>
+                <tr *ngFor="let data of userData" [class.admin-row]="data.role === 'admin'">
+                    <td >{{data.id}}</td>
                     <td>{{data.firstName}}</td>
                     <td>{{data.lastName}}</td>
                     <td>{{data.age}}</td>

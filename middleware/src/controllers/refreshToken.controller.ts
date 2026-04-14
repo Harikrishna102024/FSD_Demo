@@ -3,6 +3,7 @@ import jwt, { SignOptions } from 'jsonwebtoken';
 import { jwtRefreshConfig } from '../config/jwt';
 import { generateToken } from '../services/jwt.service';
 import dotenv from 'dotenv'
+import { clearCache } from '../utils/cache';
 
 dotenv.config();
 
@@ -41,6 +42,8 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
 
 export const deleteCookie = async (req: Request, res: Response) => {
 
+    clearCache('users:all');
+    
     res.clearCookie("accessToken", {
         httpOnly: true,
         secure: process.env.NODE_ENV === "production",

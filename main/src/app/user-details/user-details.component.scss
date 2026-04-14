@@ -10,6 +10,7 @@
     border-radius: 8px;
     overflow-x: auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    height: calc(100vh - 90px);
 }
 
 .table {
@@ -66,29 +67,38 @@
     background-color: #eaf2ff !important;
 }
 
-.activeBadge {
+
+.activeBadge::before {
+    content: '';
+    width: 9px;
+    height: 9px;
     background-color: #10b981;
-    color: #ffffffcc;
-    padding: 6px;
     border-radius: 50%;
-    font-size: 12px;
-    font-weight: 600;
-    display: inline-flex;
-    width: 50%;
-    justify-content: center;
+    position: relative;
+    top: 1.2px;
 }
 
-.inactiveBadge {
-    background-color: #3f4141;
-    color: #ffffffcc;
-    padding: 6px;
+.inactiveBadge::before {
+    content: '';
+    width: 9px;
+    height: 9px;
+    background-color: #d44343;
     border-radius: 50%;
-    font-size: 12px;
-    font-weight: 600;
-    display: inline-flex;
-    width: 50%;
-    justify-content: center;
+    position: relative;
+    top: 1.2px;
 }
+
+
+
+.activeBadge,
+.inactiveBadge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+}
+
 
 .table tbody tr.admin-row td {
     background-color: #495057 !important;
@@ -202,6 +212,10 @@ button:disabled {
     .table td {
         padding: 10px;
         font-size: 12px;
+    }
+
+    .table tbody td {
+        padding: 8px 8px;
     }
 
     .updateUserDetails {

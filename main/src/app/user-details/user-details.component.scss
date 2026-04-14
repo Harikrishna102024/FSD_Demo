@@ -11,6 +11,7 @@
     overflow-x: auto;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     height: calc(100vh - 90px);
+    // overflow-y: auto;
 }
 
 .table {
@@ -20,8 +21,12 @@
     table-layout: auto;
 }
 
-.table thead {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    z-index: 5;
+    background: linear-gradient(135deg, #7066e000 0%, #6f42c14f 100%);
 }
 
 .table thead th {

@@ -36,7 +36,7 @@
 }
 
 .table tbody td {
-    padding: 14px 2px;
+    padding: 8px 14px;
     color: #686262;
     font-size: 14px;
     vertical-align: middle;
@@ -216,5 +216,9 @@ button:disabled {
     .activeBadge,
     .inactiveBadge {
         width: 94%;
+    }
+
+    .table tbody tr.admin-row td {
+        border-right: solid #495057;
     }
 }

@@ -1,5 +1,6 @@
 <div class="updateUserDetails" *ngIf="isUpdateDetails">
-    <app-update-user [userData]="updateDetails" (status)="closePopOut($event)" (recall)="recallUserData($event)"></app-update-user>
+    <app-update-user [userData]="updateDetails" (status)="closePopOut($event)"
+        (recall)="recallUserData($event)"></app-update-user>
 </div>
 <div class="container mt-5">
     <div class="table-responsive">
@@ -14,7 +15,6 @@
                     <th>Status</th>
                     <th>Email</th>
                     <th>Profile</th>
-                    <!-- <th>Password</th> -->
                     <th *ngIf="context.userRole === 'admin'">Actions</th>
                 </tr>
             </thead>
@@ -25,18 +25,20 @@
                     <td>{{data.lastName}}</td>
                     <td>{{data.age}}</td>
                     <td>{{data.location}}</td>
-                    <td><span [ngClass]="data.status === 'active' ? 'activeBadge' : 'inactiveBadge'">{{data.status}}</span></td>
+                    <td>
+                        <span [ngClass]="data.status === 'active' ? 'activeBadge' : 'inactiveBadge'">{{data.status}}</span>
+                    </td>
                     <td>{{maskData(data.email)}}</td>
-                    <!-- <td>{{data.password}}</td> -->
-                    <!-- <td>{{maskData(data.password)}}</td> -->
                     <td>
                         <img [src]="data.profiles" alt="No Profile"
                             [ngClass]="data.status === 'active' ? 'active' : 'inactive'"
                             (click)="openImage(data.profiles, data.firstName)">
                     </td>
                     <td *ngIf="context.userRole === 'admin'" class="edit-delete">
-                        <button class="badgeEdit" (click)="updateUserData(data)">Edit</button>
-                        <button class="badgeDelete" (click)="deleteUserData(data.id)">Delete</button>
+                        <button *ngIf="context.userRole === 'admin'" class="badgeEdit" (click)="updateUserData(data)">Edit</button>
+                        <button *ngIf="context.userRole === 'admin'" class="badgeDelete" (click)="deleteUserData(data.id)" [disabled]="data.role === 'admin'">
+                            Delete
+                        </button>
                     </td>
                 </tr>
                 <tr *ngIf="userData && userData.length === 0" class="tableError">No data available</tr>

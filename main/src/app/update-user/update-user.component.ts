@@ -1,6 +1,7 @@
 import { Component, EventEmitter, Input, input, Output } from '@angular/core';
 import { UsedataService } from '../Services/usedata.service';
 import { ToastrService } from 'ngx-toastr';
+import { AppContext } from '../app.context';
 
 @Component({
   selector: 'app-update-user',
@@ -18,7 +19,7 @@ export class UpdateUserComponent {
   loading: boolean = false;
   hideText: boolean = true;
 
-  constructor(private service: UsedataService, public toastr: ToastrService) { }
+  constructor(private service: UsedataService, public toastr: ToastrService, public context: AppContext) { }
 
   ngOnInit() {
     this.editableUser = { ...this.userData?.data };

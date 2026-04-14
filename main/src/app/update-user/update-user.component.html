@@ -44,7 +44,10 @@
         </div>
 
         <div class="button-group">
-            <button type="submit" class="btn-update" (click)="updateUserData()">Save Changes</button>
+            <button type="submit" class="btn-update" (click)="updateUserData()">
+                <span class="loader" *ngIf="loading"></span>
+                <span *ngIf="hideText">Save Changes</span>
+            </button>
             <button type="button" class="btn-cancel" (click)="closePopOut()">Cancel</button>
         </div>
     </form>

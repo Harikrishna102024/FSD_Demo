@@ -15,6 +15,8 @@ export class UpdateUserComponent {
 
   editableUser: any = {};
   selectedFile: any;
+  loading: boolean = false;
+  hideText: boolean = true;
 
   constructor(private service: UsedataService, public toastr: ToastrService) { }
 
@@ -27,6 +29,9 @@ export class UpdateUserComponent {
   }
 
   updateUserData() {
+
+    this.loading = true;
+    this.hideText = false;
 
     const formUpdateData = new FormData();
 
@@ -44,11 +49,15 @@ export class UpdateUserComponent {
 
     this.service.updateUserData(formUpdateData).subscribe({
       next: (res) => {
+        this.loading = false;
+        this.hideText = false;
         this.toastr.success("Data upadted successfully")
         this.closePopOut();
         this.recall.emit(this.editableUser)
       },
       error: (err: any) => {
+        this.hideText = !this.hideText
+        this.loading = false
         this.toastr.error(err.error.message);
       }
 

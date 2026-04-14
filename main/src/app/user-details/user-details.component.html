@@ -15,7 +15,7 @@
                     <th>Status</th>
                     <th>Email</th>
                     <th>Profile</th>
-                    <th *ngIf="context.userRole === 'admin'">Actions</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -34,11 +34,9 @@
                             [ngClass]="data.status === 'active' ? 'active' : 'inactive'"
                             (click)="openImage(data.profiles, data.firstName)">
                     </td>
-                    <td *ngIf="context.userRole === 'admin'" class="edit-delete">
-                        <button *ngIf="context.userRole === 'admin'" class="badgeEdit" (click)="updateUserData(data)">Edit</button>
-                        <button *ngIf="context.userRole === 'admin'" class="badgeDelete" (click)="deleteUserData(data.id)" [disabled]="data.role === 'admin'">
-                            Delete
-                        </button>
+                    <td [class.edit-table-admin]="context.userRole === 'admin'">
+                        <button class="badgeEdit" (click)="updateUserData(data)">Edit</button>
+                        <button *ngIf="context.userRole === 'admin'" class="badgeDelete" (click)="deleteUserData(data.id)" [disabled]="data.role === 'admin'">Delete</button>
                     </td>
                 </tr>
                 <tr *ngIf="userData && userData.length === 0" class="tableError">No data available</tr>

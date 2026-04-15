@@ -10,6 +10,7 @@ export class AppContext {
   logStatus = false;
   userRole: any;
   userId: any;
+  theme: string = "bright"
 
   manageUserAccess() {
 
@@ -27,6 +28,25 @@ export class AppContext {
       this.userRole = null;
     }
     console.log("LOG", this.logStatus);
+  }
+
+
+  toggleTheme() {
+
+    if (this.theme === 'dark') {
+
+      this.theme = 'bright';
+      document.body.classList.add('bright');
+      document.body.classList.remove('dark');
+
+    } else {
+
+      this.theme = 'dark';
+      document.body.classList.add('dark');
+      document.body.classList.remove('bright');
+
+    }
+
   }
 
 }

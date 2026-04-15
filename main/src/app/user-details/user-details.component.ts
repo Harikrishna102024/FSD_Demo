@@ -22,21 +22,39 @@ export class UserDetailsComponent implements OnInit {
 
 
   columns = [
-    { key: 'id', name: 'Id' },
-    { key: 'firstName', name: 'First Name' },
-    { key: 'lastName', name: 'Last Name' },
-    { key: 'age', name: 'Age' },
-    { key: 'location', name: 'Location' },
-    { key: 'status', name: 'Status' },
-    { key: 'email', name: 'Email' },
-    { key: 'profile', name: 'Profile' },
-    { key: 'action', name: 'Actions' },
+    { key: 'id', name: 'Id' , disabled: false },
+    { key: 'firstName', name: 'First Name', disabled: false },
+    { key: 'lastName', name: 'Last Name', disabled: false },
+    { key: 'age', name: 'Age', disabled: false },
+    { key: 'location', name: 'Location', disabled: false },
+    { key: 'status', name: 'Status', disabled: false },
+    { key: 'email', name: 'Email', disabled: true },
+    { key: 'profile', name: 'Profile', disabled: true },
+    { key: 'action', name: 'Actions', disabled: true },
   ];
 
   ngOnInit(): void {
     this.getAllUserData();
   }
 
+  onSearch(event: any) {
+  
+  }
+
+   getAllUserData() {
+
+    this.service.getUserData().subscribe((res) => {
+
+      if (res && res.data && res.data.length > 0) {
+        this.userData = res.data.map((data: any) => ({
+            ...data
+          })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
+      } else {
+        this.userData = [];
+      }
+    })
+  }
+  
 
   browserEveent() {
     history.pushState(null, '', location.href);
@@ -68,22 +86,6 @@ export class UserDetailsComponent implements OnInit {
     return maskData;
   }
 
-  getAllUserData() {
-
-    this.service.getUserData().subscribe((res) => {
-
-      if (res && res.data && res.data.length > 0) {
-        // let data = res.data.map(({ role, ...rest }: any) => rest);
-        this.userData = res.data.map((data: any) => ({
-          ...data
-        })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
-        console.log(this.userData)
-      } else {
-        this.userData = [];
-      }
-    })
-  }
-
   deleteUserData(id: any) {
     this.browserEveent()
     Swal.fire({
@@ -106,7 +108,6 @@ export class UserDetailsComponent implements OnInit {
       }
     });
   }
-
 
 
   deleteUser(id: any) {

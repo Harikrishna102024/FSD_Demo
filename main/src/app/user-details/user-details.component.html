@@ -10,7 +10,14 @@
                     <th *ngFor="let col of columns">{{col.name}}</th>
                 </tr>
                 <tr class="filter-row">
-                    <th class="filter-text" *ngFor="let col of columns"><input type="text" placeholder="search..."></th>
+                    <th class="filter-text" *ngFor="let col of columns">
+                        <input 
+                        type="text" 
+                        placeholder="search by {{ col.key }}"
+                        (input)="onSearch($event)"
+                        [disabled]="col.disabled"
+                        >
+                    </th>
                 </tr>
             </thead>
             <tbody>

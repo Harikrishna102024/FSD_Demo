@@ -224,6 +224,14 @@ button:disabled {
     pointer-events: none;
 }
 
+input:disabled {
+    background-color: darkgray !important;
+    border-color: darkgray !important;
+    color: #666;
+    cursor: not-allowed;
+    caret-color: transparent; 
+}
+
 @media (max-width: 950px) {
 
     .container {

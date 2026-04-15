@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppContext } from '../app.context';
 import { Router } from '@angular/router';
 import { UsedataService } from '../Services/usedata.service';
@@ -10,9 +10,21 @@ import Swal from 'sweetalert2';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit{
 
   constructor(public context: AppContext, public router: Router, private service: UsedataService, private toastr: ToastrService) { }
+
+  username: any;
+
+  ngOnInit() {
+    this.showUserInfo();
+  }
+
+  showUserInfo() {
+    const localData: any = localStorage.getItem('logData')
+    const jsonData = JSON.parse(localData)
+    this.username = jsonData.logData.firstName;
+  }
 
   removeUserAccess() {
     Swal.fire({

@@ -1,11 +1,41 @@
 .header {
   display: flex;
-  justify-content: flex-end;
   align-items: center;
-  gap: 1rem;
+  justify-content: space-between;
   padding: 1rem 2rem;
   background: linear-gradient(120deg, #0d6af0, #7d4ea7);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .button-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .header-content-section {
+    display: flex;
+    align-items: center;
+    height: 100%;
+
+    .welcome-text {
+      font-size: 18px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0;
+      display: flex;
+      align-items: center;
+    }
+
+    .username {
+      margin-left: 6px;
+      background: linear-gradient(45deg, #ffcc00, #ff6600);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+  }
 }
 
 .header-btn {
@@ -40,7 +70,6 @@
     cursor: not-allowed;
   }
 }
-
 
 @media (max-width: 768px) {
   .header {

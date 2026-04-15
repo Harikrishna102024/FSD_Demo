@@ -14,7 +14,7 @@
                         <input 
                         type="text" 
                         placeholder="search by {{ col.key }}"
-                        (input)="onSearch($event)"
+                        #searchInput (input)="onSearch(searchInput.value, col.key)"
                         [disabled]="col.disabled"
                         >
                     </th>

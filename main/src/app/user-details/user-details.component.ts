@@ -18,6 +18,8 @@ export class UserDetailsComponent implements OnInit {
   isUpdateDetails = false;
   updateDetails: any;
   userData: any;
+  filterData: any[] = [];
+  filterKey: any;
   isLoading: boolean = false;
 
 
@@ -37,8 +39,8 @@ export class UserDetailsComponent implements OnInit {
     this.getAllUserData();
   }
 
-  onSearch(event: any) {
-  
+  onSearch(value: any, key: any) {
+   this.userData = this.filterData.filter(user => user[key]?.toString().toLowerCase().includes(value.toLowerCase()));
   }
 
    getAllUserData() {
@@ -49,6 +51,7 @@ export class UserDetailsComponent implements OnInit {
         this.userData = res.data.map((data: any) => ({
             ...data
           })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
+          this.filterData = this.userData
       } else {
         this.userData = [];
       }

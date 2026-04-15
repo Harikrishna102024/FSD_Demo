@@ -21,10 +21,11 @@ export class UserDetailsComponent implements OnInit {
   filterData: any[] = [];
   filterKey: any;
   isLoading: boolean = false;
+  filters: any = {};
 
 
   columns = [
-    { key: 'id', name: 'Id' , disabled: false },
+    { key: 'id', name: 'Id', disabled: false },
     { key: 'firstName', name: 'First Name', disabled: false },
     { key: 'lastName', name: 'Last Name', disabled: false },
     { key: 'age', name: 'Age', disabled: false },
@@ -40,24 +41,29 @@ export class UserDetailsComponent implements OnInit {
   }
 
   onSearch(value: any, key: any) {
-   this.userData = this.filterData.filter(user => user[key]?.toString().toLowerCase().includes(value.toLowerCase()));
+    this.filters[key] = value.toLowerCase();
+    this.userData = this.filterData.filter(user => 
+      Object.keys(this.filters).every(k =>
+        user[k]?.toString().toLowerCase().includes(this.filters[k])
+      )
+    );
   }
 
-   getAllUserData() {
+  getAllUserData() {
 
     this.service.getUserData().subscribe((res) => {
 
       if (res && res.data && res.data.length > 0) {
         this.userData = res.data.map((data: any) => ({
-            ...data
-          })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
-          this.filterData = this.userData
+          ...data
+        })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
+        this.filterData = this.userData
       } else {
         this.userData = [];
       }
     })
   }
-  
+
 
   browserEveent() {
     history.pushState(null, '', location.href);

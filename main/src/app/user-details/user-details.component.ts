@@ -20,6 +20,19 @@ export class UserDetailsComponent implements OnInit {
   userData: any;
   isLoading: boolean = false;
 
+
+  columns = [
+    { key: 'id', name: 'Id' },
+    { key: 'firstName', name: 'First Name' },
+    { key: 'lastName', name: 'Last Name' },
+    { key: 'age', name: 'Age' },
+    { key: 'location', name: 'Location' },
+    { key: 'status', name: 'Status' },
+    { key: 'email', name: 'Email' },
+    { key: 'profile', name: 'Profile' },
+    { key: 'action', name: 'Actions' },
+  ];
+
   ngOnInit(): void {
     this.getAllUserData();
   }
@@ -64,7 +77,7 @@ export class UserDetailsComponent implements OnInit {
         this.userData = res.data.map((data: any) => ({
           ...data
         })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
-
+        console.log(this.userData)
       } else {
         this.userData = [];
       }

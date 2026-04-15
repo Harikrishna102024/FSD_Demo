@@ -2,7 +2,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 1rem 1rem;
   background: linear-gradient(120deg, #0d6af0, #7d4ea7);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
@@ -18,6 +18,25 @@
     display: flex;
     align-items: center;
     height: 100%;
+    gap: 12px;
+
+    .profile {
+      img {
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        padding: 2px;
+        background: linear-gradient(45deg, #ffcc00, #ff6600);
+        box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+        transition: all 0.25s ease;
+        cursor: pointer;
+      }
+
+      img:hover {
+        box-shadow: 0 0 12px rgba(255, 140, 0, 0.767);
+        transform: scale(1.04);
+      }
+    }
 
     .welcome-text {
       font-size: 18px;

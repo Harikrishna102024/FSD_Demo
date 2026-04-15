@@ -1,6 +1,9 @@
 <div class="header">
     <div class="header-content-section col-6">
-        <p class="welcome-text">Welcome <span class="username">{{ username }}</span></p>
+        <div class="profile">
+            <img [src]="user.profile" alt="Image">
+        </div>
+        <p class="welcome-text">Welcome <span class="username">{{ user.username }}...!</span></p>
     </div>
     <div class="button-section col-6">
         <button class="header-btn" [routerLink]="['/home']" routerLinkActive="active">Home</button>

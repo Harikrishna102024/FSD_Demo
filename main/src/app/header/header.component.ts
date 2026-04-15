@@ -14,7 +14,7 @@ export class HeaderComponent implements OnInit{
 
   constructor(public context: AppContext, public router: Router, private service: UsedataService, private toastr: ToastrService) { }
 
-  username: any;
+  user: any = {}
 
   ngOnInit() {
     this.showUserInfo();
@@ -23,7 +23,8 @@ export class HeaderComponent implements OnInit{
   showUserInfo() {
     const localData: any = localStorage.getItem('logData')
     const jsonData = JSON.parse(localData)
-    this.username = jsonData.logData.firstName;
+    this.user.username = jsonData.logData.firstName;
+    this.user.profile = jsonData.logData.profiles;
   }
 
   removeUserAccess() {

@@ -90,13 +90,22 @@
   }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 915px) {
   .header {
-    justify-content: flex-end;
-    overflow-x: auto;
-    white-space: nowrap;
-    padding: 10px;
-    gap: 0.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .header-content-section {
+    width: 100%;
+    justify-content: center !important;
+  }
+
+  .button-section {
+    justify-content: center !important;
   }
 
   .header::-webkit-scrollbar {

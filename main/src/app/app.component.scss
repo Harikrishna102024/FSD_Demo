@@ -8,5 +8,8 @@
 @media (max-width: 728px) {
     .header {
         height: auto;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
     }
 }

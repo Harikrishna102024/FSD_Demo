@@ -127,12 +127,12 @@ export class PublicUserController {
                     }
                 )
 
-                const { id, role, } = user;
+                const { id, role, firstName} = user;
 
                 return res.status(200).json({
                     success: true,
                     message: 'User login successfully',
-                    logData: { id, role, logStatus: true }
+                    logData: { id, role, firstName, logStatus: true }
                 });
 
             } else {

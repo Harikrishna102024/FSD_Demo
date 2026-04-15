@@ -13,7 +13,7 @@
                     <th class="filter-text" *ngFor="let col of columns">
                         <input 
                         type="text" 
-                        placeholder="search by {{ col.key }}"
+                        placeholder="search..."
                         #searchInput (input)="onSearch(searchInput.value, col.key)"
                         [disabled]="col.disabled"
                         >

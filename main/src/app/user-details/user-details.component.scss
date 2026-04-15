@@ -22,6 +22,10 @@
     th input {
         width: 100%;
         box-sizing: border-box;
+        border: 1px solid #dee2e6;
+        border-radius: 3px;
+        background-color: aliceblue;
+        outline: none;
     }
 }
 
@@ -55,7 +59,7 @@
     vertical-align: middle;
     text-align: center;
     overflow: hidden;
-  text-overflow: ellipsis;
+    text-overflow: ellipsis;
 }
 
 .table tbody tr td img {

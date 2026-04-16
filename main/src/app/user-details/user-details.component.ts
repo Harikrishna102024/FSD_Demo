@@ -162,7 +162,7 @@ export class UserDetailsComponent implements OnInit {
       background: '#000',
       backdrop: 'rgba(0,0,0,0.8)',
       showConfirmButton: false,
-      width: '500px',
+      width: '300px',
 
       didOpen: () => {
         this.blockRightClick = (e: any) => e.preventDefault();

@@ -1,8 +1,12 @@
 <div class="header">
     <div class="header-content-section col-6">
         <div class="profile">
-            <img [src]="user.profile" alt="Image" (pointerdown)="startHold(user.profile); $event.preventDefault()"
-                (contextmenu)="$event.preventDefault()" (pointerup)="endHold()" (pointerleave)="endHold()">
+            <img [src]="user.profile" alt="Image" 
+                (pointerdown)="startHold(user.profile); $event.preventDefault()"
+                (contextmenu)="$event.preventDefault()" 
+                (pointerup)="endHold()" 
+                (pointerleave)="endHold()"
+                >
         </div>
         <p class="welcome-text">Welcome <span class="username">{{ user.username }}...!</span></p>
     </div>

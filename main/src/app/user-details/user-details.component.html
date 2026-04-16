@@ -9,7 +9,7 @@
                 <tr>
                     <th *ngFor="let col of columns">{{col.name}}</th>
                 </tr>
-                <tr class="filter-row">
+                <tr class="filter-row" *ngIf="userData && userData.length > 0">
                     <th class="filter-text" *ngFor="let col of columns">
                         <input 
                         type="text" 

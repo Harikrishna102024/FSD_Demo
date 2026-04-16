@@ -1,4 +1,6 @@
-<div class="log-container">
+<div class="logs">
+  <div class="log-container">
+
     <h2>Application Logs</h2>
 
     <div class="log-header">
@@ -6,7 +8,7 @@
       <span>Level</span>
       <span>Message</span>
     </div>
-
+  
     <div class="log-body">
       <div class="log-row info" *ngFor="let data of logDetails">
         <span class="{{data.level}}">{{data.timestamp}}</span>
@@ -14,4 +16,6 @@
         <span class="{{data.level}}">{{data.message}}</span>
       </div>
     </div>
+    
   </div>
+</div>

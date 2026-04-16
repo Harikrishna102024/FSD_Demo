@@ -1,101 +1,105 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-    background: #2f3640;
-    color: #f1f2f6;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+  background: #2f3640;
+  color: #f1f2f6;
+}
+
+.logs {
+  width: 100%;
+  padding: 6px 3px 0px 2px;
+
+  height: calc(100vh - 80px); /* change 70px = your header height */
+
+  display: flex;
 }
 
 .log-container {
-    width: 98%;
-    margin: 13px auto;
-    background: #3b4252;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+  background-color: #3b4252;
+  border-radius: 8px;
+  padding: 16px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  overflow: hidden;
 }
 
 h2 {
-    margin-bottom: 15px;
-    color: #ffffff;
+  margin-bottom: 10px;
+  color: #ffffff;
+  flex-shrink: 0;
 }
 
 .log-header {
-    display: grid;
-    grid-template-columns: 150px 100px 1fr;
-    padding: 10px;
-    background: #4c566a;
-    font-weight: bold;
-    border-radius: 5px;
-    color: #eceff4;
+  display: grid;
+  grid-template-columns: 150px 100px 1fr;
+  padding: 10px;
+  background: #4c566a;
+  font-weight: bold;
+  border-radius: 5px;
+  color: #eceff4;
+  flex-shrink: 0;
 }
 
 .log-body {
-    max-height: 400px;
-    overflow-y: auto;
-    margin-top: 10px;
+  flex: 1;
+  overflow-y: auto;
+  margin-top: 10px;
 }
 
 .log-row {
-    display: grid;
-    grid-template-columns: 150px 100px 1fr;
-    padding: 10px;
-    border-bottom: 1px solid #4c566a;
-    font-family: monospace;
+  display: grid;
+  grid-template-columns: 150px 100px 1fr;
+  padding: 10px;
+  border-bottom: 1px solid #4c566a;
+  font-family: monospace;
 }
 
 .log-row:hover {
-    background: #434c5e;
+  background: #434c5e;
 }
 
-// .log-row.info span:nth-child(1), .info span:nth-child(3) {
-//     color: darkgray;
-// }
+.info { color: #5dade2; }
+.warn { color: #f1c40f; }
+.error { color: #e74c3c; }
 
-.info {
-    color: #5dade2;
-}
+@media (max-width: 920px) {
+  .logs {
+    height: calc(100vh - 140px);
+  }
 
-.warn {
-    color: #f1c40f;
-}
-.error {
-    color: #e74c3c;
-}
+  .log-header {
+    display: none;
+  }
 
+  .log-row {
+    display: block;
+    padding: 12px;
+  }
 
-@media (max-width: 768px) {
-    .log-header {
-        display: none;
-    }
+  .log-row span {
+    display: block;
+    margin-bottom: 4px;
+  }
 
-    .log-row {
-        display: block;
-        padding: 12px;
-    }
+  .log-row span:nth-child(1)::before {
+    content: "Time: ";
+    font-weight: bold;
+    color: #a4b9bb;
+  }
 
-    .log-row span {
-        display: block;
-        margin-bottom: 4px;
-    }
+  .log-row span:nth-child(2)::before {
+    content: "Level: ";
+    font-weight: bold;
+    color: #a4b9bb;
+  }
 
-    .log-row span:nth-child(1)::before {
-        content: "Time: ";
-        font-weight: bold;
-        color: #a4b9bb;
-    }
-
-    .log-row span:nth-child(2)::before {
-        content: "Level: ";
-        font-weight: bold;
-        color: #a4b9bb;
-
-    }
-
-    .log-row span:nth-child(3)::before {
-        content: "Message: ";
-        font-weight: bold;
-        color: #a4b9bb;
-
-    }
+  .log-row span:nth-child(3)::before {
+    content: "Message: ";
+    font-weight: bold;
+    color: #a4b9bb;
+  }
 }

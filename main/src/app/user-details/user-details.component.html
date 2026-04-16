@@ -11,16 +11,15 @@
                 </tr>
                 <tr class="filter-row" *ngIf="userData && userData.length > 0">
                     <th class="filter-text" *ngFor="let col of columns">
-                        <input 
-                        type="text" 
-                        placeholder="search..."
-                        #searchInput (input)="onSearch(searchInput.value, col.key)"
-                        [disabled]="col.disabled"
-                        >
+                        <input type="text" placeholder="search..." #searchInput
+                            (input)="onSearch(searchInput.value, col.key)" [disabled]="col.disabled">
                     </th>
                 </tr>
             </thead>
             <tbody>
+                <div class="loading-wrapper" *ngIf="isLoading">
+                    <span class="loader"></span>
+                </div>
                 <tr *ngFor="let data of userData" [class.admin-row]="data.role === 'admin'">
                     <td>{{data.id}}</td>
                     <td>{{data.firstName}}</td>
@@ -34,8 +33,7 @@
                     <td>
                         <img [src]="data.profiles" alt="No Profile"
                             [ngClass]="data.status === 'active' ? 'active' : 'inactive'"
-                            (click)="openImage(data.profiles, data.firstName)"
-                            (contextmenu)="$event.preventDefault()">
+                            (click)="openImage(data.profiles, data.firstName)" (contextmenu)="$event.preventDefault()">
                     </td>
                     <td [class.edit-table-admin]="context.userRole === 'admin'">
                         <button class="badgeEdit" (click)="updateUserData(data)"
@@ -47,6 +45,5 @@
             </tbody>
         </table>
         <div *ngIf="userData && userData.length === 0" class="tableError">No data available</div>
-        <div class="loader" *ngIf="isLoading"></div>
     </div>
 </div>

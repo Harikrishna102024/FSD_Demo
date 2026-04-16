@@ -52,10 +52,12 @@ export class UserDetailsComponent implements OnInit {
   }
 
   getAllUserData() {
-
+    this.isLoading = true;
+    
     this.service.getUserData().subscribe((res) => {
 
       if (res && res.data && res.data.length > 0) {
+        this.isLoading = false;
         this.userData = res.data.map((data: any) => ({
           ...data
         })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
@@ -114,7 +116,6 @@ export class UserDetailsComponent implements OnInit {
 
 
   deleteUser(id: any) {
-    this.isLoading = false;
     this.service.deleteUser(id).subscribe((res) => {
       if (res.success) {
         this.getAllUserData();

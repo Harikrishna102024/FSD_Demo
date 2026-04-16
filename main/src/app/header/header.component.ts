@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-header',
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrls: ['./header.component.scss', './header.component.dark.scss']
 })
 export class HeaderComponent implements OnInit {
 
@@ -20,6 +20,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.showUserInfo();
+  }
+
+  toggleTheme() {
+    this.context.toggleTheme();
   }
 
   startHold(img: any) {

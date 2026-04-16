@@ -11,7 +11,7 @@ export class AppContext {
   logStatus = false;
   userRole: any;
   userId: any;
-  theme: string = "bright"
+  theme: string = "dark"
 
   manageUserAccess() {
 
@@ -35,13 +35,11 @@ export class AppContext {
   toggleTheme() {
 
     if (this.theme === 'dark') {
-
       this.theme = 'bright';
       document.body.classList.add('bright');
       document.body.classList.remove('dark');
 
     } else {
-
       this.theme = 'dark';
       document.body.classList.add('dark');
       document.body.classList.remove('bright');

@@ -11,7 +11,7 @@ export class AppContext {
   logStatus = false;
   userRole: any;
   userId: any;
-  theme: string = "dark"
+  theme: string = "bright"
 
   manageUserAccess() {
 

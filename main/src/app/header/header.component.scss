@@ -14,32 +14,30 @@
     gap: 12px;
 
     .toggle-theme {
-      width: 30px;
-      height: 30px;
-      border-radius: 50%;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
+      display: flex;
+      position: relative;
+      right: 4%;
+      img {
+        cursor: pointer;
+        transition: all 0.25s ease;
+        border-radius: 50%;
+      }
     }
-  }
 
-  .bright-icon {
-    background: linear-gradient(45deg, #ffc100, #dee2e6);
-    box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
-
-    &:hover {
-      box-shadow: 0 0 12px #ffc100;
+    .toggle-theme img:hover {
       transform: scale(1.1);
     }
-  }
 
-  .dark-icon {
-    background: linear-gradient(62deg, #ced4dae0, #212529);
-    box-shadow: 0 0 8px rgba(34, 34, 34, 0.4);
+    .toggle-theme img:active {
+      transform: rotate(180deg) scale(0.9);
+    }
 
-    &:hover {
-      box-shadow: 0 0 12px #ced4dae0;
-      transform: scale(1.1);
+    .dark-icon:hover {
+      filter: drop-shadow(0 0 8px #ffcc00);
+    }
+
+    .bright-icon:hover {
+      filter: drop-shadow(0 0 8px #494f58);
     }
   }
 

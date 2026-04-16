@@ -17,12 +17,15 @@ export class HeaderComponent implements OnInit {
   user: any = {}
   timer: any;
   blockRightClick: any;
+  icon: any;
 
   ngOnInit() {
     this.showUserInfo();
+    this.toggleTheme();
   }
 
   toggleTheme() {
+    this.icon = this.context.theme === 'dark' ? '/moon.png' : '/brightness.png'
     this.context.toggleTheme();
   }
 

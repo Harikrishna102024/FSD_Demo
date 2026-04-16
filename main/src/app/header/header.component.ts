@@ -10,14 +10,49 @@ import Swal from 'sweetalert2';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss'
 })
-export class HeaderComponent implements OnInit{
+export class HeaderComponent implements OnInit {
 
   constructor(public context: AppContext, public router: Router, private service: UsedataService, private toastr: ToastrService) { }
 
   user: any = {}
+  timer: any;
 
   ngOnInit() {
     this.showUserInfo();
+  }
+
+  startHold(img: any) {
+    this.timer = setTimeout(() => {
+      this.openProfile(img);
+    }, 100);
+  }
+
+  endHold() {
+    clearTimeout(this.timer);
+  }
+
+  openProfile(img: any) {
+    setTimeout(() => {
+
+      if(navigator.vibrate) {
+        navigator.vibrate(50);
+      }
+
+      Swal.fire({
+        html: `
+            <div style="text-align:center;">
+              <img src="${img}" style="width:100%; height:auto;" />
+            </div>
+          `,
+        customClass: {
+          htmlContainer: 'image-popup-container'
+        },
+        background: '#000',
+        backdrop: 'rgba(0,0,0,0.8)',
+        showConfirmButton: false,
+        width: '500px',
+      });
+    }, 500);
   }
 
   showUserInfo() {

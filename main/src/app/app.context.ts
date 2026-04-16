@@ -50,13 +50,12 @@ export class AppContext {
 
   }
 
-
-    browserEveent() {
+  browserEveent() {
+    history.pushState(null, '', location.href);
+    window.onpopstate = () => {
       history.pushState(null, '', location.href);
-      window.onpopstate = () => {
-        history.pushState(null, '', location.href);
-        Swal.close();
-      };
-    }
+      Swal.close();
+    };
+  }
 
 }

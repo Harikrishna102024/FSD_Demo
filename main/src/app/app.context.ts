@@ -13,7 +13,7 @@ export class AppContext {
   userId: any;
   theme: string = "bright"
 
-  manageUserAccess() {
+  manageUserAccess() { 
 
     const logData = localStorage.getItem('logData');
 

@@ -16,6 +16,7 @@ export class HeaderComponent implements OnInit {
 
   user: any = {}
   timer: any;
+  blockRightClick: any;
 
   ngOnInit() {
     this.showUserInfo();
@@ -40,7 +41,7 @@ export class HeaderComponent implements OnInit {
     Swal.fire({
       html: `
             <div style="text-align:center;">
-              <img src="${img}" style="width:100%; height:auto;" class="preview" oncontextmenu="return false " />
+              <img src="${img}" style="width:100%; height:auto;" class="preview"/>
             </div>
           `,
       customClass: {
@@ -50,6 +51,14 @@ export class HeaderComponent implements OnInit {
       backdrop: 'rgba(0,0,0,0.8)',
       showConfirmButton: false,
       width: '500px',
+      
+      didOpen: () => {
+        this.blockRightClick = (e: any) => e.preventDefault();
+        document.addEventListener('contextmenu', this.blockRightClick);
+      },
+      willClose: () => {
+        document.removeEventListener('contextmenu', this.blockRightClick);
+      }
     });
   }
 

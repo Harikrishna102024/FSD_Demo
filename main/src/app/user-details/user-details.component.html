@@ -44,9 +44,9 @@
                             (click)="deleteUserData(data.id)" [disabled]="data.role === 'admin'">Delete</button>
                     </td>
                 </tr>
-                <tr *ngIf="userData && userData.length === 0" class="tableError">No data available</tr>
             </tbody>
         </table>
+        <div *ngIf="userData && userData.length === 0" class="tableError">No data available</div>
         <div class="loader" *ngIf="isLoading"></div>
     </div>
 </div>

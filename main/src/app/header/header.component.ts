@@ -43,16 +43,18 @@ export class HeaderComponent implements OnInit {
     Swal.fire({
       html: `
             <div style="text-align:center;">
-              <img src="${img}" style="width:100%; height:auto;" class="preview"/>
+              <img src="${img}" style="width:100%; height:auto; border-radius: 50%;" class="preview"/>
             </div>
           `,
       customClass: {
+        popup: 'image-popup',
         htmlContainer: 'image-popup-container'
       },
       background: '#000',
       backdrop: 'rgba(0,0,0,0.8)',
       showConfirmButton: false,
-      width: '500px',
+      width: '400px',
+      padding: "0px",
       
       didOpen: () => {
         this.blockRightClick = (e: any) => e.preventDefault();

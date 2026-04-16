@@ -34,7 +34,8 @@
                     <td>
                         <img [src]="data.profiles" alt="No Profile"
                             [ngClass]="data.status === 'active' ? 'active' : 'inactive'"
-                            (click)="openImage(data.profiles, data.firstName)">
+                            (click)="openImage(data.profiles, data.firstName)"
+                            (contextmenu)="$event.preventDefault()">
                     </td>
                     <td [class.edit-table-admin]="context.userRole === 'admin'">
                         <button class="badgeEdit" (click)="updateUserData(data)"

@@ -22,6 +22,8 @@ export class UserDetailsComponent implements OnInit {
   filterKey: any;
   isLoading: boolean = false;
   filters: any = {};
+  blockRightClick: any;
+
 
 
   columns = [
@@ -150,7 +152,7 @@ export class UserDetailsComponent implements OnInit {
     Swal.fire({
       html: `
       <div style="text-align:center;">
-        <img src="${img}" style="width:100%; height:auto;" />
+        <img src="${img}" style="width:100%; height:auto;" class="preview"/>
         <h2 style="color:#666666de; margin-top:10px;">${name}</h2>
       </div>
     `,
@@ -161,6 +163,15 @@ export class UserDetailsComponent implements OnInit {
       backdrop: 'rgba(0,0,0,0.8)',
       showConfirmButton: false,
       width: '500px',
+
+      didOpen: () => {
+        this.blockRightClick = (e: any) => e.preventDefault();
+        document.addEventListener('contextmenu', this.blockRightClick);
+      },
+      willClose: () => {
+        document.removeEventListener('contextmenu', this.blockRightClick);
+      }
+      
     });
   }
 

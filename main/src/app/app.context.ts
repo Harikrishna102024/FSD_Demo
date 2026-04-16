@@ -1,4 +1,5 @@
 import { Injectable, OnInit } from "@angular/core";
+import Swal from "sweetalert2";
 
 
 @Injectable({
@@ -48,5 +49,14 @@ export class AppContext {
     }
 
   }
+
+
+    browserEveent() {
+      history.pushState(null, '', location.href);
+      window.onpopstate = () => {
+        history.pushState(null, '', location.href);
+        Swal.close();
+      };
+    }
 
 }

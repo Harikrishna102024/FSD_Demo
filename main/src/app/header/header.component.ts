@@ -34,6 +34,8 @@ export class HeaderComponent implements OnInit {
 
   openProfile(img: any) {
 
+    this.context.browserEveent();
+
     if (navigator.vibrate) {
       navigator.vibrate(50);
     }

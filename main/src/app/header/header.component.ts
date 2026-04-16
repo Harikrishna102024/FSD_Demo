@@ -24,7 +24,7 @@ export class HeaderComponent implements OnInit {
   startHold(img: any) {
     this.timer = setTimeout(() => {
       this.openProfile(img);
-    }, 100);
+    }, 200);
   }
 
   endHold() {
@@ -32,27 +32,25 @@ export class HeaderComponent implements OnInit {
   }
 
   openProfile(img: any) {
-    setTimeout(() => {
 
-      if(navigator.vibrate) {
-        navigator.vibrate(50);
-      }
+    if (navigator.vibrate) {
+      navigator.vibrate(50);
+    }
 
-      Swal.fire({
-        html: `
+    Swal.fire({
+      html: `
             <div style="text-align:center;">
-              <img src="${img}" style="width:100%; height:auto;" />
+              <img src="${img}" style="width:100%; height:auto;" class="preview" oncontextmenu="return false " />
             </div>
           `,
-        customClass: {
-          htmlContainer: 'image-popup-container'
-        },
-        background: '#000',
-        backdrop: 'rgba(0,0,0,0.8)',
-        showConfirmButton: false,
-        width: '500px',
-      });
-    }, 500);
+      customClass: {
+        htmlContainer: 'image-popup-container'
+      },
+      background: '#000',
+      backdrop: 'rgba(0,0,0,0.8)',
+      showConfirmButton: false,
+      width: '500px',
+    });
   }
 
   showUserInfo() {

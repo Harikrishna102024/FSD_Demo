@@ -94,6 +94,11 @@
 ::ng-deep .image-popup-container {
   display: contents !important;
 }
+.preview {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
 
 @media (max-width: 915px) {
   .header {

@@ -5,7 +5,7 @@
   display: flex;
 
   .log-container {
-    background-color: #48647d;
+    background-color: #ced4da;
     border-radius: 8px;
     padding: 16px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -71,7 +71,7 @@
   }
 
   .log-row {
-    display: block;
+    display: block !important;
     padding: 12px;
   }
 

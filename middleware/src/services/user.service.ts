@@ -79,36 +79,36 @@ export class UserService {
 
 
 
-async updateUser(id: any, data: any) {
+  async updateUser(id: any, data: any) {
 
-  const existingUser = await this.getUserById(id);
+    const existingUser = await this.getUserById(id);
 
-  if (data.profiles && existingUser?.dataValues?.profiles && data.profiles !== existingUser.dataValues.profiles) {
+    if (data.profiles && existingUser?.dataValues?.profiles && data.profiles !== existingUser.dataValues.profiles) {
 
-    const imageUrl = existingUser.dataValues.profiles;
+      const imageUrl = existingUser.dataValues.profiles;
 
-    const publicId = imageUrl.split('/').pop()?.split('.')[0];
+      const publicId = imageUrl.split('/').pop()?.split('.')[0];
 
-    await cloudinary.uploader.destroy(`user_profiles/${publicId}`);
-  }
-
-  const result = await UserModel.update(
-    {
-      firstName: data.first_name,
-      lastName: data.last_name,
-      age: data.age,
-      location: data.location,
-      status: data.status,
-      profiles: data.profiles
-    },
-    {
-      where: { id }
+      await cloudinary.uploader.destroy(`user_profiles/${publicId}`);
     }
-  );
 
-  clearCache('users:all');
-  return result;
-}
+    const result = await UserModel.update(
+      {
+        firstName: data.first_name,
+        lastName: data.last_name,
+        age: data.age,
+        location: data.location,
+        status: data.status,
+        profiles: data.profiles
+      },
+      {
+        where: { id }
+      }
+    );
+
+    clearCache('users:all');
+    return result;
+  }
 
 
 
@@ -176,4 +176,16 @@ async updateUser(id: any, data: any) {
     })
     return data;
   }
+
+
+
+  async updateUserTheme(id: any, theme: any) {
+
+    const result = await UserModel.update(
+      { theme: theme },
+      { where: { id } }
+    );
+    return result;
+  }
+
 }

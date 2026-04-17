@@ -11,6 +11,8 @@ const controller = new PublicUserController();
 
 const router = Router();
 
+router.patch('/updateUserTheme/:id', controller.updateUserTheme);
+
 router.post('/register', fileUpload, validateData(validations.registerationShema()), controller.registerUser);
 
 router.post('/login', validateData(validations.loginSchema()), limit, controller.validateUserData);

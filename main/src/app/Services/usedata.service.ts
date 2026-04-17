@@ -51,4 +51,10 @@ export class UsedataService {
     const result = this.http.post(`${this.Url}/auth/removeCookie`, {}, {withCredentials: true});
     return result
   }
+
+
+  updateUserTheme(data: any): Observable<any> {
+    const updateDate = this.http.patch(`${this.Url}/auth/updateUserTheme/${data.id}`, data);
+    return updateDate;
+  }
 }

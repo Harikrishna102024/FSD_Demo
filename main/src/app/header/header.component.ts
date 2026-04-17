@@ -25,6 +25,9 @@ export class HeaderComponent implements OnInit {
 
   toggleTheme() {
     this.context.toggleTheme();
+    this.service.updateUserTheme({ theme: this.context.theme, id: this.context.userId }).subscribe({
+      next: () => {}
+    })
   }
 
   startHold(img: any) {

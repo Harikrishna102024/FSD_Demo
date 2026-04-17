@@ -12,6 +12,11 @@ body {
 
 body.dark {
   background: black;
+
+  .swal2-popup, .swal2-modal .swal2-show {
+    background-color: #343a40;
+    color: #adb5bd;
+  }
 }
 
 .error {
@@ -38,3 +43,4 @@ body.dark {
     transform: rotate(360deg);
   }
 }
+

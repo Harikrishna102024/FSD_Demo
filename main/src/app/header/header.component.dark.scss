@@ -1,3 +1,60 @@
 .header.dark {
-    background: linear-gradient(120deg, #000000, #1a2229bf);    
+  background: linear-gradient(277deg, #090a0b, rgb(26 34 41 / 90%));
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+  .button-section {
+
+    .dark-icon:hover {
+      filter: drop-shadow(0 0 8px #ffcc00);
+    }
+
+    .bright-icon:hover {
+      filter: invert(1) brightness(2) drop-shadow(0 0 8px #ffffff);
+    }
+  }
+
+  .header-content-section {
+    .profile {
+
+      img {
+        background: linear-gradient(268deg, #ffc107e3, #ff6600);
+        box-shadow: 0 0 8px #d2c08a;
+      }
+
+      img:hover {
+        box-shadow: 0 0 12px #767779;
+      }
+    }
+
+    .welcome-text {
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .username {
+      background: linear-gradient(45deg, #ffcc00, #ff6600);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      font-weight: 600;
+    }
+  }
+}
+
+.header-btn {
+  background-color: #cfe2ff;
+  color: #343a40;
+
+  &:hover {
+    background-color: #cfe2ff;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  }
+}
+
+.active {
+  color: #fff;
+  background-color: #2196F3;
+
+  &:hover {
+    color: #fff;
+    background-color: #2196F3;
+  }
 }

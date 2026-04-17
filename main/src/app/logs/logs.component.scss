@@ -83,18 +83,18 @@
   .log-row span:nth-child(1)::before {
     content: "Time: ";
     font-weight: bold;
-    color: #a4b9bb;
+    color: #343a40;
   }
 
   .log-row span:nth-child(2)::before {
     content: "Level: ";
     font-weight: bold;
-    color: #a4b9bb;
+    color: #343a40;
   }
 
   .log-row span:nth-child(3)::before {
     content: "Message: ";
     font-weight: bold;
-    color: #a4b9bb;
+    color: #343a40;
   }
 }

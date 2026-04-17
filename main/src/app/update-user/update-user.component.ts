@@ -6,7 +6,7 @@ import { AppContext } from '../app.context';
 @Component({
   selector: 'app-update-user',
   templateUrl: './update-user.component.html',
-  styleUrl: './update-user.component.scss'
+  styleUrls: ['./update-user.component.scss', './update-user.component.dark.scss']
 })
 export class UpdateUserComponent {
 

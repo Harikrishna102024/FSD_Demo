@@ -1,0 +1,60 @@
+.update-user-container.dark{
+    background: #495057;
+    background: #495057;
+
+    h2 {
+        color: #dee2e6;
+    }
+
+    .form-group {
+
+        label {
+            color: #dee2e6;
+        }
+
+        input,
+        select {
+            border: 1px solid #6e7881;
+            background-color: #6e7881;
+            color: #dee2e6;
+
+            &:focus {
+                border-color: #0078d4;
+                box-shadow: 0 0 0 3px rgba(0, 120, 212, 0.1);
+            }
+
+            &:disabled {
+                background-color: #e8e8e8;
+                color: #999;
+            }
+        }
+
+        input[type="file"]::file-selector-button {
+            background-color: #2c353d;
+            color: #dee2e6;
+        }
+
+  
+    }
+
+    .button-group {
+
+        .btn-update {
+            background-color: #052c65;
+            color: white;
+
+            &:hover {
+                background-color: #052c65;
+            }
+        }
+
+        .btn-cancel {
+            background-color: #e8e8e8;
+            color: #333;
+
+            &:hover {
+                background-color: #d4d4d4;
+            }
+        }
+    }
+}

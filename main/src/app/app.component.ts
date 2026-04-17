@@ -14,7 +14,10 @@ export class AppComponent implements OnInit {
   constructor(public context: AppContext, private http: HttpClient, private router: Router) { }
 
   ngOnInit() {
+    this.refershToken();
+  }
 
+  refershToken() {
     const logData = localStorage.getItem('logData');
 
     if (logData) {
@@ -36,6 +39,6 @@ export class AppComponent implements OnInit {
     } else {
       this.context.logStatus = false;
     }
-
   }
+
 }

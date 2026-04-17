@@ -10,7 +10,7 @@
     </div>
   
     <div class="log-body">
-      <div class="log-row info" *ngFor="let data of logDetails">
+      <div class="log-row info {{context.theme}}" *ngFor="let data of logDetails">
         <span class="{{data.level}}">{{data.timestamp}}</span>
         <span class="{{data.level}}">{{data.level}}</span>
         <span class="{{data.level}}">{{data.message}}</span>

@@ -17,4 +17,18 @@
   .log-row {
     border-bottom: 1px solid #4c566a;
   }
+
+}
+@media (max-width: 920px) {
+  .dark.log-row span:nth-child(1)::before {
+    color: #a4aab0;
+  }
+
+  .dark.log-row span:nth-child(2)::before {
+    color: #a4aab0;
+  }
+
+  .dark.log-row span:nth-child(3)::before {
+    color: #a4aab0;
+  }
 }

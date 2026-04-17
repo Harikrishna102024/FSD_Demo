@@ -2,17 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { AppComponent } from '../app.component';
 import { UsedataService } from '../Services/usedata.service';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { AppContext } from '../app.context';
 
 @Component({
   selector: 'app-logs',
   templateUrl: './logs.component.html',
-  styleUrl: './logs.component.scss',
+  styleUrls: ['./logs.component.scss', './logs.component.dark.scss'],
 })
 export class LogsComponent implements OnInit {
 
   logDetails: any;
 
-  constructor(private context: AppComponent, private service: UsedataService){}
+  constructor(public context: AppContext, private service: UsedataService){}
 
   ngOnInit() {
     this.fetchUserLogs()

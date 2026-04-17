@@ -1,0 +1,82 @@
+.container.dark {
+
+    .table-responsive {
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .table {
+
+        th input {
+            border: 1px solid #6c757d73;
+            background-color: #343a40;
+        }
+    }
+
+    .table thead th {
+        background: linear-gradient(135deg, #055160 0%, #2b2f32 100%);
+        color: #ced4da;
+    }
+
+    .table tbody td {
+        color: #ced4da;
+    }
+
+
+    .table tbody tr:nth-of-type(even) td {
+        background-color: #263445 !important;
+    }
+
+    .table tbody tr:nth-of-type(odd) td {
+        background-color: #1f2a36 !important;
+    }
+
+
+    .activeBadge::before {
+        background-color: #10b981;
+    }
+
+    .inactiveBadge::before {
+        background-color: #d44343;
+    }
+
+    .table tbody tr.admin-row td {
+        background-color: #495057 !important;
+        color: #ffffffbd !important;
+    }
+
+    .badgeEdit,
+    .badgeDelete {
+        color: white;
+    }
+
+    .badgeEdit {
+        background-color: #3b82f6;
+    }
+
+    .badgeDelete {
+        background-color: #ef4444;
+    }
+
+    .tableError {
+        color: rgb(241, 80, 80);
+    }
+
+    .inactive {
+        border: 3px solid rgb(164, 164, 164);
+    }
+
+    .active {
+        border: solid rgb(78, 213, 78);
+    }
+
+    button:disabled {
+        background-color: darkgray;
+        color: #666;
+    }
+
+    input:disabled {
+        background-color: darkgray !important;
+        border-color: darkgray !important;
+        color: #666;
+    }
+}

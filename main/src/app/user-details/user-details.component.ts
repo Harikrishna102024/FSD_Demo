@@ -9,7 +9,7 @@ import Swal from 'sweetalert2';
 @Component({
   selector: 'app-user-details',
   templateUrl: './user-details.component.html',
-  styleUrl: './user-details.component.scss'
+  styleUrls: ['./user-details.component.scss', './user-details.component.dark.scss']
 })
 export class UserDetailsComponent implements OnInit {
 

@@ -13,6 +13,18 @@
         position: relative;
     }
 
+    tbody,
+    td,
+    tfoot,
+    th,
+    thead,
+    tr {
+        border-style: none;
+        border-width: 0;
+    }
+
+
+
     .table {
         width: 100%;
         margin-bottom: 0;
@@ -213,6 +225,10 @@
 
     .container {
         padding: 2px;
+
+        .table-responsive {
+            height: calc(100vh - 140px);
+        }
     }
 
     .table {

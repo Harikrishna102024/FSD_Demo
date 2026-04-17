@@ -2,7 +2,7 @@
     <app-update-user [userData]="updateDetails" (status)="closePopOut($event)"
         (recall)="recallUserData($event)"></app-update-user>
 </div>
-<div class="container mt-5">
+<div class="container mt-5 {{context.theme}}">
     <div class="table-responsive">
         <table class="table">
             <thead>

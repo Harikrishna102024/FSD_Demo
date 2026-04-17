@@ -26,7 +26,14 @@ export class HeaderComponent implements OnInit {
   toggleTheme() {
     this.context.toggleTheme();
     this.service.updateUserTheme({ theme: this.context.theme, id: this.context.userId }).subscribe({
-      next: () => {}
+      next: (data) => {
+        const logData = localStorage.getItem('logData');
+        var localData = logData ? JSON.parse(logData) : null;
+        if (localData) {
+          localData.logData.theme = data.theme;
+          localStorage.setItem('logData', JSON.stringify(localData));
+        }
+      }
     })
   }
 
@@ -63,7 +70,7 @@ export class HeaderComponent implements OnInit {
       showConfirmButton: false,
       width: '400px',
       padding: "0px",
-      
+
       didOpen: () => {
         this.blockRightClick = (e: any) => e.preventDefault();
         document.addEventListener('contextmenu', this.blockRightClick);

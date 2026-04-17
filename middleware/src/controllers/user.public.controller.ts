@@ -127,12 +127,12 @@ export class PublicUserController {
                     }
                 )
 
-                const { id, role, firstName, profiles, theme} = user;
+                const { id, role, firstName, profiles, theme } = user;
 
                 return res.status(200).json({
                     success: true,
                     message: 'User login successfully',
-                    logData: { id, role, firstName, logStatus: true, profiles, theme}
+                    logData: { id, role, firstName, logStatus: true, profiles, theme }
                 });
 
             } else {
@@ -159,27 +159,30 @@ export class PublicUserController {
     updateUserTheme = async (req: Request, res: Response) => {
 
         try {
-            
+
             const id = req.params.id;
             const theme = req.body.theme;
 
             const restult = await userService.updateUserTheme(id, theme);
 
-            if(restult) {
-                
-                logger.info(`User ${id} change theme to ${theme}`)
-                return res.status(200).send({success: true});
+            if (restult) {
+                logger.info(`User ${id} change theme to ${restult.theme}`);
+                const { theme } = restult;
+                return res.status(200).json({
+                    success: true,
+                    theme: theme
+                });
 
             } else {
-                
+
                 logger.error(`User ${id} faild to change theme to ${theme}`)
                 return res.status(400).json({
                     success: false,
                     message: 'Failed to update user theme',
                 });
             }
-            
-        } catch(err) {
+
+        } catch (err) {
             console.error(err);
             return res.status(500).json({
                 success: false,

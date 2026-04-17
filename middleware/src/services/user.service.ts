@@ -185,7 +185,11 @@ export class UserService {
       { theme: theme },
       { where: { id } }
     );
-    return result;
+
+    if(result[0] === 1) {
+      const data = await this.getUserById(id);
+      return data;
+    }
   }
 
 }

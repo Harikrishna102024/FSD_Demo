@@ -12,8 +12,8 @@
     </div>
     <div class="button-section col-6">
     <div class="toggle-theme">
-        <img 
-        [src]="icon" alt="Image" 
+        <img
+        [src]="context.theme === 'dark' ? '/brightness.png' : '/moon.png'" alt="Image" 
         width="30px" 
         [ngClass]="context.theme === 'dark' ? 'dark-icon' : 'bright-icon'" 
         (click)="toggleTheme()"

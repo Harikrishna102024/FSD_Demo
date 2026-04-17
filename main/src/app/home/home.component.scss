@@ -1,9 +1,9 @@
 .welcome-container {
-    height: calc(100vh - 75px);
+    height: calc(100vh - 82px);
     display: flex;
     justify-content: center;
     align-items: center;
-    background: linear-gradient(120deg, #4f46e5, #9333ea);
+    background: linear-gradient(189deg, #4d43eacc, rgba(42, 170, 195, 0.5607843137));
     color: white;
     text-align: center;
     padding: 20px;
@@ -71,6 +71,6 @@ p {
 
 @media (max-width: 768px) {
     .welcome-container {
-        height: calc(100vh - 53px);
+        height: calc(100vh - 135px);
     }
 }

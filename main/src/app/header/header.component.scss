@@ -3,7 +3,7 @@
   align-items: center;
   justify-content: space-between;
   padding: 1rem 1rem;
-  background: linear-gradient(120deg, #0d6af0, #7d4ea7);
+  background: linear-gradient(124deg, #9ed3fe, #6610f2e6);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
   .button-section {
@@ -16,7 +16,7 @@
     .toggle-theme {
       display: flex;
       position: relative;
-      right: 4%;
+      right: 3%;
 
       img {
         cursor: pointer;
@@ -33,12 +33,16 @@
       transform: rotate(180deg) scale(0.9);
     }
 
+    .bright-icon {
+      filter: invert(1) brightness(2);
+    }
+
     .dark-icon:hover {
       filter: drop-shadow(0 0 8px #ffcc00);
     }
 
     .bright-icon:hover {
-      filter: drop-shadow(0 0 8px #494f58);
+      filter: invert(1) brightness(2) drop-shadow(0 0 8px #ffffff);
     }
   }
 
@@ -56,14 +60,15 @@
         height: 50px;
         border-radius: 50%;
         padding: 2px;
-        background: linear-gradient(45deg, #ffcc00, #ff6600);
-        box-shadow: 0 0 8px rgba(255, 140, 0, 0.4);
+        background: linear-gradient(287deg, rgb(214 51 132 / 50%), #0d6efdad);
+        // background: linear-gradient(59deg, #e92084, rgb(0 0 0 / 57%));
+        box-shadow: 0 0 8px #848680;
         transition: all 0.25s ease;
         cursor: pointer;
       }
 
       img:hover {
-        box-shadow: 0 0 12px rgba(255, 140, 0, 0.767);
+        box-shadow: 0 0 12px #c1e3e9;
         transform: scale(1.04);
       }
     }
@@ -79,7 +84,8 @@
 
     .username {
       margin-left: 6px;
-      background: linear-gradient(45deg, #ffcc00, #ff6600);
+      // background: linear-gradient(45deg, #ffcc00, #ff6600);
+      background: linear-gradient(59deg, #e92084, rgb(0 0 0 / 57%));
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       font-weight: 600;
@@ -95,11 +101,11 @@
   border-radius: 6px;
   cursor: pointer;
   transition: all 0.3s ease;
-  background-color: #F5F7FA;
-  color: #5B3CC4;
+  background-color: #cfe2ff;
+  color: #343a40;
 
   &:hover {
-    background-color: #f0f0f0;
+    background-color: #cfe2ff;
     transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
   }

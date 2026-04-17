@@ -21,11 +21,9 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.showUserInfo();
-    this.toggleTheme();
   }
 
   toggleTheme() {
-    this.icon = this.context.theme === 'dark' ? '/moon.png' : '/brightness.png'
     this.context.toggleTheme();
   }
 

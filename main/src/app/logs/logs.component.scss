@@ -10,13 +10,13 @@ body {
   width: 100%;
   padding: 6px 3px 0px 2px;
 
-  height: calc(100vh - 80px); /* change 70px = your header height */
+  height: calc(100vh - 82px); /* change 70px = your header height */
 
   display: flex;
 }
 
 .log-container {
-  background-color: #3b4252;
+  background-color: #48647d;
   border-radius: 8px;
   padding: 16px;
   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
@@ -58,11 +58,7 @@ h2 {
   font-family: monospace;
 }
 
-.log-row:hover {
-  background: #434c5e;
-}
-
-.info { color: #5dade2; }
+.info { color: #1799ef; }
 .warn { color: #f1c40f; }
 .error { color: #e74c3c; }
 

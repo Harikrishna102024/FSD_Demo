@@ -5,8 +5,12 @@
 body {
   margin: 0; 
   height: 100vh;
-  background: linear-gradient(to right, #f5f7fa, #e4ecf7);
+  background: white;
 }
+
+// body.dark {
+//   background: black;
+// }
 
 .error {
   color: rgb(228, 89, 89);

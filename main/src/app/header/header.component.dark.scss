@@ -37,24 +37,24 @@
       font-weight: 600;
     }
   }
-}
 
-.header-btn {
-  background-color: #cfe2ff;
-  color: #343a40;
+  .header-btn {
+    background-color: #6c757d;
+    color: #000000cc;
 
-  &:hover {
-    background-color: #cfe2ff;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    &:hover {
+      background-color: #6c757d;
+      box-shadow: 0 4px 12px #6c757d78;
+    }
   }
-}
 
-.active {
-  color: #fff;
-  background-color: #2196F3;
+  .active {
+    color: #e9ecef;
+    background-color: #193e75f2;
 
-  &:hover {
-    color: #fff;
-    background-color: #2196F3;
+    &:hover {
+      color: #e9ecef;
+      background-color: #193e75f2;
+    }
   }
 }

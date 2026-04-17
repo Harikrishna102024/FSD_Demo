@@ -53,6 +53,11 @@ const UserModel: any = sequelize.define("users", {
     profiles: {
         type: DataTypes.STRING,
         field: 'profiles'
+    },
+
+    theme: {
+        type: DataTypes.STRING,
+        field: 'theme'
     }
 
 }, { timestamps: true, })

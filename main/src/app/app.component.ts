@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
 
   ngOnInit() {
     this.refershToken();
-    this.themeReload();
+    this.context.manageUserAccess();
   }
 
   refershToken() {
@@ -39,21 +39,6 @@ export class AppComponent implements OnInit {
 
     } else {
       this.context.logStatus = false;
-    }
-  }
-
-
-  themeReload() {
-    const savedTheme = localStorage.getItem('theme');
-    if(savedTheme === 'bright') {
-      this.context.theme = 'bright';
-      document.body.classList.add('bright');
-      document.body.classList.remove('dark');
-    } else {
-      this.context.theme = 'dark';
-      document.body.classList.add('dark');
-      document.body.classList.remove('bright');
-
     }
   }
 

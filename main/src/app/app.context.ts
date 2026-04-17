@@ -13,7 +13,7 @@ export class AppContext {
   userId: any;
   theme: any;
 
-  manageUserAccess() { 
+  manageUserAccess() {
 
     const logData = localStorage.getItem('logData');
 
@@ -23,7 +23,13 @@ export class AppContext {
       this.userRole = data.logData.role;
       this.userId = Number(data.logData.id);
       this.theme = data.logData.theme;
-
+      if (this.theme === 'dark') {
+        document.body.classList.add('dark');
+        document.body.classList.remove('bright');
+      } else {
+        document.body.classList.add('bright');
+        document.body.classList.remove('dark');
+      }
     } else {
       localStorage.removeItem('logData');
       this.logStatus = false;
@@ -34,7 +40,7 @@ export class AppContext {
 
 
   toggleTheme() {
-    
+
     if (this.theme === 'dark') {
       this.theme = 'bright';
       document.body.classList.add('bright');

@@ -1,0 +1,28 @@
+.welcome-container.dark{
+    background: linear-gradient(277deg, #090a0b, rgb(26 34 41));
+    color: white;
+
+    .content {
+
+        h1 span {
+            color: #ffd700;
+        }
+
+        .buttons {
+            .primary-btn {
+                background: white;
+                color: #333;
+            }
+
+            .secondary-btn {
+                border: 2px solid white;
+                color: white;
+            }
+
+            .secondary-btn:hover {
+                background: white;
+                color: #333;
+            }
+        }
+    }
+}

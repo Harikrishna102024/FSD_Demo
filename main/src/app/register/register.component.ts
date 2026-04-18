@@ -35,13 +35,13 @@ export class RegisterComponent {
 
     const formPayload = new FormData();
 
-    formPayload.append('firstName', this.fName);
-    formPayload.append('lastName', this.lName);
-    formPayload.append('age', this.age);
-    formPayload.append('location', this.location);
-    formPayload.append('status', this.status);
-    formPayload.append('email', this.email);
-    formPayload.append('password', this.password);
+    formPayload.append('firstName', this.fName?.trim());
+    formPayload.append('lastName', this.lName?.trim());
+    formPayload.append('age', this.age?.trim());
+    formPayload.append('location', this.location?.trim());
+    formPayload.append('status', this.status?.trim());
+    formPayload.append('email', this.email?.trim());
+    formPayload.append('password', this.password?.trim());
 
     if (this.selectedFile) {
       formPayload.append('profile', this.selectedFile);

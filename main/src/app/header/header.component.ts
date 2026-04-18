@@ -105,10 +105,10 @@ export class HeaderComponent implements OnInit {
 
   logOutUser() {
     localStorage.removeItem('logData');
+    this.router.navigate(['/login'], { replaceUrl: true });
     this.context.manageUserAccess();
     this.service.logOutUser().subscribe({
       next: () => {
-        this.router.navigate(['/login'], { replaceUrl: true });
         this.toastr.info("Logout successfull")
       }
     })

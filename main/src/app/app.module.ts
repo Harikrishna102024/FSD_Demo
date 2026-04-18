@@ -15,6 +15,7 @@ import { UpdateUserComponent } from './update-user/update-user.component';
 import { LoginComponent } from './login/login.component';
 import { authInterceptorInterceptor } from './auth-interceptor.interceptor';
 import { LogsComponent } from './logs/logs.component';
+import { FeaturesComponent } from './features/features.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { LogsComponent } from './logs/logs.component';
     UpdateUserComponent,
     LoginComponent,
     LogsComponent,
+    FeaturesComponent,
   ],
   imports: [
     BrowserModule,

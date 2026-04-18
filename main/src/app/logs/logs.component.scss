@@ -66,6 +66,17 @@
     height: calc(100vh - 140px);
   }
 
+  .log-body {
+    &::-webkit-scrollbar {
+      display: none;
+    }
+
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+
+    scroll-behavior: smooth;
+  }
+
   .log-header {
     display: none;
   }

@@ -1,0 +1,32 @@
+.features-page.dark{
+    background: linear-gradient(277deg, #212529, #343a40);
+    color: #0f172a;
+
+    .features-header {
+        h1 {
+            color: #ced4da;
+        }
+        p {
+            color: #a9a9a9;
+        }
+    }
+
+    .feature-card {
+        background: #5e656b;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+
+        h3 {
+            color: #f0f0f0;
+        }
+
+        p {
+            color: #c4c8cb;
+        }
+
+        &:hover {
+            background: #6c757d;
+            box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+        }
+    }
+
+}

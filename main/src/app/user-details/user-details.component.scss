@@ -65,7 +65,7 @@
     }
 
 
-    .table tbody td{
+    .table tbody td {
         padding: 8px 14px;
         color: #686262;
         font-size: 14px;
@@ -75,7 +75,7 @@
         word-break: break-word;
     }
 
-    .table tbody td:nth-child(7){
+    .table tbody td:nth-child(7) {
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -235,6 +235,15 @@
 
         .table-responsive {
             height: calc(100vh - 140px);
+
+            &::-webkit-scrollbar {
+                display: none;
+            }
+
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+
+            scroll-behavior: smooth;
 
             .table thead .filter-text {
                 top: 50px;

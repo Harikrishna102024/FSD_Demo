@@ -229,6 +229,10 @@
 
         .table-responsive {
             height: calc(100vh - 140px);
+
+            .table thead .filter-text {
+                top: 50px;
+            }
         }
     }
 

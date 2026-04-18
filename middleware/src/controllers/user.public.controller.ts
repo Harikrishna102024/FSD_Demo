@@ -166,7 +166,7 @@ export class PublicUserController {
             const restult = await userService.updateUserTheme(id, theme);
 
             if (restult) {
-                logger.info(`User ${id} change theme to ${restult.theme}`);
+                
                 const { theme } = restult;
                 return res.status(200).json({
                     success: true,

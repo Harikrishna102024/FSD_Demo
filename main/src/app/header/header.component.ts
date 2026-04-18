@@ -108,8 +108,8 @@ export class HeaderComponent implements OnInit {
     this.context.manageUserAccess();
     this.service.logOutUser().subscribe({
       next: () => {
-        this.toastr.info("Logout successfull")
         this.router.navigate(['/login'], { replaceUrl: true });
+        this.toastr.info("Logout successfull")
       }
     })
   }

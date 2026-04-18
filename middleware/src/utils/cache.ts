@@ -2,18 +2,18 @@ import redisClient from '../config/redis.catch.config';
 
 export const getCache = async (cacheKey: string, callBack: Function, ttl: number) => {
 
-    const cachedData = await redisClient.get(cacheKey);
+  const cachedData = await redisClient.get(cacheKey);
 
-    if (cachedData) {
-        console.log("Cache HIT");
-        return JSON.parse(cachedData);
-    }
+  if (cachedData) {
+    console.log("Cache HIT");
+    return JSON.parse(cachedData);
+  }
 
-    const result = await callBack();
+  const result = await callBack();
 
-    await redisClient.setEx(cacheKey, ttl, JSON.stringify(result));
+  await redisClient.setEx(cacheKey, ttl, JSON.stringify(result));
 
-    return result;
+  return result;
 }
 
 export const clearCache = async (key: string) => {

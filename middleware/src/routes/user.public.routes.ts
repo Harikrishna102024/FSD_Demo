@@ -15,7 +15,7 @@ router.patch('/updateUserTheme/:id', controller.updateUserTheme);
 
 router.post('/register', fileUpload, validateData(validations.registerationShema()), controller.registerUser);
 
-router.post('/login', validateData(validations.loginSchema()), controller.validateUserData);
+router.post('/login', validateData(validations.loginSchema()), limit, controller.validateUserData);
 
 router.post('/refresh', refreshAccessToken)
 

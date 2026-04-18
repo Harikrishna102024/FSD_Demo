@@ -1,19 +1,25 @@
 import rateLimit from "express-rate-limit";
 
 const limit = rateLimit({
-    windowMs:  5 * 60 * 1000,
-    max: 2,
+    windowMs: 3 * 60 * 1000,
+    max: 3,
     standardHeaders: true,
     legacyHeaders: false,
     skipSuccessfulRequests: true,
-
+    keyGenerator: (req) => {
+        return req.body.email + req.ip;
+    },
     handler: (req: any, res: any) => {
-        const retryAfter = Math.ceil((req.rateLimit.resetTime.getTime() - Date.now()) / 1000);
+        const reminingTime = Math.ceil((req.rateLimit.resetTime - Date.now()) / (60 * 1000));
         res.status(429).json({
-            message: `Too many requests. Please try again after.`,
-            retryAfter 
+            limitMessage: `Too many requests. Please try again after ${reminingTime} minutes.`,
         });
     }
 });
 
 export default limit;
+
+export const reminingAttempts = (req: any) => {
+    const reminingAttempts = req.rateLimit.remaining;
+    return reminingAttempts;
+}

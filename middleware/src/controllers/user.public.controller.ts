@@ -4,7 +4,9 @@ import { User } from '../models/users.model';
 import { generateRefreshToken, generateToken } from '../services/jwt.service';
 import logger from '../config/winston'
 import emailQueue from "../queues/email.queue";
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+import { reminingAttempts } from '../config/ratelimiting.config';
+
 
 dotenv.config();
 
@@ -139,7 +141,7 @@ export class PublicUserController {
                 logger.error(`logIn faild ${email} - ${password}`)
                 return res.status(400).json({
                     success: false,
-                    count: true,
+                    count: reminingAttempts(req),
                     message: 'User not exist or wrong password'
                 });
             }

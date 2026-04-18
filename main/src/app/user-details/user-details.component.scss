@@ -65,12 +65,18 @@
     }
 
 
-    .table tbody td {
+    .table tbody td{
         padding: 8px 14px;
         color: #686262;
         font-size: 14px;
         vertical-align: middle;
         text-align: center;
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .table tbody td:nth-child(7){
+        white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
     }

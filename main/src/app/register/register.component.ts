@@ -37,7 +37,7 @@ export class RegisterComponent {
 
     formPayload.append('firstName', this.fName?.trim());
     formPayload.append('lastName', this.lName?.trim());
-    formPayload.append('age', this.age?.trim());
+    formPayload.append('age', this.age);
     formPayload.append('location', this.location?.trim());
     formPayload.append('status', this.status?.trim());
     formPayload.append('email', this.email?.trim());

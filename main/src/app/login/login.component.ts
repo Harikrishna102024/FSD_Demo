@@ -19,6 +19,12 @@ export class LoginComponent implements OnInit {
 
   ngOnInit() { }
 
+  onChangeCheck(event: any) {
+    if (this.CountMessage && event.target.name === 'email'&& !event.target.value) {
+      this.CountMessage = "";
+    }
+  }
+
   checkUserDetails(data: any) {
     this.hideText = false;
     this.loading = true;

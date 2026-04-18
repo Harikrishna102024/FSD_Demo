@@ -6,13 +6,14 @@ import { UserDetailsComponent } from './user-details/user-details.component';
 import { LoginComponent } from './login/login.component';
 import { AuthRouteGuardService } from './Services/auth-route-guard.service';
 import { LogsComponent } from './logs/logs.component';
+import { LoginGuardService } from './Services/loginGuard';
 
 const routes: Routes = [
   { 
     path: '', redirectTo: '/login', pathMatch: 'full' 
   },
   {
-    path: "login", component: LoginComponent
+    path: "login", component: LoginComponent, canActivate: [LoginGuardService]
   },
   {
     path:"home", component: HomeComponent, canActivate: [AuthRouteGuardService]

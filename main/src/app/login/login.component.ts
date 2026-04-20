@@ -44,6 +44,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('logData', JSON.stringify(res));
 
         this.loading = false;
+        this.context.isRegister = false;
         this.context.manageUserAccess();
         this.router.navigate(['/home'], { replaceUrl: true });
         this.toastr.success("User login successfully!");

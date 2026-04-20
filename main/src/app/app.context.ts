@@ -12,6 +12,7 @@ export class AppContext {
   userRole: any;
   userId: any;
   theme: any;
+  isRegister: boolean = false;
 
   manageUserAccess() {
 

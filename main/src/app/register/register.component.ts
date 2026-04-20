@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 import { UsedataService } from '../Services/usedata.service';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
+import { AppContext } from '../app.context';
 
 @Component({
   selector: 'app-register',
@@ -9,6 +10,8 @@ import { ToastrService } from 'ngx-toastr';
   styleUrl: './register.component.scss'
 })
 export class RegisterComponent {
+
+  @ViewChild('fileInput') fileInput!: ElementRef;
 
   fName: any;
   lName: any;
@@ -22,7 +25,7 @@ export class RegisterComponent {
   isLoading: boolean = false;
   hideText: boolean = true;
 
-  constructor(private service: UsedataService, private router: Router, private toastr: ToastrService) { }
+  constructor(private service: UsedataService, private router: Router, private toastr: ToastrService, public context: AppContext) { }
 
   onFileSelect(event: any) {
     this.selectedFile = event.target.files[0];
@@ -51,6 +54,7 @@ export class RegisterComponent {
     this.service.registerData(formPayload).subscribe({
       next: () => {
         this.toastr.success('Registered successfully!');
+        this.toastr.info('Please check your email for login.');
         this.isLoading = !this.isLoading
         this.hideText = !this.hideText
         if (formData.valid) {
@@ -61,11 +65,14 @@ export class RegisterComponent {
           this.status = null;
           this.email = null;
           this.password = null;
-          this.router.navigate(['/login']);
+          this.selectedFile = null;
+          this.fileInput.nativeElement.value = null;
+          // this.router.navigate(['/login']);
+          this.context.browserEveent();
+          this.context.isRegister = true;
         }
       },
       error: (err: any) => {
-        console.log(err.error.errors);
         if (err && err.error.errors) {
           this.hideText = !this.hideText;
           this.isLoading = false;

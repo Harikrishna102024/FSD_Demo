@@ -73,13 +73,22 @@ export class RegisterComponent {
         }
       },
       error: (err: any) => {
-        if (err && err.error.errors) {
+
+        if (err) {
           this.hideText = !this.hideText;
           this.isLoading = false;
-          err.error.errors.forEach((err: any) => {
-            return this.toastr.error(err.message);
-          })
+          
+          if (err.error.message) {
+            this.toastr.error(err.error.message)
+          }
+
+          if (err.error.errors) {
+            err.error.errors.forEach((err: any) => {
+              return this.toastr.error(err.message);
+            })
+          }
         }
+
       }
 
     });

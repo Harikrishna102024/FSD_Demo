@@ -12,7 +12,10 @@ export class userController {
     getUsersData = async (req: Request, res: Response) => {
 
         try {
-            const userData = await userService.getAllUsers();
+            const page = Number(req.query.page);
+            const limit = Number(req.query.limit);
+
+            const userData = await userService.getAllUsers(page, limit);
 
             return res.status(200).json({
                 success: true,

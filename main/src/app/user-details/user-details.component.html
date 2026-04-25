@@ -46,4 +46,9 @@
         </table>
         <div *ngIf="userData && userData.length === 0" class="tableError">No data available</div>
     </div>
+    <div class="pagination-cell">
+        <ng-container *ngFor="let page of pages">
+            <button class="pageNumbers" [style.color]="page === currentPage ? 'green' : ''" (click)="getAllUserData(page)">{{page}}</button>
+        </ng-container>
+    </div>
 </div>

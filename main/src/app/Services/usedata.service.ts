@@ -16,8 +16,8 @@ export class UsedataService {
     return postData
   }
 
-  getUserData(): Observable<any> {
-    const userdata = this.http.get(`${this.Url}/users/getUsers`);
+  getUserData(page: any, limit: any): Observable<any> {
+    const userdata = this.http.get(`${this.Url}/users/getUsers?page=${page}&limit=${limit}`);
     return userdata;
   }
 

@@ -9,7 +9,7 @@
         border-radius: 8px;
         overflow-x: auto;
         box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-        height: calc(100vh - 96px);
+        height: calc(100vh - 125px);
         position: relative;
     }
 
@@ -216,6 +216,21 @@
         cursor: not-allowed;
         caret-color: transparent;
     }
+
+    .pagination-cell {
+        width: 100%;
+        background-color: inherit;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        .pageNumbers {
+            background-color: transparent;
+            color: #adb5bd;
+            border: none
+        }
+    }
 }
 
 .updateUserDetails {
@@ -234,7 +249,7 @@
         padding: 2px;
 
         .table-responsive {
-            height: calc(100vh - 140px);
+            height: calc(100vh - 172px);
 
             &::-webkit-scrollbar {
                 display: none;

@@ -58,9 +58,6 @@ export class PublicUserController {
                     profiles: file ? file.path : null,
                 };
 
-                console.log("BODY:", req.body);
-                console.log("FILE:", req.file);
-
                 const result = await userService.createUser(userData);
 
                 if (result.regStatus) {

@@ -42,7 +42,7 @@ export const refreshAccessToken = async (req: Request, res: Response) => {
 
 export const deleteCookie = async (req: Request, res: Response) => {
 
-    clearCache('users:all');
+    await clearCache();
     
     res.clearCookie("accessToken", {
         httpOnly: true,

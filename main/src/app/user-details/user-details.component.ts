@@ -23,6 +23,11 @@ export class UserDetailsComponent implements OnInit {
   isLoading: boolean = false;
   filters: any = {};
   blockRightClick: any;
+  PaginationPage = 1;
+  PaginationLimit = 6;
+  pageCount: any;
+  pages: any[] = [];
+  currentPage: any;
 
 
 
@@ -39,31 +44,43 @@ export class UserDetailsComponent implements OnInit {
   ];
 
   ngOnInit(): void {
-    this.getAllUserData();
+    this.getAllUserData(this.PaginationPage);
   }
 
   onSearch(value: any, key: any) {
     this.filters[key] = value.toLowerCase();
-    this.userData = this.filterData.filter(user => 
+    this.userData = this.filterData.filter(user =>
       Object.keys(this.filters).every(k =>
         user[k]?.toString().toLowerCase().includes(this.filters[k])
       )
     );
   }
 
-  getAllUserData() {
-    this.isLoading = true;
-    
-    this.service.getUserData().subscribe((res) => {
 
-      if (res && res.data && res.data.length > 0) {
-        this.isLoading = false;
-        this.userData = res.data.map((data: any) => ({
-          ...data
-        })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
-        this.filterData = this.userData
-      } else {
-        this.userData = [];
+  getAllUserData(page: any) {
+
+    this.currentPage = page;
+    this.isLoading = true;
+
+    this.service.getUserData(page, this.PaginationLimit).subscribe((res) => {
+      if (res) {
+        this.pageCount = Math.ceil(res.data.count / this.PaginationLimit);
+        if(this.pageCount) {
+          this.pages = []
+          for (let i = 1; i <= this.pageCount; i++) {
+            this.pages.push(i);
+          }
+        }
+
+        if (res && res.data.rows && res.data.rows.length > 0) {
+          this.isLoading = false;
+          this.userData = res.data.rows.map((data: any) => ({
+            ...data
+          })).sort((a: any, b: any) => Number(a.id) - Number(b.id));
+          this.filterData = [...this.userData]
+        } else {
+          this.userData = [];
+        }
       }
     })
   }
@@ -116,9 +133,9 @@ export class UserDetailsComponent implements OnInit {
 
 
   deleteUser(id: any) {
+    this.userData = this.userData.filter((u: any) => u.id !== id);
     this.service.deleteUser(id).subscribe((res) => {
       if (res.success) {
-        this.getAllUserData();
         this.toastr.success('User deleted successfully');
       } else {
         this.toastr.error('Failed to delete user');
@@ -172,7 +189,7 @@ export class UserDetailsComponent implements OnInit {
       willClose: () => {
         document.removeEventListener('contextmenu', this.blockRightClick);
       }
-      
+
     });
   }
 

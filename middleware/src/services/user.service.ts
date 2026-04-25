@@ -29,7 +29,7 @@ export class UserService {
 
     });
 
-    clearCache('users:all');
+    await clearCache();
 
     const finalResult = await {
       result: result,
@@ -43,9 +43,35 @@ export class UserService {
 
 
 
-  async getAllUsers() {
-    const data = await getCache('users:all', () => UserModel.findAll({
-      attributes: ['id', 'firstName', 'lastName', 'age', 'location', 'status', 'email', 'role', 'profiles']
+  // async getAllUsers() {
+  //   const data = await getCache('users:all', () => UserModel.findAll({
+  //     attributes: ['id', 'firstName', 'lastName', 'age', 'location', 'status', 'email', 'role', 'profiles']
+  //   }), 5 * 60)
+  //   return data;
+  // }
+
+  async getAllUsers(page: number, limit: number) {
+
+    const offset = (page - 1) * limit;
+
+    const cacheKey = `users:page:${page}:limit:${limit}`;
+
+    const data = await getCache(
+      cacheKey, 
+      () => UserModel.findAndCountAll({
+        attributes: [
+          'id', 
+          'firstName', 
+          'lastName', 
+          'age', 
+          'location', 
+          'status', 
+          'email', 
+          'role', 
+          'profiles'
+        ],
+        limit,
+        offset
     }), 5 * 60)
     return data;
   }
@@ -71,7 +97,7 @@ export class UserService {
       where: { id },
     });
 
-    clearCache('users:all');
+    await clearCache();
     return deletedRows;
   }
 
@@ -106,7 +132,7 @@ export class UserService {
       }
     );
 
-    clearCache('users:all');
+    await clearCache();
     return result;
   }
 
@@ -186,7 +212,7 @@ export class UserService {
       { where: { id } }
     );
 
-    if(result[0] === 1) {
+    if (result[0] === 1) {
       const data = await this.getUserById(id);
       return data;
     }

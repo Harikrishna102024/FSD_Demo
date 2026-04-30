@@ -52,7 +52,7 @@ export class HeaderComponent implements OnInit {
     this.context.browserEveent();
 
     if (navigator.vibrate) {
-      navigator.vibrate(50);
+      navigator.vibrate(20);
     }
 
     Swal.fire({
